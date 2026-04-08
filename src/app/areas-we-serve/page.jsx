@@ -86,16 +86,16 @@ export default function AreasWeServe() {
         <div className="absolute inset-0 z-0">
           <HeroBackgroundPages
             desktopImages={[
-              "/Images/hero-1.jpeg",
-              "/Images/hero-2.jpg",
-              "/Images/hero-3.jpg",
-              "/Images/hero-4.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
             ]}
             mobileImages={[
-              "/Images/heroMobile-1.jpg",
-              "/Images/heroMobile-2.jpg",
-              "/Images/heroMobile-3.jpg",
-              "/Images/heroMobile-4.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
             ]}
           />
         </div>

@@ -7,7 +7,7 @@ export default function IntroSection() {
   return (
     <section
       className="relative overflow-hidden bg-center bg-cover bg-no-repeat py-20 md:py-24 px-[6%]"
-      style={{ backgroundImage: "url('/Images/hero-1.jpeg')" }}
+      style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg')" }}
     >
       {/* overlays */}
       <div className="absolute inset-0 bg-linear-to-b from-[#08110b]/75 via-[#0f1a12]/60 to-[#08110b]/80" />

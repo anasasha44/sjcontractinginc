@@ -7,7 +7,7 @@ export default function ContactBanner() {
   return (
     <section
       className="relative overflow-hidden bg-fixed bg-center bg-cover py-24 md:py-28 px-4"
-      style={{ backgroundImage: "url('/images/hero-1.jpeg')" }}
+      style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg')" }}
     >
       {/* layered overlays */}
       <div className="absolute inset-0 bg-linear-to-b from-[#08110b]/75 via-[#0f1a12]/60 to-[#08110b]/80" />

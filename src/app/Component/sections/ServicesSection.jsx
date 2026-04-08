@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import servicesData from "../data/servicesData";
+import Image from "next/image";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -80,16 +81,18 @@ export default function ServicesSection() {
               transition={{ duration: 0.3 }}
               className="group"
             >
-              <div className="relative h-90 overflow-hidden rounded-[28px] border border-[#dfe7d7] bg-white shadow-[0_15px_40px_rgba(32,45,35,0.10)]">
+              <div className="relative w-full h-90 overflow-hidden rounded-[28px] border border-[#dfe7d7] bg-white shadow-[0_15px_40px_rgba(32,45,35,0.10)]">
                 {/* image */}
-                <img
-                  src={item.mainImage}
-                  alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                />
+                 <Image
+    src={item.mainImage}
+    alt={item.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover transition duration-700 group-hover:scale-110"
+  />
 
                 {/* overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
                 <div className="absolute inset-0 bg-[#0f1a12]/10 group-hover:bg-[#0f1a12]/20 transition duration-500" />
 
                 {/* subtle top badge line */}

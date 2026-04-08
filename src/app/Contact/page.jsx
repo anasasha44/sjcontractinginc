@@ -127,7 +127,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden min-h-[95svh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Images/hero-1.jpeg')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/75 via-[#0f1a12]/60 to-[#08110b]/82" />
         <div className="pointer-events-none absolute left-1/2 top-24 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />

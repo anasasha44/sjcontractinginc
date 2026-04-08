@@ -6,19 +6,20 @@ import { Autoplay, EffectFade } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 const desktopImages = [
-  "/Images/hero-1.jpeg",
-  "/Images/hero-2.jpg",
-  "/Images/hero-3.jpg",
-  "/Images/hero-4.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
 ];
 
 const mobileImages = [
-  "/Images/heroMobile-1.jpg",
-  "/Images/heroMobile-2.jpg",
-  "/Images/heroMobile-3.jpg",
-  "/Images/heroMobile-4.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
 ];
 
 export default function HeroBackground() {
@@ -54,20 +55,23 @@ export default function HeroBackground() {
           <SwiperSlide key={index}>
             <div className="relative w-full h-full">
               {/* Image background */}
-              <img
-                src={src}
-                alt="Renovation background slide"
-                onLoad={() => onLoadImage(index)}
-                className={`
-                  w-full h-full object-cover 
-                  duration-1200
-                  ${
-                    loadedImages[index]
-                      ? "opacity-100 scale-100 blur-0"
-                      : "opacity-0 scale-105 blur-md"
-                  }
-                `}
-              />
+                <Image
+    src={src}
+    alt="Renovation background slide"
+    fill
+    sizes="100vw"
+    onLoad={() => onLoadImage(index)}
+    loading="lazy"
+    className={`
+      object-cover 
+      duration-1200
+      ${
+        loadedImages[index]
+          ? "opacity-100 scale-100 blur-0"
+          : "opacity-0 scale-105 blur-md"
+      }
+    `}
+  />
 
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black/70" />

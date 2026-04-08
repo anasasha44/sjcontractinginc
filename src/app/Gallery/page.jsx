@@ -12,13 +12,14 @@ import {
   FiLayers,
   FiX,
 } from "react-icons/fi";
+import Image from "next/image";
 
 const galleryItems = [
   {
     id: 1,
     title: "Modern Backyard Layout",
     category: "Backyard",
-    image: "/Images/hero-1.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
     size: "large",
     desc: "A refined backyard transformation with clean grading and elegant outdoor flow.",
   },
@@ -26,7 +27,7 @@ const galleryItems = [
     id: 2,
     title: "Drainage Correction",
     category: "Drainage",
-    image: "/Images/hero-2.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
     size: "small",
     desc: "Smart drainage design that protects the property and improves water flow.",
   },
@@ -34,7 +35,7 @@ const galleryItems = [
     id: 3,
     title: "Landscape Preparation",
     category: "Preparation",
-    image: "/Images/hero-3.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
     size: "small",
     desc: "Site preparation designed for structure, beauty, and future landscaping work.",
   },
@@ -42,7 +43,7 @@ const galleryItems = [
     id: 4,
     title: "Front Yard Upgrade",
     category: "Front Yard",
-    image: "/Images/hero-4.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/frontyard.jpg",
     size: "medium",
     desc: "A curb appeal upgrade with balance, texture, and a premium visual finish.",
   },
@@ -50,7 +51,7 @@ const galleryItems = [
     id: 5,
     title: "Grading & Leveling",
     category: "Grading",
-    image: "/Images/hero-5.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg",
     size: "medium",
     desc: "Precision grading that improves both functionality and the final landscape result.",
   },
@@ -58,7 +59,7 @@ const galleryItems = [
     id: 6,
     title: "Outdoor Flow Design",
     category: "Backyard",
-    image: "/Images/hero-6.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-6.jpg",
     size: "small",
     desc: "An outdoor arrangement focused on movement, structure, and comfort.",
   },
@@ -66,7 +67,7 @@ const galleryItems = [
     id: 7,
     title: "Water Control System",
     category: "Drainage",
-    image: "/Images/hero-7.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
     size: "large",
     desc: "A drainage-focused solution made to handle runoff with confidence.",
   },
@@ -74,7 +75,7 @@ const galleryItems = [
     id: 8,
     title: "Property Enhancement",
     category: "Front Yard",
-    image: "/Images/hero-8.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
     size: "small",
     desc: "An exterior update that strengthens the first impression of the home.",
   },
@@ -82,7 +83,7 @@ const galleryItems = [
     id: 9,
     title: "Site Readiness",
     category: "Preparation",
-    image: "/Images/hero-9.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
     size: "medium",
     desc: "Ground preparation completed with a clean finish and clear project direction.",
   },
@@ -90,7 +91,7 @@ const galleryItems = [
     id: 10,
     title: "Elegant Outdoor Structure",
     category: "Backyard",
-    image: "/Images/hero-10.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/Full.jpg",
     size: "small",
     desc: "Designed for function and visual calm with a premium outdoor identity.",
   },
@@ -98,18 +99,11 @@ const galleryItems = [
     id: 11,
     title: "Slope Control",
     category: "Grading",
-    image: "/Images/hero-11.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
     size: "medium",
     desc: "A carefully managed slope solution to improve site performance.",
   },
-  {
-    id: 12,
-    title: "Landscape Detailing",
-    category: "Front Yard",
-    image: "/Images/hero-12.jpg",
-    size: "large",
-    desc: "A refined finish that ties together structure, greenery, and presentation.",
-  },
+ 
 ];
 
 const categories = ["All", "Backyard", "Drainage", "Preparation", "Front Yard", "Grading"];
@@ -183,7 +177,7 @@ export default function GalleryPage() {
       <section className="relative overflow-hidden min-h-[90svh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Images/hero-4.jpg')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/78 via-[#0f1a12]/55 to-[#08110b]/82" />
         <div className="pointer-events-none absolute top-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
@@ -310,11 +304,14 @@ export default function GalleryPage() {
               className="overflow-hidden rounded-[34px] border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]"
             >
               <div className="relative">
-                <img
-                  src={featuredItem.image}
-                  alt={featuredItem.title}
-                  className="h-[420px] w-full object-cover"
-                />
+               <Image
+    src={featuredItem.image}
+    alt={featuredItem.title}
+    fill
+    sizes="100vw"
+    className="object-cover"
+    loading="lazy"
+  />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/70 via-transparent to-transparent" />
                 <div className="absolute left-6 top-6 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
                   {featuredItem.category}
@@ -350,11 +347,14 @@ export default function GalleryPage() {
                   onClick={() => openLightbox(idx + 1)}
                   className="group flex items-center gap-4 rounded-[26px] border border-[#dfe7d7] bg-white p-4 text-left shadow-[0_12px_30px_rgba(32,45,35,0.06)] transition hover:-translate-y-1"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-24 w-28 rounded-[18px] object-cover"
-                  />
+                  <Image
+    src={item.image}
+    alt={item.title}
+    fill
+    sizes="112px"
+    className="rounded-[18px] object-cover"
+    loading="lazy"
+  />
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#6d7c6a]">
                       {item.category}
@@ -414,12 +414,14 @@ export default function GalleryPage() {
                     item.size
                   )}`}
                 >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                  />
-
+                <Image
+    src={item.image}
+    alt={item.title}
+    fill
+    sizes="(max-width: 768px) 100vw, 50vw"
+    className="object-cover transition duration-700 group-hover:scale-110"
+    loading="lazy"
+  />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/85 via-[#101812]/20 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 transition duration-500 group-hover:bg-[#0f1a12]/18" />
 
@@ -478,11 +480,14 @@ export default function GalleryPage() {
                 </button>
 
                 <div className="overflow-hidden rounded-[34px] border border-white/10 bg-white/5 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
-                  <img
-                    src={filteredItems[activeIndex].image}
-                    alt={filteredItems[activeIndex].title}
-                    className="max-h-[78vh] w-full object-contain bg-[#101712]"
-                  />
+                  <Image
+    src={filteredItems[activeIndex].image}
+    alt={filteredItems[activeIndex].title}
+    fill
+    sizes="100vw"
+    className="object-contain"
+    loading="lazy"
+  />
                 </div>
 
                 <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">

@@ -9,66 +9,67 @@ import {
   FiArrowRight,
   FiImage,
 } from "react-icons/fi";
+import Image from "next/image";
 
 export default function OurWorkSection() {
   const allImages = [
     {
-      src: "/Images/backyard.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
       title: "Backyard Transformation",
       category: "Backyard",
       desc: "A refined outdoor transformation with structure, elegance, and a polished natural finish.",
     },
     
     {
-      src: "/Images/design-build-g1.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-g1.jpg",
       title: "Custom Design Build",
       category: "Landscape Prep",
       desc: "Prepared with precision for a balanced, elevated, and lasting landscape result.",
     },
     {
-      src: "/Images/design-build-main.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg",
       title: "Design Build Showcase",
       category: "Landscape Prep",
       desc: "A complete outdoor concept brought together with detail, balance, and craftsmanship.",
     },
     {
-      src: "/Images/drainage.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
       title: "Drainage Improvement",
       category: "Drainage",
       desc: "Engineered to direct water properly and protect the integrity of the outdoor space.",
     },
     {
-      src: "/Images/front-yard.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
       title: "Front Yard Refresh",
       category: "Front Yard",
       desc: "A curb-appeal focused finish with a clean, premium, and welcoming look.",
     },
     {
-      src: "/Images/frontyard.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/frontyard.jpg",
       title: "Front Yard Upgrade",
       category: "Front Yard",
       desc: "A neat and balanced entry landscape designed for a strong first impression.",
     },
     {
-      src: "/Images/full-landscape.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg",
       title: "Full Landscape Project",
       category: "Landscape Prep",
       desc: "Explore a wider showcase of outdoor transformations, grading, and landscape upgrades.",
     },
     {
-      src: "/Images/Full.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/Full.jpg",
       title: "Complete Outdoor Space",
       category: "Landscape Prep",
       desc: "A complete exterior upgrade combining functionality, layout, and visual harmony.",
     },
     {
-      src: "/Images/irrigation-systems-g1.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-g1.jpg",
       title: "Irrigation Systems Detail",
       category: "Drainage",
       desc: "Smart water distribution solutions installed for consistency, efficiency, and performance.",
     },
     {
-      src: "/Images/irrigation-systems-main.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-main.jpg",
       title: "Irrigation Systems Project",
       category: "Drainage",
       desc: "A professional irrigation setup designed for healthy, efficient long-term maintenance.",
@@ -76,56 +77,56 @@ export default function OurWorkSection() {
    
    
     {
-      src: "/Images/lawn-maintenance-g1.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-g1.jpg",
       title: "Lawn Maintenance Result",
       category: "Backyard",
       desc: "A clean, healthy, and professionally maintained lawn with a refined final look.",
     },
     {
-      src: "/Images/lawn-maintenance-main.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-main.jpg",
       title: "Lawn Care Showcase",
       category: "Backyard",
       desc: "Consistent lawn care that keeps the landscape vibrant, healthy, and visually balanced.",
     },
     {
-      src: "/Images/lot-grading-g1.jpeg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g1.jpeg",
       title: "Lot Grading Detail",
       category: "Drainage",
       desc: "Grading work completed to support proper drainage and a stable outdoor foundation.",
     },
     {
-      src: "/Images/lot-grading-g2.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g2.jpg",
       title: "Lot Grading Progress",
       category: "Drainage",
       desc: "A precision-focused grading solution built for performance and long-term site control.",
     },
     {
-      src: "/Images/lot-grading-main.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-main.jpg",
       title: "Lot Grading & Drainage",
       category: "Drainage",
       desc: "A property protection solution centered on proper water flow and grading control.",
     },
    
     {
-      src: "/Images/sod-turf-installation-g1.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-g1.jpg",
       title: "Sod & Turf Installation",
       category: "Backyard",
       desc: "Fresh turf installation completed with a smooth, natural, and polished final result.",
     },
     {
-      src: "/Images/sod-turf-installation-main.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-main.jpg",
       title: "Turf Installation Showcase",
       category: "Backyard",
       desc: "A clean and modern turf installation built for beauty, simplicity, and durability.",
     },
     {
-      src: "/Images/turf-painting-g1.jpg",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-g1.jpg",
       title: "Turf Painting Detail",
       category: "Backyard",
       desc: "A color restoration finish designed to instantly refresh the lawn’s visual appeal.",
     },
     {
-      src: "/Images/turf-painting-main.JPG",
+      src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-main.JPG",
       title: "Turf Painting Project",
       category: "Backyard",
       desc: "A vibrant lawn refresh that restores visual richness and a professionally kept look.",
@@ -221,11 +222,13 @@ export default function OurWorkSection() {
                     tall ? "h-[380px]" : "h-[260px]"
                   }`}
                 >
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                  />
+                 <Image
+    src={item.src}
+    alt={item.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover transition duration-700 group-hover:scale-110"
+  />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/85 via-[#101812]/20 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 transition duration-500 group-hover:bg-[#0f1a12]/20" />
@@ -258,11 +261,14 @@ export default function OurWorkSection() {
               onClick={() => openModal(7)}
               className="group relative block h-full w-full text-left"
             >
-              <img
-                src={featuredImage.src}
-                alt={featuredImage.title}
-                className="h-full min-h-[620px] w-full object-cover transition duration-700 group-hover:scale-105"
-              />
+              <Image
+    src={featuredImage.src}
+    alt={featuredImage.title}
+    fill
+    sizes="100vw"
+    className="object-cover transition duration-700 group-hover:scale-105"
+    loading="lazy"
+  />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c130f]/88 via-[#0c130f]/22 to-transparent" />
 
@@ -329,11 +335,14 @@ export default function OurWorkSection() {
                 </button>
 
                 <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm">
-                  <img
-                    src={activeImage.src}
-                    alt={activeImage.title}
-                    className="max-h-[78vh] w-full bg-[#111a13] object-contain"
-                  />
+                   <Image
+    src={activeImage.src}
+    alt={activeImage.title}
+    fill
+    sizes="100vw"
+    className="object-contain"
+    loading="lazy"
+  />
                 </div>
 
                 <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">

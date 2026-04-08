@@ -225,7 +225,7 @@
 
 .contact-banner {
   height: 700px;
- background: url("../../public/Images/hero-image.jpg");
+ background: url("https://ik.imagekit.io/gmjmoldeh/landscap/hero-image.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -265,7 +265,7 @@
 /* 
 .banner {
   height: 550px;
-  background-image: url(../../public/Images/banner.webp);
+  background-image: url(https://ik.imagekit.io/gmjmoldeh/landscap/banner.webp);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

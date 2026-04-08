@@ -3,31 +3,32 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const options = [
     {
         id: "backyard",
         title: "Backyard Transformation",
         desc: "Turn your backyard into a functional and beautiful outdoor living space.",
-        image: "/Images/backyard.jpg",
+        image: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
     },
     {
         id: "drainage",
         title: "Drainage Solutions",
         desc: "Protect your property with advanced grading and drainage systems.",
-        image: "/Images/drainage.jpg",
+        image: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
     },
     {
         id: "frontyard",
         title: "Front Yard Upgrade",
         desc: "Boost curb appeal with clean, modern landscape design.",
-        image: "/Images/frontyard.jpg",
+        image: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
     },
     {
         id: "full",
         title: "Full Landscape Design",
         desc: "Complete outdoor transformation tailored to your property.",
-        image: "/Images/full-landscape.jpg",
+        image: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg",
     },
 ];
 
@@ -75,11 +76,14 @@ export default function InteractiveLandscapeSection() {
                             transition={{ duration: 0.4 }}
                             className="rounded-[30px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
                         >
-                            <img
-                                src={active.image}
-                                alt={active.title}
-                                className="w-full h-[350px] object-cover"
-                            />
+                           <Image
+    src={active.image}
+    alt={active.title}
+    fill
+    sizes="100vw"
+    className="object-cover"
+    loading="lazy"
+  />
 
                             <div className="bg-white p-6 md:p-8">
                                 <h3 className="text-2xl font-bold text-[#2f4633]">
@@ -94,7 +98,7 @@ export default function InteractiveLandscapeSection() {
                                     href="/Contact"
                                     className="
     mt-5 inline-block rounded-full
-    bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e]
+    bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e]
     px-6 py-3 text-white font-semibold
     shadow-md transition hover:scale-[1.02]
   "

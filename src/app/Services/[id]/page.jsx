@@ -25,7 +25,7 @@ export default function ServicePage() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] pb-24">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[460px] lg:min-h-[560px]">
+      <section className="relative overflow-hidden min-h-115 lg:min-h-140">
         {/* background layer */}
         <div className="absolute inset-0 z-0">
           <HeroBackgroundPages
@@ -35,10 +35,10 @@ export default function ServicePage() {
         </div>
 
         {/* dark overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#08110b]/72 via-[#0f1a12]/48 to-[#08110b]/78" />
+        <div className="absolute inset-0 z-10 bg-linear-to-b from-[#08110b]/72 via-[#0f1a12]/48 to-[#08110b]/78" />
 
         {/* content */}
-        <div className="relative z-20 min-h-[460px] lg:min-h-[560px] px-[6%] pt-32 lg:pt-40 pb-16 flex items-center justify-center">
+        <div className="relative z-20 min-h-115 lg:min-h-140 px-[6%] pt-32 lg:pt-40 pb-16 flex items-center justify-center">
           <div className="w-full max-w-5xl mx-auto text-center">
             <motion.span
               initial={{ opacity: 0, y: 14 }}
@@ -107,13 +107,13 @@ export default function ServicePage() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="overflow-hidden rounded-[32px] border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]">
+            <div className="overflow-hidden rounded-4xl border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]">
               <Image
                 src={service.mainImage}
                 alt={service.title}
                 width={900}
                 height={650}
-                className="h-[360px] md:h-[460px] w-full object-cover"
+                className="h-90 md:h-115 w-full object-cover"
               />
             </div>
           </motion.div>
@@ -160,7 +160,7 @@ export default function ServicePage() {
             <div className="mt-8">
               <Link
                 href="/Contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Request This Service
                 <FiArrowRight />
@@ -198,7 +198,7 @@ export default function ServicePage() {
               execution, and a strong focus on both function and visual impact.
             </p>
 
-            <div className="mt-8 rounded-[28px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-6 shadow-[0_16px_40px_rgba(32,45,35,0.06)]">
+            <div className="mt-8 rounded-[28px] border border-[#dfe7d7] bg-linear-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-6 shadow-[0_16px_40px_rgba(32,45,35,0.06)]">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                 Need a custom recommendation?
               </p>
@@ -226,13 +226,13 @@ export default function ServicePage() {
             transition={{ duration: 0.7 }}
             className="order-1 lg:order-2"
           >
-            <div className="overflow-hidden rounded-[32px] border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]">
+            <div className="overflow-hidden rounded-4xl border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]">
               <Image
                 src={service.image}
                 alt={`${service.title} example`}
                 width={900}
                 height={650}
-                className="h-[360px] md:h-[460px] w-full object-cover"
+                className="h-90 md:h-115 w-full object-cover"
               />
             </div>
           </motion.div>

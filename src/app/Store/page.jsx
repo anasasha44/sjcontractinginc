@@ -7,15 +7,15 @@ import { FiArrowRight, FiBell, FiShoppingBag, FiSun } from "react-icons/fi";
 export default function StorePage() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#243126]">
-      <section className="relative overflow-hidden min-h-[100svh] flex items-center justify-center px-[6%] py-24 pt-30 lg:pt-50">
+      <section className="relative overflow-hidden min-h-svh flex items-center justify-center px-[6%] py-24 pt-30 lg:pt-50">
         {/* background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Images/hero-2.jpg')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')" }}
         />
 
         {/* overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/78 via-[#0f1a12]/62 to-[#08110b]/84" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#08110b]/78 via-[#0f1a12]/62 to-[#08110b]/84" />
         <div className="pointer-events-none absolute left-1/2 top-24 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 left-10 h-72 w-72 rounded-full bg-white/5 blur-3xl" />

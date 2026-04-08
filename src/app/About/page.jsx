@@ -17,6 +17,7 @@ import {
   FiTool,
   FiUsers,
 } from "react-icons/fi";
+import Image from "next/image";
 
 const stats = [
   { label: "Projects Completed", value: 240, suffix: "+" },
@@ -180,7 +181,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden min-h-[100svh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Images/hero-2.jpg')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/75 via-[#0f1a12]/55 to-[#08110b]/80" />
         <div className="pointer-events-none absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
@@ -289,11 +290,15 @@ export default function AboutPage() {
             className="relative"
           >
             <div className="overflow-hidden rounded-[34px] shadow-[0_22px_60px_rgba(32,45,35,0.14)]">
-              <img
-                src="/Images/hero-3.jpg"
-                alt="Aquanovus project"
-                className="h-[520px] w-full object-cover"
-              />
+              <Image
+  src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg"
+  alt="Aquanovus project"
+  width={1600}
+  height={800}
+  priority
+  sizes="100vw"
+  className="w-full h-[520px] object-cover"
+/>
             </div>
 
             <motion.div
@@ -549,13 +554,17 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="overflow-hidden rounded-[34px] shadow-[0_20px_50px_rgba(32,45,35,0.12)]"
+            className="overflow-hidden w-full rounded-[34px] shadow-[0_20px_50px_rgba(32,45,35,0.12)]"
           >
-            <img
-              src="/Images/hero-4.jpg"
-              alt="Outdoor project by Aquanovus"
-              className="h-full min-h-[420px] w-full object-cover"
-            />
+           <Image
+    src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg"
+    alt="Outdoor project by Aquanovus"
+    fill
+   
+    priority
+    sizes="100vw"
+    className="object-cover"
+  />
           </motion.div>
 
           <motion.div

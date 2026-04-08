@@ -25,11 +25,14 @@ export default function ServicePage({
       {/* Main Content */}
       <section className="max-w-7xl mx-auto px-6 mt-16 grid md:grid-cols-2 gap-10 items-center">
         <div className="w-full">
-          <img
-            src={mainImage}
-            alt={title}
-            className="w-full h-87.5 object-cover rounded-2xl shadow-xl border border-gray-200"
-          />
+        <Image
+    src={mainImage}
+    alt={title}
+    fill
+    sizes="100vw"
+    className="object-cover rounded-2xl shadow-xl border border-gray-200"
+    loading="lazy"
+  />
         </div>
 
         <div>

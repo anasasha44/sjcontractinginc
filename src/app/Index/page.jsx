@@ -1,9 +1,7 @@
 import HeroVideoBackground from "../Component/ui/HeroVideoBackground";
 import InteractiveLandscapeSection from "../Component/ui/InteractiveLandscapeSection";
-import ScheduleService from "../Component/ui/ScheduleService";
 import ModalScheduleService from "../Component/ui/ModalScheduleService";
 import ServicesSection from "../Component/sections/ServicesSection";
-import IntroSection from "../Component/sections/IntroSection";
 import OurWorkSection from "../Component/sections/OurWorkSection";
 import ContactBanner from "../Component/sections/ContactBanner";
 

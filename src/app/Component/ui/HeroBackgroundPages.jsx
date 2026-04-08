@@ -6,6 +6,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 export default function HeroBackgroundPages({ desktopImages = [], mobileImages = [] }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -39,20 +40,23 @@ export default function HeroBackgroundPages({ desktopImages = [], mobileImages =
         {images.map((src, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-full">
-              <img
-                src={src}
-                alt="background slide"
-                onLoad={() => onLoadImage(index)}
-                className={`
-                  w-full h-full object-cover
-                  duration-1200
-                  ${
-                    loadedImages[index]
-                      ? "opacity-100 scale-100 blur-0"
-                      : "opacity-0 scale-105 blur-md"
-                  }
-                `}
-              />
+              <Image
+    src={src}
+    alt="background slide"
+    fill
+    sizes="100vw"
+    onLoad={() => onLoadImage(index)}
+    loading="lazy"
+    className={`
+      object-cover
+      duration-1200
+      ${
+        loadedImages[index]
+          ? "opacity-100 scale-100 blur-0"
+          : "opacity-0 scale-105 blur-md"
+      }
+    `}
+  />
               <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/30 to-black/70" />
             </div>
           </SwiperSlide>

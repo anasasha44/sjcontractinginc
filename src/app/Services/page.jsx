@@ -5,6 +5,7 @@ import { FaAngleRight } from "react-icons/fa";
 import servicesData from "../Component/data/servicesData";
 import HeroBackgroundPages from "../Component/ui/HeroBackgroundPages";
 import Link from "next/link";
+import Image from "next/image";
 
 const containerVariants = {
   hidden: {},
@@ -33,16 +34,16 @@ export default function ServicesPage() {
   <div className="absolute inset-0 z-0">
     <HeroBackgroundPages
       desktopImages={[
-        "/Images/hero-1.jpeg",
-        "/Images/hero-2.jpg",
-        "/Images/hero-3.jpg",
-        "/Images/hero-4.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
       ]}
       mobileImages={[
-        "/Images/heroMobile-1.jpg",
-        "/Images/heroMobile-2.jpg",
-        "/Images/heroMobile-3.jpg",
-        "/Images/heroMobile-4.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
+        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
       ]}
     />
   </div>
@@ -129,13 +130,16 @@ export default function ServicesPage() {
                 className="group"
               >
                 <div className="relative h-80 rounded-[28px] overflow-hidden border border-[#dfe7d7] bg-white shadow-[0_16px_40px_rgba(32,45,35,0.10)]">
-                  <img
-                    src={item.mainImage}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110"
-                  />
+                  <Image
+    src={item.mainImage}
+    alt={item.title}
+    fill
+    sizes="(max-width: 768px) 100vw, 50vw"
+    className="object-cover transition duration-700 group-hover:scale-110"
+    loading="lazy"
+  />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 group-hover:bg-[#0f1a12]/20 transition duration-500" />
 
                   <div className="absolute left-5 top-5">
@@ -177,7 +181,7 @@ export default function ServicesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl mx-auto rounded-[32px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 md:p-10 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
+          className="max-w-5xl mx-auto rounded-4xl border border-[#dfe7d7] bg-linear-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 md:p-10 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
         >
           <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
             <div>
@@ -198,7 +202,7 @@ export default function ServicesPage() {
             <div>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
+                className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Request a Consultation
               </Link>
