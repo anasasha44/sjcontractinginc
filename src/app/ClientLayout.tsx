@@ -1,17 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Loading from "./Component/ui/loading"; 
+import SplashScreen from "./Component/ui/SplashScreen";
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 500); 
+    const timer = setTimeout(() => setLoading(false), 2500); 
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) return <Loading />;
-
-  return <>{children}</>;
+  return (
+    <>
+      <SplashScreen isVisible={loading} />
+      {!loading && children}
+    </>
+  );
 }

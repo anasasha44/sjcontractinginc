@@ -14,7 +14,7 @@ export const metadata = {
 export default function Page() {
   return (
     <main>
-   <header className="relative z-10 pt-24">
+   <header className="relative z-10 pt-24  h-screen overflow-hidden">
   <HeroVideoBackground />
 
   <div className="min-h-screen flex items-center justify-center">
