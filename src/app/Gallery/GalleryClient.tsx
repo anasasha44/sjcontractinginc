@@ -1,5 +1,5 @@
 "use client";
-
+ 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,175 +13,177 @@ import {
   FiX,
 } from "react-icons/fi";
 import Image from "next/image";
-
+ 
 const galleryItems = [
   {
     id: 1,
-    title: "Modern Backyard Layout",
+    title: "Modern Backyard Landscaping",
     category: "Backyard",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
     size: "large",
-    desc: "A refined backyard transformation with clean grading and elegant outdoor flow.",
+    desc: "A full backyard transformation in Windsor Ontario — clean grading, elegant layout, and premium outdoor flow.",
   },
   {
     id: 2,
-    title: "Drainage Correction",
+    title: "Drainage Correction Windsor",
     category: "Drainage",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
     size: "small",
-    desc: "Smart drainage design that protects the property and improves water flow.",
+    desc: "Smart drainage design for a Windsor property — protects the foundation and improves water flow across the yard.",
   },
   {
     id: 3,
-    title: "Landscape Preparation",
+    title: "Landscape Preparation Essex County",
     category: "Preparation",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
     size: "small",
-    desc: "Site preparation designed for structure, beauty, and future landscaping work.",
+    desc: "Site preparation in Essex County designed for structure, beauty, and future sod or garden installation.",
   },
   {
     id: 4,
-    title: "Front Yard Upgrade",
+    title: "Front Yard Upgrade Windsor",
     category: "Front Yard",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/frontyard.jpg",
     size: "medium",
-    desc: "A curb appeal upgrade with balance, texture, and a premium visual finish.",
+    desc: "A curb appeal upgrade in Windsor ON — balanced landscaping, rich texture, and a premium visual finish.",
   },
   {
     id: 5,
-    title: "Grading & Leveling",
+    title: "Lot Grading & Leveling Windsor",
     category: "Grading",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg",
     size: "medium",
-    desc: "Precision grading that improves both functionality and the final landscape result.",
+    desc: "Precision lot grading in Windsor that improves drainage, functionality, and the final landscape result.",
   },
   {
     id: 6,
-    title: "Outdoor Flow Design",
+    title: "Backyard Flow Design LaSalle",
     category: "Backyard",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-6.jpg",
     size: "small",
-    desc: "An outdoor arrangement focused on movement, structure, and comfort.",
+    desc: "An outdoor arrangement in LaSalle Ontario focused on movement, structure, and year-round comfort.",
   },
   {
     id: 7,
-    title: "Water Control System",
+    title: "Water Control & Drainage System",
     category: "Drainage",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
     size: "large",
-    desc: "A drainage-focused solution made to handle runoff with confidence.",
+    desc: "A drainage-focused landscaping solution in Windsor designed to handle seasonal runoff with confidence.",
   },
   {
     id: 8,
-    title: "Property Enhancement",
+    title: "Front Yard Landscaping Tecumseh",
     category: "Front Yard",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
     size: "small",
-    desc: "An exterior update that strengthens the first impression of the home.",
+    desc: "Front yard landscaping in Tecumseh ON — an exterior update that strengthens the first impression of the home.",
   },
   {
     id: 9,
-    title: "Site Readiness",
+    title: "Site Readiness Windsor Ontario",
     category: "Preparation",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
     size: "medium",
-    desc: "Ground preparation completed with a clean finish and clear project direction.",
+    desc: "Ground preparation in Windsor completed with a clean finish and clear direction for the next landscaping phase.",
   },
   {
     id: 10,
-    title: "Elegant Outdoor Structure",
+    title: "Backyard Outdoor Structure",
     category: "Backyard",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/Full.jpg",
     size: "small",
-    desc: "Designed for function and visual calm with a premium outdoor identity.",
+    desc: "Designed for function and visual calm — a premium outdoor identity for a Windsor Essex County property.",
   },
   {
     id: 11,
-    title: "Slope Control",
+    title: "Slope & Grade Control Essex County",
     category: "Grading",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
     size: "medium",
-    desc: "A carefully managed slope solution to improve site performance.",
+    desc: "A carefully managed slope grading solution in Essex County to improve site performance and drainage.",
   },
- 
 ];
-
-const categories = ["All", "Backyard", "Drainage", "Preparation", "Front Yard", "Grading"];
-
-function getCardHeight(size) {
+ 
+const categories = [
+  "All",
+  "Backyard",
+  "Drainage",
+  "Preparation",
+  "Front Yard",
+  "Grading",
+];
+ 
+function getCardHeight(size: string) {
   if (size === "large") return "h-[420px]";
   if (size === "medium") return "h-[320px]";
   return "h-[260px]";
 }
-
-export default function GalleryPage() {
+ 
+export default function GalleryClient() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-
+ 
   const filteredItems = useMemo(() => {
     if (activeCategory === "All") return galleryItems;
     return galleryItems.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
-
+ 
   const featuredItem = filteredItems[0] || galleryItems[0];
-
-  const openLightbox = (index) => {
+ 
+  const openLightbox = (index: number) => {
     setActiveIndex(index);
     setLightboxOpen(true);
   };
-
+ 
   const nextImage = () => {
     setActiveIndex((prev) =>
       prev === filteredItems.length - 1 ? 0 : prev + 1
     );
   };
-
+ 
   const prevImage = () => {
     setActiveIndex((prev) =>
       prev === 0 ? filteredItems.length - 1 : prev - 1
     );
   };
-
+ 
   useEffect(() => {
     setActiveIndex(0);
   }, [activeCategory]);
-
+ 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
       if (e.key === "Escape") setLightboxOpen(false);
       if (e.key === "ArrowRight") nextImage();
       if (e.key === "ArrowLeft") prevImage();
     };
-
+ 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxOpen, filteredItems.length]);
-
+ 
   useEffect(() => {
-    if (lightboxOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = lightboxOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [lightboxOpen]);
-
+ 
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#243126]">
       {/* HERO */}
       <section className="relative overflow-hidden min-h-[90svh]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg')" }}
+          style={{
+            backgroundImage:
+              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg')",
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/78 via-[#0f1a12]/55 to-[#08110b]/82" />
         <div className="pointer-events-none absolute top-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
-
+ 
         <div className="relative z-10 mx-auto flex min-h-[90svh] max-w-7xl items-center px-[6%] lg:pt-50 pt-30 pb-14">
           <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div
@@ -190,36 +192,37 @@ export default function GalleryPage() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#dbe7d1] backdrop-blur-md">
-                Aquanovus Gallery
+                Landscaping Portfolio — Windsor, Ontario
               </span>
-
+ 
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.04] tracking-tight text-white unbounded-font">
-                Explore Outdoor Work That Feels as Good as It Looks
+                Real Landscaping Projects in Windsor & Essex County
               </h1>
-
+ 
               <p className="mt-6 max-w-2xl text-base md:text-lg lg:text-xl leading-relaxed text-white/82">
-                Browse a curated showcase of grading, drainage, and landscape
-                projects shaped with precision, structure, and a premium visual finish.
+                Browse our portfolio of completed landscaping projects across
+                Windsor, LaSalle, Tecumseh, and Essex County Ontario — from
+                lawn care and sod to interlocking, grading, and drainage.
               </p>
-
+ 
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="#gallery-grid"
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.24)] transition duration-300 hover:scale-[1.03]"
                 >
-                  View Gallery
+                  Browse Our Work
                 </a>
-
+ 
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
                 >
-                  Start Your Project
+                  Get a Free Quote
                   <FiArrowRight />
                 </Link>
               </div>
             </motion.div>
-
+ 
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -229,23 +232,23 @@ export default function GalleryPage() {
               {[
                 {
                   icon: FiImage,
-                  title: "Curated Showcase",
-                  text: "A selection of projects built around function, detail, and visual balance.",
+                  title: "Windsor Projects",
+                  text: "Real landscaping results from Windsor, LaSalle, Tecumseh and Essex County.",
                 },
                 {
                   icon: FiLayers,
-                  title: "Multiple Categories",
-                  text: "Explore drainage, grading, preparation, and outdoor transformations.",
+                  title: "Every Service Shown",
+                  text: "Sod, interlock, garden design, grading, drainage and full transformations.",
                 },
                 {
                   icon: FiGrid,
-                  title: "Interactive Browsing",
-                  text: "Filter by category and open every project in a premium full-screen view.",
+                  title: "Filter by Category",
+                  text: "Browse by service type and open every project in full screen.",
                 },
                 {
                   icon: FiArrowRight,
-                  title: "Project Inspiration",
-                  text: "Use the gallery to imagine what is possible for your own property.",
+                  title: "Get Inspired",
+                  text: "See what's possible for your Windsor or Essex County property.",
                 },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -272,7 +275,7 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* FEATURED PREVIEW */}
       <section className="px-[6%] py-24">
         <div className="mx-auto max-w-7xl">
@@ -282,19 +285,16 @@ export default function GalleryPage() {
                 Featured Project
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
-                A closer look at our visual standard
+                A closer look at our Windsor landscaping standard
               </h2>
             </div>
-
+ 
             <div className="rounded-full border border-[#dfe7d7] bg-white px-5 py-3 text-sm font-medium text-[#5f6f60] shadow-sm">
               {filteredItems.length} projects in this view
             </div>
           </div>
-
-          <motion.div
-            layout
-            className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]"
-          >
+ 
+          <motion.div layout className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <motion.div
               key={featuredItem.id}
               initial={{ opacity: 0, y: 18 }}
@@ -303,21 +303,21 @@ export default function GalleryPage() {
               transition={{ duration: 0.65 }}
               className="overflow-hidden rounded-[34px] border border-[#dfe7d7] bg-white shadow-[0_18px_40px_rgba(32,45,35,0.08)]"
             >
-              <div className="relative">
-               <Image
-    src={featuredItem.image}
-    alt={featuredItem.title}
-    fill
-    sizes="100vw"
-    className="object-cover"
-    loading="lazy"
-  />
+              <div className="relative h-[380px]">
+                <Image
+                  src={featuredItem.image}
+                  alt={`${featuredItem.title} — Windsor Ontario landscaping project`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                  priority
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/70 via-transparent to-transparent" />
                 <div className="absolute left-6 top-6 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
                   {featuredItem.category}
                 </div>
               </div>
-
+ 
               <div className="p-6 md:p-8">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#2f4633]">
                   {featuredItem.title}
@@ -325,7 +325,7 @@ export default function GalleryPage() {
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5f6f60]">
                   {featuredItem.desc}
                 </p>
-
+ 
                 <button
                   onClick={() => openLightbox(0)}
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
@@ -335,8 +335,8 @@ export default function GalleryPage() {
                 </button>
               </div>
             </motion.div>
-
-            <div className="grid gap-5">
+ 
+            <div className="grid gap-5 content-start">
               {filteredItems.slice(1, 4).map((item, idx) => (
                 <motion.button
                   key={item.id}
@@ -347,14 +347,16 @@ export default function GalleryPage() {
                   onClick={() => openLightbox(idx + 1)}
                   className="group flex items-center gap-4 rounded-[26px] border border-[#dfe7d7] bg-white p-4 text-left shadow-[0_12px_30px_rgba(32,45,35,0.06)] transition hover:-translate-y-1"
                 >
-                  <Image
-    src={item.image}
-    alt={item.title}
-    fill
-    sizes="112px"
-    className="rounded-[18px] object-cover"
-    loading="lazy"
-  />
+                  <div className="relative h-[80px] w-[112px] shrink-0 overflow-hidden rounded-[18px]">
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} — Windsor landscaping`}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#6d7c6a]">
                       {item.category}
@@ -372,12 +374,12 @@ export default function GalleryPage() {
           </motion.div>
         </div>
       </section>
-
+ 
       {/* FILTERS + GRID */}
       <section id="gallery-grid" className="relative px-[6%] pb-24">
         <div className="pointer-events-none absolute left-10 top-10 h-64 w-64 rounded-full bg-[#88a97b]/10 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
-
+ 
         <div className="relative mx-auto max-w-7xl">
           <div className="mb-10 flex flex-wrap gap-3">
             {categories.map((category) => {
@@ -397,7 +399,7 @@ export default function GalleryPage() {
               );
             })}
           </div>
-
+ 
           <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, index) => (
@@ -414,21 +416,21 @@ export default function GalleryPage() {
                     item.size
                   )}`}
                 >
-                <Image
-    src={item.image}
-    alt={item.title}
-    fill
-    sizes="(max-width: 768px) 100vw, 50vw"
-    className="object-cover transition duration-700 group-hover:scale-110"
-    loading="lazy"
-  />
+                  <Image
+                    src={item.image}
+                    alt={`${item.title} — Windsor Ontario landscaping`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/85 via-[#101812]/20 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 transition duration-500 group-hover:bg-[#0f1a12]/18" />
-
+ 
                   <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                     {item.category}
                   </div>
-
+ 
                   <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
                     <h3 className="text-xl md:text-2xl font-bold leading-snug">
                       {item.title}
@@ -436,7 +438,7 @@ export default function GalleryPage() {
                     <p className="mt-2 text-sm leading-relaxed text-white/80 line-clamp-2">
                       {item.desc}
                     </p>
-
+ 
                     <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur-sm">
                       View Project
                       <FiArrowRight size={14} />
@@ -448,7 +450,7 @@ export default function GalleryPage() {
           </motion.div>
         </div>
       </section>
-
+ 
       {/* LIGHTBOX */}
       <AnimatePresence>
         {lightboxOpen && filteredItems[activeIndex] && (
@@ -462,7 +464,7 @@ export default function GalleryPage() {
               className="absolute inset-0 bg-[#0c130f]/90 backdrop-blur-md"
               onClick={() => setLightboxOpen(false)}
             />
-
+ 
             <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8">
               <motion.div
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -478,18 +480,18 @@ export default function GalleryPage() {
                 >
                   <FiX size={22} />
                 </button>
-
-                <div className="overflow-hidden rounded-[34px] border border-white/10 bg-white/5 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
+ 
+                <div className="relative h-[60vh] overflow-hidden rounded-[34px] border border-white/10 bg-white/5 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
                   <Image
-    src={filteredItems[activeIndex].image}
-    alt={filteredItems[activeIndex].title}
-    fill
-    sizes="100vw"
-    className="object-contain"
-    loading="lazy"
-  />
+                    src={filteredItems[activeIndex].image}
+                    alt={`${filteredItems[activeIndex].title} — Windsor Ontario landscaping project`}
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                    loading="lazy"
+                  />
                 </div>
-
+ 
                 <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
                   <div className="rounded-[24px] border border-white/10 bg-white/10 p-5 text-white backdrop-blur-md">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/65">
@@ -502,19 +504,19 @@ export default function GalleryPage() {
                       {filteredItems[activeIndex].desc}
                     </p>
                   </div>
-
+ 
                   <div className="flex items-center gap-3 justify-end">
                     <div className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-white/85 backdrop-blur-md">
                       {activeIndex + 1} / {filteredItems.length}
                     </div>
-
+ 
                     <button
                       onClick={prevImage}
                       className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-white/20"
                     >
                       <FiChevronLeft size={22} />
                     </button>
-
+ 
                     <button
                       onClick={nextImage}
                       className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-white/20"
@@ -528,7 +530,7 @@ export default function GalleryPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
+ 
       {/* CTA */}
       <section className="px-[6%] pb-24">
         <motion.div
@@ -544,20 +546,21 @@ export default function GalleryPage() {
                 Inspired by what you see?
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
-                Let’s create something custom for your property
+                Let's create something custom for your Windsor property
               </h2>
               <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
-                Reach out to Aquanovus and start planning an outdoor project
-                built around structure, beauty, and long-term confidence.
+                Contact Windsor's trusted landscaping team for a free quote.
+                Serving Windsor, LaSalle, Tecumseh, Amherstburg, and all of
+                Essex County Ontario.
               </p>
             </div>
-
+ 
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
-                Start Your Project
+                Get a Free Quote
               </Link>
               <Link
                 href="/services"

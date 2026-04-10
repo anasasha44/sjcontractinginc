@@ -1,17 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function HeroVideoBackground() {
   const [isMobile, setIsMobile] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [viewport, setViewport] = useState({
+    width: 1920,
+    height: 1080,
+  });
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
+    const updateViewport = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      setViewport({ width, height });
+      setIsMobile(width < 768);
+    };
+
+    updateViewport();
+
+    window.addEventListener("resize", updateViewport);
+    window.addEventListener("orientationchange", updateViewport);
+
+    return () => {
+      window.removeEventListener("resize", updateViewport);
+      window.removeEventListener("orientationchange", updateViewport);
+    };
   }, []);
 
   const desktopVideoId = "pOToGZ8swcs";
@@ -19,11 +35,39 @@ export default function HeroVideoBackground() {
 
   const activeVideoId = isMobile ? mobileVideoId : desktopVideoId;
 
-  const videoSrc = `https://www.youtube.com/embed/${activeVideoId}?autoplay=1&mute=1&loop=1&playlist=${activeVideoId}&controls=0&modestbranding=1&rel=0&playsinline=1`;
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [activeVideoId, viewport.width, viewport.height]);
+
+  const videoSrc = `https://www.youtube.com/embed/${activeVideoId}?autoplay=1&mute=1&loop=1&playlist=${activeVideoId}&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+
+  const iframeSize = useMemo(() => {
+    const videoRatio = 16 / 9;
+    const screenRatio = viewport.width / viewport.height;
+
+    let width;
+    let height;
+
+    if (screenRatio > videoRatio) {
+      width = viewport.width;
+      height = width / videoRatio;
+    } else {
+      height = viewport.height;
+      width = height * videoRatio;
+    }
+
+    
+    const overscan = isMobile ? 1.45 : 1.18;
+
+    return {
+      width: `${width * overscan}px`,
+      height: `${height * overscan}px`,
+    };
+  }, [viewport, isMobile]);
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden bg-black">
-      <div className="relative h-full w-full">
+    <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-[#08110b]">
+      <div className="relative w-full h-full overflow-hidden">
         <iframe
           key={videoSrc}
           src={videoSrc}
@@ -31,12 +75,13 @@ export default function HeroVideoBackground() {
           allow="autoplay; fullscreen"
           onLoad={() => setIsLoaded(true)}
           className={`
-            absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-            pointer-events-none
-            ${isMobile ? "h-screen w-[177.78vh] max-w-none" : "h-[120%] w-[200%]"}
-            duration-1000 ease-in-out
-            ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}
+            absolute left-1/2 top-1/2
+            -translate-x-1/2 -translate-y-1/2
+            pointer-events-none border-0
+            transition-all duration-1000 ease-out
+            ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-110"}
           `}
+          style={iframeSize}
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />

@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import CustomLink from "../ui/CustomLink";
+import { usePageLoader } from "../ui/PageLoader";
 
 const navLinks = [
   { href: "/", label: "HOME" },
@@ -21,10 +22,17 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const { stopLoading } = usePageLoader();
 
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+
+    const timer = setTimeout(() => {
+      stopLoading();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [pathname, stopLoading]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -34,89 +42,91 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
           ? "bg-[#f7f5ef]/95 text-[#243126] shadow-[0_10px_35px_rgba(20,31,22,0.12)] backdrop-blur-md border-b border-[#dfe7d7]"
           : "bg-transparent text-white border-b border-white/10"
-        }`}
+      }`}
     >
-      {/* Top bar */}
       <div
-        className={`transition-colors duration-500 ${scrolled ? "border-b border-[#dfe7d7]" : "md:border-b md:border-white/10"
-          }`}
+        className={`transition-colors duration-500 ${
+          scrolled ? "border-b border-[#dfe7d7]" : "md:border-b md:border-white/10"
+        }`}
       >
         <div
-          className={`max-w-7xl mx-auto px-4 grid grid-cols-3 items-center transition-all duration-500 ${scrolled ? "h-20" : "h-28"
-            }`}
+          className={`max-w-7xl mx-auto px-4 grid grid-cols-3 items-center transition-all duration-500 ${
+            scrolled ? "h-20" : "h-28"
+          }`}
         >
-          {/* Left */}
           <div
-            className={`hidden md:flex items-center gap-6 text-sm font-semibold tracking-[0.18em] transition ${scrolled ? "text-[#2f4633]" : "text-white"
-              }`}
+            className={`hidden md:flex items-center gap-6 text-sm font-semibold tracking-[0.18em] transition ${
+              scrolled ? "text-[#2f4633]" : "text-white"
+            }`}
           >
-            <Link
+            <CustomLink
               href="/About"
               className="transition hover:text-[#6f8f4e]"
             >
               ABOUT US
-            </Link>
-            <Link
+            </CustomLink>
+
+            <CustomLink
               href="/Contact"
               className="transition hover:text-[#6f8f4e]"
             >
               CONTACT
-            </Link>
-
+            </CustomLink>
           </div>
 
-          {/* Logo */}
           <div className="flex justify-center col-start-2">
-            <Link href="/">
+            <CustomLink href="/">
               <div
-                className={`flex flex-col items-center justify-center leading-none transition-all duration-500 ${scrolled ? "scale-95" : "scale-100"
-                  }`}
+                className={`flex flex-col items-center justify-center leading-none transition-all duration-500 ${
+                  scrolled ? "scale-95" : "scale-100"
+                }`}
               >
                 <span
-                  className={`unbounded-font font-bold tracking-[0.2em] transition-all duration-500 ${scrolled
-                      ? "text-2xl text-[#2f4633]"
-                      : "text-3xl text-white"
-                    }`}
+                  className={`unbounded-font font-bold tracking-[0.2em] transition-all duration-500 ${
+                    scrolled ? "text-2xl text-[#2f4633]" : "text-3xl text-white"
+                  }`}
                 >
                   AQUANOVUS
                 </span>
 
                 <span
-                  className={`mt-2 text-[10px] tracking-[0.38em] uppercase transition-all duration-500 ${scrolled ? "text-[#6f8f4e]" : "text-[#dbe7d1]"
-                    }`}
+                  className={`mt-2 text-[10px] tracking-[0.38em] uppercase transition-all duration-500 ${
+                    scrolled ? "text-[#6f8f4e]" : "text-[#dbe7d1]"
+                  }`}
                 >
                   Landscaping • Renovation
                 </span>
               </div>
-            </Link>
+            </CustomLink>
           </div>
 
-          {/* Right */}
           <div
-            className={`hidden md:flex items-center justify-end gap-5 text-lg transition ${scrolled ? "text-[#2f4633]" : "text-white"
-              }`}
+            className={`hidden md:flex items-center justify-end gap-5 text-lg transition ${
+              scrolled ? "text-[#2f4633]" : "text-white"
+            }`}
           >
-            <Link href="#" className="transition hover:text-[#6f8f4e]">
+            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
               <FaFacebookF />
-            </Link>
-            <Link href="#" className="transition hover:text-[#6f8f4e]">
+            </CustomLink>
+            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
               <FaInstagram />
-            </Link>
-            <Link href="#" className="transition hover:text-[#6f8f4e]">
+            </CustomLink>
+            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
               <FaXTwitter />
-            </Link>
-            <Link href="/search" className="transition hover:text-[#6f8f4e]">
+            </CustomLink>
+            <CustomLink href="/search" className="transition hover:text-[#6f8f4e]">
               <FiSearch />
-            </Link>
+            </CustomLink>
           </div>
 
-          {/* Mobile button */}
           <button
-            className={`md:hidden col-start-3 justify-self-end text-3xl mr-1 transition ${scrolled ? "text-[#2f4633]" : "text-white"
-              }`}
+            className={`md:hidden col-start-3 justify-self-end text-3xl mr-1 transition ${
+              scrolled ? "text-[#2f4633]" : "text-white"
+            }`}
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -125,59 +135,59 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Desktop nav */}
       <nav
-        className={`hidden md:block transition ${scrolled ? "text-[#2f4633]" : "text-white"
-          }`}
+        className={`hidden md:block transition ${
+          scrolled ? "text-[#2f4633]" : "text-white"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <ul className="flex items-center justify-center gap-10 h-14 text-sm font-bold tracking-[0.18em]">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <CustomLink
                   href={link.href}
-                  className={`relative transition duration-300 hover:text-[#6f8f4e] after:absolute after:left-0 after:-bottom-2 after:h-0.5 after:w-0 after:rounded-full after:bg-[#6f8f4e] after:transition-all after:duration-300 hover:after:w-full ${pathname === link.href
-                      ? "text-[#6f8f4e] after:w-full"
-                      : ""
-                    }`}
+                  className={`relative transition duration-300 hover:text-[#6f8f4e] after:absolute after:left-0 after:-bottom-2 after:h-0.5 after:w-0 after:rounded-full after:bg-[#6f8f4e] after:transition-all after:duration-300 hover:after:w-full ${
+                    pathname === link.href ? "text-[#6f8f4e] after:w-full" : ""
+                  }`}
                 >
                   {link.label}
-                </Link>
+                </CustomLink>
               </li>
             ))}
           </ul>
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${scrolled
+        className={`md:hidden overflow-hidden transition-all duration-500 ${
+          scrolled
             ? "bg-[#f7f5ef]/98 text-[#243126] backdrop-blur-md"
             : "bg-[#101712]/85 backdrop-blur-md text-white"
-          } ${open ? "max-h-125" : "max-h-0"}`}
+        } ${open ? "max-h-125" : "max-h-0"}`}
       >
         <ul className="px-6 py-5 space-y-5 text-sm font-bold tracking-[0.16em]">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link
+              <CustomLink
                 href={link.href}
-                className={`block transition ${pathname === link.href
+                className={`block transition ${
+                  pathname === link.href
                     ? "text-[#6f8f4e]"
                     : "hover:text-[#6f8f4e]"
-                  }`}
+                }`}
               >
                 {link.label}
-              </Link>
+              </CustomLink>
             </li>
           ))}
 
           <li className="pt-2">
-            <Link
+            <CustomLink
               href="/estimate"
               className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-5 py-2.5 text-white shadow-[0_10px_25px_rgba(34,60,40,0.25)] transition hover:scale-[1.03]"
             >
               FREE ESTIMATE
-            </Link>
+            </CustomLink>
           </li>
         </ul>
       </div>

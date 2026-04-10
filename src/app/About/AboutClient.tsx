@@ -1,5 +1,5 @@
 "use client";
-
+ 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "framer-motion";
@@ -18,111 +18,104 @@ import {
   FiUsers,
 } from "react-icons/fi";
 import Image from "next/image";
-
+ 
 const stats = [
   { label: "Projects Completed", value: 240, suffix: "+" },
   { label: "Years of Experience", value: 12, suffix: "+" },
   { label: "Client Satisfaction", value: 98, suffix: "%" },
-  { label: "Service Areas Covered", value: 15, suffix: "+" },
+  { label: "Essex County Communities Served", value: 12, suffix: "+" },
 ];
-
+ 
 const values = [
   {
     icon: FiShield,
     title: "Built to Last",
-    text: "We focus on durable outdoor solutions that protect your property and perform beautifully over time.",
+    text: "We focus on durable landscaping solutions that protect Windsor properties and perform beautifully season after season.",
   },
   {
     icon: FiCompass,
     title: "Thoughtful Design",
-    text: "Every project is shaped around function, flow, drainage, and a clean visual finish tailored to your home.",
+    text: "Every project in Windsor and Essex County is shaped around function, flow, drainage, and a clean visual finish tailored to your home.",
   },
   {
     icon: FiUsers,
     title: "Client First",
-    text: "We prioritize clear communication, trust, and a process that feels smooth from consultation to completion.",
+    text: "We prioritize clear communication, trust, and a process that feels smooth from consultation to completion — every time.",
   },
   {
     icon: FiTool,
     title: "Craftsmanship",
-    text: "We bring precision, care, and detail to every grading, drainage, and landscape improvement project.",
+    text: "We bring precision, care, and detail to every lawn care, sod, interlock, and landscape improvement project across Windsor ON.",
   },
 ];
-
+ 
 const processSteps = [
   {
     number: "01",
-    title: "Consultation",
-    text: "We learn about your property, your concerns, and the outcome you want to achieve.",
+    title: "Free Consultation",
+    text: "We learn about your Windsor property, your concerns, and the outdoor outcome you want to achieve — at no cost.",
     icon: FiHome,
   },
   {
     number: "02",
     title: "Site Assessment",
-    text: "We evaluate slope, grading, water flow, and site conditions to identify the right solution.",
+    text: "We evaluate your lawn, grading, water flow, and site conditions to identify the right landscaping solution.",
     icon: FiDroplet,
   },
   {
     number: "03",
     title: "Planning & Design",
-    text: "We prepare a clear approach that balances performance, drainage, appearance, and long-term value.",
+    text: "We prepare a clear landscape plan that balances performance, drainage, appearance, and long-term value for your property.",
     icon: FiLayers,
   },
   {
     number: "04",
-    title: "Execution",
-    text: "Our team completes the work with precision, professionalism, and respect for your property.",
+    title: "Expert Execution",
+    text: "Our Windsor landscaping team completes the work with precision, professionalism, and respect for your property.",
     icon: FiCheckCircle,
   },
 ];
-
+ 
 const faqs = [
   {
-    q: "What kind of projects does Aquanovus handle?",
-    a: "We focus on grading, drainage, outdoor improvements, and landscape-ready property solutions designed for durability and beauty.",
+    q: "Are you a locally owned landscaping company in Windsor Ontario?",
+    a: "Yes. We are a locally owned and operated landscaping company based in Windsor, Ontario, proudly serving the entire Essex County region including LaSalle, Tecumseh, and Amherstburg.",
   },
   {
-    q: "Do you work with both new builds and existing homes?",
-    a: "Yes. We work on both new construction properties and existing homes that need drainage correction, grading, or outdoor upgrades.",
+    q: "What landscaping services do you offer in Windsor?",
+    a: "We offer full landscaping services in Windsor ON including lawn care, sod installation, interlocking, garden design, grading, drainage solutions, and seasonal snow removal across Windsor and Essex County.",
   },
   {
-    q: "Can you help if I am not sure what solution I need?",
-    a: "Absolutely. We assess the site, explain the issue clearly, and recommend the most practical and visually cohesive solution.",
+    q: "Do you work on both residential and commercial properties?",
+    a: "Yes. We work with homeowners, property managers, and commercial clients throughout Windsor, LaSalle, Tecumseh, and surrounding Essex County communities.",
   },
   {
-    q: "Do you serve areas outside your main service zone?",
-    a: "In many cases, yes. Contact us with your location and project details, and we will confirm availability.",
+    q: "Do you offer free estimates for landscaping in Windsor?",
+    a: "Absolutely. Contact us for a free, no-obligation estimate for any landscaping project in Windsor or the surrounding Essex County area.",
   },
 ];
-
-function CountUp({ end, suffix = "" }) {
+ 
+function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const [count, setCount] = useState(0);
-
+ 
   useEffect(() => {
     if (!inView) return;
-    let start = 0;
     const duration = 1400;
     const startTime = performance.now();
-
-    const animate = (time) => {
+ 
+    const animate = (time: number) => {
       const progress = Math.min((time - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(eased * end);
       setCount(current);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     };
-
+ 
     requestAnimationFrame(animate);
-    return () => {
-      start = 0;
-    };
   }, [inView, end]);
-
+ 
   return (
     <span ref={ref}>
       {count}
@@ -130,10 +123,18 @@ function CountUp({ end, suffix = "" }) {
     </span>
   );
 }
-
-function FAQItem({ item, open, onToggle }) {
+ 
+function FAQItem({
+  item,
+  open,
+  onToggle,
+}: {
+  item: { q: string; a: string };
+  open: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <div className="rounded-[24px] border border-[#dfe7d7] bg-white/70 backdrop-blur-sm shadow-[0_10px_30px_rgba(32,45,35,0.06)]">
+    <div className="rounded-3xl border border-[#dfe7d7] bg-white/70 backdrop-blur-sm shadow-[0_10px_30px_rgba(32,45,35,0.06)]">
       <button
         onClick={onToggle}
         className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left md:px-6"
@@ -149,7 +150,7 @@ function FAQItem({ item, open, onToggle }) {
           <FiChevronDown size={20} />
         </motion.span>
       </button>
-
+ 
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -168,24 +169,27 @@ function FAQItem({ item, open, onToggle }) {
     </div>
   );
 }
-
-export default function AboutPage() {
+ 
+export default function AboutClient() {
   const [activeValue, setActiveValue] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
-
+ 
   const activeValueData = useMemo(() => values[activeValue], [activeValue]);
-
+ 
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#243126]">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[100svh]">
+      <section className="relative overflow-hidden min-h-svh">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')" }}
+          style={{
+            backgroundImage:
+              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')",
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/75 via-[#0f1a12]/55 to-[#08110b]/80" />
         <div className="pointer-events-none absolute left-1/2 top-24 h-80 w-80 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
-
+ 
         <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-center px-[6%] lg:pt-50 pt-40 pb-16">
           <div className="grid w-full items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <motion.div
@@ -194,27 +198,29 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#dbe7d1] backdrop-blur-md">
-                About Aquanovus
+                About Us — Windsor's Landscaping Experts
               </span>
-
+ 
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-5xl font-bold leading-[1.05] tracking-tight text-white unbounded-font">
-                We Build Outdoor Spaces With Purpose, Precision, and Presence
+                Windsor's Landscaping Experts — Built on Precision, Passion &
+                Local Pride
               </h1>
-
+ 
               <p className="mt-6 max-w-2xl text-base md:text-lg lg:text-xl leading-relaxed text-white/82">
-                Aquanovus creates refined outdoor environments through grading,
-                drainage, and landscape-focused solutions that protect your
-                property and elevate the way it looks and feels.
+                We create beautiful, functional outdoor spaces for homeowners
+                and businesses across Windsor, LaSalle, Tecumseh, and Essex
+                County Ontario — from lawn care and sod to interlocking and full
+                landscape transformations.
               </p>
-
+ 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.24)] transition duration-300 hover:scale-[1.03]"
                 >
-                  Book a Consultation
+                  Get a Free Quote
                 </Link>
-
+ 
                 <Link
                   href="/services"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
@@ -224,7 +230,7 @@ export default function AboutPage() {
                 </Link>
               </div>
             </motion.div>
-
+ 
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -233,24 +239,24 @@ export default function AboutPage() {
             >
               {[
                 {
-                  title: "Functional Solutions",
+                  title: "Lawn Care & Sod",
                   icon: FiDroplet,
-                  text: "Drainage and grading that solve real property issues.",
+                  text: "Professional lawn maintenance and sod installation across Windsor ON.",
                 },
                 {
-                  title: "Refined Finish",
+                  title: "Interlock & Hardscape",
                   icon: FiSun,
-                  text: "Outdoor improvements that feel clean, modern, and intentional.",
+                  text: "Beautiful interlocking driveways, patios, and walkways in Windsor.",
                 },
                 {
-                  title: "Trusted Process",
+                  title: "Trusted Local Team",
                   icon: FiUsers,
-                  text: "Clear communication and dependable project delivery.",
+                  text: "Windsor-based landscapers with deep roots in Essex County.",
                 },
                 {
-                  title: "Long-Term Value",
+                  title: "Year-Round Service",
                   icon: FiStar,
-                  text: "Work designed to enhance both protection and curb appeal.",
+                  text: "Landscaping, garden care, and snow removal — all seasons covered.",
                 },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -277,7 +283,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* STORY */}
       <section className="relative px-[6%] py-24">
         <div className="pointer-events-none absolute left-10 top-16 h-64 w-64 rounded-full bg-[#88a97b]/10 blur-3xl" />
@@ -291,31 +297,31 @@ export default function AboutPage() {
           >
             <div className="overflow-hidden rounded-[34px] shadow-[0_22px_60px_rgba(32,45,35,0.14)]">
               <Image
-  src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg"
-  alt="Aquanovus project"
-  width={1600}
-  height={800}
-  priority
-  sizes="100vw"
-  className="w-full h-[520px] object-cover"
-/>
+                src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg"
+                alt="Professional landscaping project in Windsor Ontario"
+                width={1600}
+                height={800}
+                priority
+                sizes="100vw"
+                className="w-full h-[520px] object-cover"
+              />
             </div>
-
+ 
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -bottom-6 right-6 max-w-xs rounded-[28px] border border-[#dfe7d7] bg-white/90 p-5 shadow-[0_16px_40px_rgba(32,45,35,0.12)] backdrop-blur-md"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-                Our Approach
+                Our Windsor Approach
               </p>
               <p className="mt-2 text-sm leading-relaxed text-[#5f6f60]">
-                Every project starts with understanding how your property should
-                function before we shape how it should feel.
+                Every Windsor landscaping project starts with understanding how
+                your property should function before we shape how it looks.
               </p>
             </motion.div>
           </motion.div>
-
+ 
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -325,36 +331,37 @@ export default function AboutPage() {
             <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
               Our Story
             </span>
-
+ 
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
-              Outdoor work should do more than look good
+              Windsor's landscaping should do more than look good
             </h2>
-
+ 
             <div className="mt-6 space-y-5 text-[#5f6f60] text-base md:text-lg leading-relaxed">
               <p>
-                At Aquanovus, we believe the best outdoor spaces are built on a
-                foundation of purpose. A property should drain correctly,
-                perform reliably, and feel visually balanced from every angle.
+                We are a Windsor-based landscaping company built on the belief
+                that outdoor spaces should be as functional as they are
+                beautiful. Every lawn, garden, and hardscape we create across
+                Essex County is designed to last.
               </p>
               <p>
-                That is why we approach each project with a mix of technical
-                thinking and design sensitivity. We do not just improve yards.
-                We create spaces that feel intentional, protect your home, and
-                support lasting value.
+                From sod installation in LaSalle to interlocking driveways in
+                Tecumseh and full garden designs in Windsor — we bring
+                technical precision and design sensitivity to every project we
+                take on.
               </p>
               <p>
-                Whether the need is drainage correction, grading, or preparing a
-                space for a more complete landscape transformation, our team is
-                focused on delivering clean results with long-term impact.
+                Whether you need seasonal lawn care, grading, drainage
+                correction, or a complete outdoor transformation, our Windsor
+                team delivers clean results with long-term impact.
               </p>
             </div>
-
+ 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {[
-                "Drainage-focused expertise",
-                "Refined modern landscape vision",
-                "Clear communication throughout",
-                "Quality-driven execution",
+                "Windsor-based local experts",
+                "Lawn care, sod & interlocking",
+                "Grading & drainage solutions",
+                "Snow removal — all seasons covered",
               ].map((item) => (
                 <div
                   key={item}
@@ -372,7 +379,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-
+ 
       {/* STATS */}
       <section className="px-[6%] pb-24">
         <div className="mx-auto max-w-7xl rounded-[34px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-6 md:p-8 shadow-[0_16px_40px_rgba(32,45,35,0.08)]">
@@ -397,7 +404,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* VALUES - INTERACTIVE */}
       <section className="px-[6%] pb-24">
         <div className="mx-auto max-w-7xl">
@@ -406,16 +413,16 @@ export default function AboutPage() {
               What Drives Us
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
-              Core values that shape every project
+              Core values that shape every Windsor landscaping project
             </h2>
           </div>
-
+ 
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="grid gap-4">
               {values.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeValue === index;
-
+ 
                 return (
                   <button
                     key={item.title}
@@ -449,7 +456,7 @@ export default function AboutPage() {
                 );
               })}
             </div>
-
+ 
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeValueData.title}
@@ -461,26 +468,26 @@ export default function AboutPage() {
               >
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#88a97b]/12 blur-3xl" />
                 <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
-
+ 
                 <div className="relative z-10">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#edf3e7] text-[#4f7c57]">
                     <activeValueData.icon size={24} />
                   </div>
-
+ 
                   <h3 className="mt-6 text-3xl font-bold text-[#2f4633]">
                     {activeValueData.title}
                   </h3>
-
+ 
                   <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
                     {activeValueData.text}
                   </p>
-
+ 
                   <div className="mt-8 grid gap-4 sm:grid-cols-2">
                     {[
-                      "Strategic planning",
+                      "Windsor-focused planning",
                       "Property-first decisions",
                       "Clean and polished finish",
-                      "Long-term confidence",
+                      "Long-term Essex County value",
                     ].map((bullet) => (
                       <div
                         key={bullet}
@@ -499,7 +506,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* PROCESS */}
       <section className="px-[6%] pb-24">
         <div className="mx-auto max-w-7xl">
@@ -508,10 +515,10 @@ export default function AboutPage() {
               Our Process
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
-              A clear path from first call to final result
+              How we deliver landscaping excellence in Windsor Ontario
             </h2>
           </div>
-
+ 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {processSteps.map((step, i) => {
               const Icon = step.icon;
@@ -545,7 +552,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* WHY CHOOSE US */}
       <section className="px-[6%] pb-24">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1fr] items-stretch">
@@ -554,19 +561,18 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="overflow-hidden w-full rounded-[34px] shadow-[0_20px_50px_rgba(32,45,35,0.12)]"
+            className="relative overflow-hidden w-full rounded-[34px] shadow-[0_20px_50px_rgba(32,45,35,0.12)] min-h-[400px]"
           >
-           <Image
-    src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg"
-    alt="Outdoor project by Aquanovus"
-    fill
-   
-    priority
-    sizes="100vw"
-    className="object-cover"
-  />
+            <Image
+              src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg"
+              alt="Windsor Ontario landscaping project by our team"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </motion.div>
-
+ 
           <motion.div
             initial={{ opacity: 0, x: 22 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -575,26 +581,26 @@ export default function AboutPage() {
             className="rounded-[34px] border border-[#dfe7d7] bg-white p-8 md:p-10 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
           >
             <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-              Why Aquanovus
+              Why Choose Us
             </span>
-
+ 
             <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
-              A premium standard for outdoor improvement
+              Windsor's premium standard for outdoor landscaping
             </h2>
-
+ 
             <div className="mt-8 space-y-5">
               {[
                 {
-                  title: "Function and aesthetics together",
-                  text: "We create results that solve issues and elevate the visual identity of your property.",
+                  title: "Local Windsor expertise",
+                  text: "We know Windsor's climate, soil, and neighborhoods — that local knowledge shapes every project we deliver.",
                 },
                 {
                   title: "Reliable communication",
-                  text: "You always know the direction, the scope, and the intention behind the work.",
+                  text: "You always know the direction, the scope, and the intention behind the landscaping work on your property.",
                 },
                 {
                   title: "Detail-focused execution",
-                  text: "From surface grading to final finish, we pay attention to what others overlook.",
+                  text: "From lawn edging to final interlock finish, we pay attention to what other Windsor landscapers overlook.",
                 },
               ].map((item) => (
                 <div
@@ -613,7 +619,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-
+ 
       {/* FAQ */}
       <section className="px-[6%] pb-24">
         <div className="mx-auto max-w-4xl">
@@ -622,10 +628,10 @@ export default function AboutPage() {
               FAQ
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-bold text-[#2f4633]">
-              Common questions
+              Common questions about our Windsor landscaping services
             </h2>
           </div>
-
+ 
           <div className="space-y-4">
             {faqs.map((item, i) => (
               <FAQItem
@@ -638,7 +644,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+ 
       {/* CTA */}
       <section className="px-[6%] pb-24">
         <motion.div
@@ -651,30 +657,30 @@ export default function AboutPage() {
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div>
               <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-                Let’s Create Something Exceptional
+                Ready to Get Started?
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
-                Ready to transform your outdoor space?
+                Transform your outdoor space in Windsor Ontario
               </h2>
               <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
-                Connect with Aquanovus to discuss your property, your goals,
-                and the right next step for a more functional and beautiful
-                outdoor environment.
+                Contact Windsor's trusted landscaping team for a free quote.
+                Serving Windsor, LaSalle, Tecumseh, Amherstburg, and all of
+                Essex County Ontario.
               </p>
             </div>
-
+ 
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
-                Start Your Project
+                Get a Free Quote
               </Link>
               <Link
                 href="/services"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
-                View Services
+                View Our Services
                 <FiArrowRight />
               </Link>
             </div>
