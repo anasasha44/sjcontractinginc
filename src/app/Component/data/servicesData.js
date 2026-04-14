@@ -1,15 +1,15 @@
 const servicesData = [
-  {
-    id: 1,
-    slug: "lot-grading-drainage",
-    title: "Lot Grading and Drainage",
-    desc: "Ensure proper water flow and protect your property.",
-    category: "Residential",
-    tags: ["drainage", "grading", "foundation", "water-control"],
-    mainImage: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-main.jpg",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g1.jpeg",
-    featured: true,
-  },
+    {
+  id: 1,
+  slug: "cutting-pre-service",
+  title: "Cutting Pre Service",
+  desc: "Prepare surfaces with precise cutting to ensure accurate execution and high-quality results.",
+  category: "Cutting",
+  tags: ["cutting", "preparation", "precision", "surface-work"],
+  mainImage: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
+  image: "https://ik.imagekit.io/gmjmoldeh/landscap/cutting.jpeg",
+  featured: true,
+},
 
   {
     id: 2,
@@ -64,6 +64,18 @@ const servicesData = [
     tags: ["landscape", "design", "build", "custom-projects"],
     mainImage: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-g1.jpg",
+  },
+
+{
+    id: 7,
+    slug: "lot-grading-drainage",
+    title: "Lot Grading and Drainage",
+    desc: "Ensure proper water flow and protect your property.",
+    category: "Residential",
+    tags: ["drainage", "grading", "foundation", "water-control"],
+    mainImage: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-main.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g1.jpeg",
+    featured: true,
   },
 
   

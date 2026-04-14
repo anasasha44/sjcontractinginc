@@ -32,12 +32,12 @@ export default function OurWorkSection() {
       category: "Landscape Prep",
       desc: "A complete outdoor concept brought together with detail, balance, and craftsmanship.",
     },
-    {
-      src: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
-      title: "Drainage Improvement",
-      category: "Drainage",
-      desc: "Engineered to direct water properly and protect the integrity of the outdoor space.",
-    },
+   {
+  src: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
+  title: "Cutting Pre Service",
+  category: "Cutting",
+  desc: "Professional pre-service cutting to prepare surfaces accurately and ensure clean, precise results.",
+},
     {
       src: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
       title: "Front Yard Refresh",

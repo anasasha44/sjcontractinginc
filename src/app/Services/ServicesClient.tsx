@@ -1,11 +1,20 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 import servicesData from "../Component/data/servicesData";
 import HeroBackgroundPages from "../Component/ui/HeroBackgroundPages";
 import Link from "next/link";
 import Image from "next/image";
+
+type HeroBackgroundPagesTypedProps = {
+  desktopImages?: string[];
+  mobileImages?: string[];
+};
+
+const TypedHeroBackgroundPages =
+  HeroBackgroundPages as React.ComponentType<HeroBackgroundPagesTypedProps>;
 
 const containerVariants = {
   hidden: {},
@@ -25,55 +34,56 @@ const cardVariants = {
   },
 };
 
-export default function ServicesPage() {
+export default function ServicesClient() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] pb-20">
       {/* HERO */}
-     <div className="relative overflow-hidden">
-  {/* Background */}
-  <div className="absolute inset-0 z-0">
-    <HeroBackgroundPages
-      desktopImages={[
-        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
-      ]}
-      mobileImages={[
-        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
-        "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
-      ]}
-    />
-  </div>
-
-  {/* Overlay */}
-  <div className="absolute inset-0 z-10 bg-black/45" />
-
-  {/* Content */}
-  <div className="relative z-20 min-h-130 lg:min-h-155 flex items-center justify-center px-[6%] pt-32 lg:pt-40 pb-16">
-    <div className="w-full max-w-5xl mx-auto text-center">
-      <h1 className="text-3xl sm:text-4xl lg:text-6xl font-normal text-white unbounded-font leading-tight">
-        Expert Grading & Drainage Solutions
-      </h1>
-
-      <ul className="mt-8 text-white flex items-center justify-center gap-8 section-list flex-wrap">
-        <li className="text-sm relative">
-          <Link href="/">Home</Link>
-        </li>
-
-        <li className="text-sm relative">
-          <FaAngleRight
-            className="absolute -left-6 top-0.5"
-            aria-hidden="true"
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <TypedHeroBackgroundPages
+            desktopImages={[
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
+            ]}
+            mobileImages={[
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
+              "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
+            ]}
           />
-          <Link href="/services">Services</Link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+        </div>
+
+        <div className="absolute inset-0 z-10 bg-black/45" />
+
+        <div className="relative z-20 min-h-130 lg:min-h-155 flex items-center justify-center px-[6%] pt-32 lg:pt-40 pb-16">
+          <div className="w-full max-w-5xl mx-auto text-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-normal text-white unbounded-font leading-tight">
+              Landscaping & Outdoor Services in Windsor, Ontario
+            </h1>
+
+            <p className="mt-5 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              Lawn care, sod, interlocking, garden design, grading & snow
+              removal — serving Windsor, LaSalle, Tecumseh & Essex County.
+            </p>
+
+            <ul className="mt-8 text-white flex items-center justify-center gap-8 section-list flex-wrap">
+              <li className="text-sm relative">
+                <Link href="/">Home</Link>
+              </li>
+              <li className="text-sm relative">
+                <FaAngleRight
+                  className="absolute -left-6 top-0.5"
+                  aria-hidden="true"
+                />
+                <Link href="/services">Services</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       {/* SERVICES INTRO */}
       <section className="px-[6%] pt-20">
@@ -85,7 +95,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.6 }}
             className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]"
           >
-            Our Services
+            Windsor Landscaping Services
           </motion.span>
 
           <motion.h2
@@ -95,7 +105,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-4 text-3xl md:text-4xl font-bold text-[#2f4633]"
           >
-            Professional Outdoor Solutions
+            Professional Landscaping Solutions for Windsor & Essex County
           </motion.h2>
 
           <motion.p
@@ -105,8 +115,9 @@ export default function ServicesPage() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="mt-4 text-base md:text-lg leading-relaxed text-[#5f6f60]"
           >
-            Explore our premium landscaping, grading, and drainage services
-            designed to protect your property and elevate your outdoor space.
+            From lawn care and sod installation to interlocking, garden design,
+            grading, and snow removal — we provide full-service landscaping
+            across Windsor, LaSalle, Tecumseh, and all of Essex County Ontario.
           </motion.p>
         </div>
       </section>
@@ -124,27 +135,27 @@ export default function ServicesPage() {
             {servicesData.map((item) => (
               <motion.div
                 key={item.id}
-                variants={cardVariants}
+variants={cardVariants as any}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.28 }}
                 className="group"
               >
                 <div className="relative h-80 rounded-[28px] overflow-hidden border border-[#dfe7d7] bg-white shadow-[0_16px_40px_rgba(32,45,35,0.10)]">
                   <Image
-    src={item.mainImage}
-    alt={item.title}
-    fill
-    sizes="(max-width: 768px) 100vw, 50vw"
-    className="object-cover transition duration-700 group-hover:scale-110"
-    loading="lazy"
-  />
+                    src={item.mainImage}
+                    alt={`${item.title} — Windsor Ontario landscaping service`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
 
                   <div className="absolute inset-0 bg-linear-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 group-hover:bg-[#0f1a12]/20 transition duration-500" />
 
                   <div className="absolute left-5 top-5">
                     <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-                      Premium Service
+                      Windsor, ON
                     </span>
                   </div>
 
@@ -174,6 +185,46 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* SEO TEXT BLOCK — مهم لـ Google */}
+      <section className="px-[6%] pt-20">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="grid sm:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                title: "Lawn Care Windsor ON",
+                text: "Weekly and bi-weekly lawn maintenance, edging, and fertilization for Windsor and Essex County properties.",
+              },
+              {
+                title: "Sod & Interlock Windsor",
+                text: "Professional sod installation and interlocking driveways, patios, and walkways across Windsor, LaSalle & Tecumseh.",
+              },
+              {
+                title: "Snow Removal Windsor",
+                text: "Reliable snow removal and winter property maintenance for Windsor Ontario residential and commercial clients.",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="rounded-[24px] border border-[#dfe7d7] bg-white/70 p-6 shadow-[0_10px_30px_rgba(32,45,35,0.06)]"
+              >
+                <h3 className="text-lg font-bold text-[#2f4633]">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#5f6f60]">
+                  {card.text}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="px-[6%] pt-20">
         <motion.div
@@ -186,16 +237,17 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
             <div>
               <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-                Let’s Build Something Beautiful
+                Free Quote — Windsor & Essex County
               </span>
 
               <h3 className="mt-4 text-2xl md:text-3xl font-bold text-[#2f4633]">
-                Ready to upgrade your outdoor space?
+                Ready to upgrade your Windsor outdoor space?
               </h3>
 
               <p className="mt-3 text-base leading-relaxed text-[#5f6f60] max-w-2xl">
-                Talk to Aquanovus about the right grading, drainage, or
-                landscape solution for your property.
+                Contact Windsor's trusted landscaping team for a free estimate
+                on lawn care, sod, interlocking, garden design, or any outdoor
+                project across Windsor, LaSalle, Tecumseh & Essex County.
               </p>
             </div>
 
@@ -204,7 +256,7 @@ export default function ServicesPage() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
-                Request a Consultation
+                Get a Free Quote
               </Link>
             </div>
           </div>

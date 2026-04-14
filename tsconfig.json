@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/app/Component/ui/HeroBackgroundPages.jsx", "src/app/areas-we-serve/page.tsx"  ],
+, "src/app/Component/ui/HeroBackgroundPages.jsx", "src/app/areas-we-serve/page.tsx", "src/app/Services/[id]/page.jsx"  ],
   "exclude": ["node_modules"]
 }

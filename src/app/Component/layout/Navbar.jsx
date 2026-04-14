@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { FiMenu, FiX, FiSearch } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import CustomLink from "../ui/CustomLink";
 import { usePageLoader } from "../ui/PageLoader";
 
@@ -86,19 +85,19 @@ export default function Navbar() {
                 }`}
               >
                 <span
-                  className={`unbounded-font font-bold tracking-[0.2em] transition-all duration-500 ${
-                    scrolled ? "text-2xl text-[#2f4633]" : "text-3xl text-white"
+                  className={`unbounded-font font-bold tracking-[0.1em] transition-all duration-500 ${
+                    scrolled ? "text-2xl text-[#2f4633]" : "text-2xl text-white"
                   }`}
                 >
-                  AQUANOVUS
+                  AQUAVIOR
                 </span>
 
                 <span
-                  className={`mt-2 text-[10px] tracking-[0.38em] uppercase transition-all duration-500 ${
+                  className={`mt-2 text-[10px] tracking-[0.38em] uppercase transition-all text-center duration-500 ${
                     scrolled ? "text-[#6f8f4e]" : "text-[#dbe7d1]"
                   }`}
                 >
-                  Landscaping • Renovation
+                  Landscaping • irrigation system
                 </span>
               </div>
             </CustomLink>
@@ -109,18 +108,14 @@ export default function Navbar() {
               scrolled ? "text-[#2f4633]" : "text-white"
             }`}
           >
-            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
+            <CustomLink href="https://www.facebook.com/share/18mAzEcLgJ/" className="transition hover:text-[#6f8f4e]">
               <FaFacebookF />
             </CustomLink>
-            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
+            <CustomLink href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh" className="transition hover:text-[#6f8f4e]">
               <FaInstagram />
             </CustomLink>
-            <CustomLink href="#" className="transition hover:text-[#6f8f4e]">
-              <FaXTwitter />
-            </CustomLink>
-            <CustomLink href="/search" className="transition hover:text-[#6f8f4e]">
-              <FiSearch />
-            </CustomLink>
+            
+        
           </div>
 
           <button

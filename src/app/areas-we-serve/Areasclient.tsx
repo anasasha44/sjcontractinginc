@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import HeroBackgroundPages from "../Component/ui/HeroBackgroundPages";
 import Link from "next/link";
 import { FaAngleRight, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";

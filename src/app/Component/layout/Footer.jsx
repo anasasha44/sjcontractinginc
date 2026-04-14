@@ -2,7 +2,7 @@
 
 import CustomLink from "../ui/CustomLink";
 import { useState } from "react";
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
@@ -45,20 +45,21 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <h2 className="unbounded-font text-3xl font-bold tracking-[0.12em] text-white sm:text-4xl">
-              Aquanovus
+              AQUAVIOR
             </h2>
 
             <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#a9c29a]">
-              Landscaping • Renovation
+                               Landscaping • irrigation system
+
             </p>
 
            
             <div className="mt-6 flex items-center gap-3">
-              <a href="#" className="btn-social">
+              <a href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh" className="btn-social">
                 <FaInstagram />
               </a>
-              <a href="#" className="btn-social">
-                <FaXTwitter />
+              <a href="https://www.facebook.com/share/18mAzEcLgJ/" className="btn-social">
+                <FaFacebook />
               </a>
             </div>
           </div>
@@ -81,15 +82,11 @@ export default function Footer() {
                 </CustomLink>
               </li>
               <li>
-                <CustomLink href="/projects" className="footer-link">
+                <CustomLink href="/Gallery" className="footer-link">
                   Projects
                 </CustomLink>
               </li>
-              <li>
-                <CustomLink href="/before-visit" className="footer-link">
-                  Before Visit
-                </CustomLink>
-              </li>
+             
             </ul>
           </div>
 
