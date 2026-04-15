@@ -5,6 +5,7 @@ import Footer from "../app/Component/layout/Footer";
 import FloatingContactButton from "../app/Component/ui/FloatingContactButton";
 import { Unbounded, Sora } from "next/font/google";
 import type { Metadata } from "next";
+import PrivacyConsentBar from "./Component/ui/PrivacyConsentBar";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
       "Windsor's top-rated landscaping company. Lawn care, sod, garden design, interlock & snow removal. Serving Windsor, LaSalle, Tecumseh & Essex County.",
     images: [
       {
-        url: "/og-image.jpg", // ← حط صورة واضحة لشغلك
+        url: "/og-image.jpg", 
         width: 1200,
         height: 630,
         alt: "Professional Landscaping Services Windsor Ontario",
@@ -104,7 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "Your Company Landscaping",
               image: "https://yourwebsite.com/og-image.jpg",
               url: "https://yourwebsite.com",
-              telephone: "+1-519-XXX-XXXX", // ← رقمك
+              telephone: "+1-519-XXX-XXXX", 
               priceRange: "$$",
               description:
                 "Professional landscaping company serving Windsor, LaSalle, Tecumseh and Essex County Ontario. Specializing in lawn care, sod installation, garden design, interlocking, and snow removal.",
@@ -169,6 +170,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
             <FloatingContactButton />
+             <PrivacyConsentBar />
         </ClientLayout>
       </body>
     </html>
