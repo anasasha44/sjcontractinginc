@@ -132,7 +132,7 @@ export default function PrivacyConsentModal() {
                 <span className="text-sm leading-7 text-[#425244]">
                   I have read and agree to the website&apos;s{" "}
                   <Link
-                    href="/privacy"
+                    href="/Privacy"
                     className="font-semibold text-[#3f6b4b] underline underline-offset-4"
                   >
                     Privacy Policy

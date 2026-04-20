@@ -27,7 +27,7 @@ const galleryItems = [
     id: 2,
     title: "Cutting Pre Service Windsor",
     category: "Cutting",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/Cutpre.jpg",
     size: "small",
     desc: "Precision cutting service for a Windsor property — ensures clean preparation and accurate results for all surface work.",
   },
@@ -216,7 +216,7 @@ export default function GalleryClient() {
                 </a>
 
                 <Link
-                  href="/contact"
+                  href="/Contact"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
                 >
                   Get a Free Quote
@@ -562,13 +562,13 @@ export default function GalleryClient() {
 
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contact"
+                href="/Contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Get a Free Quote
               </Link>
               <Link
-                href="/services"
+                href="/Services"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
                 View Services

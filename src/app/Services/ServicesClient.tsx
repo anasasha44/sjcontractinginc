@@ -78,7 +78,7 @@ export default function ServicesClient() {
                   className="absolute -left-6 top-0.5"
                   aria-hidden="true"
                 />
-                <Link href="/services">Services</Link>
+                <Link href="/Services">Services</Link>
               </li>
             </ul>
           </div>
@@ -254,7 +254,7 @@ export default function ServicesClient() {
 
             <div>
               <Link
-                href="/contact"
+                href="/Contact"
                 className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Get a Free Quote
