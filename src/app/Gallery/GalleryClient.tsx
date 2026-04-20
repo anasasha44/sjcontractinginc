@@ -1,6 +1,6 @@
 "use client";
- 
-import { useEffect, useMemo, useState } from "react";
+
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -13,7 +13,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import Image from "next/image";
- 
+
 const galleryItems = [
   {
     id: 1,
@@ -24,13 +24,13 @@ const galleryItems = [
     desc: "A full backyard transformation in Windsor Ontario — clean grading, elegant layout, and premium outdoor flow.",
   },
   {
-  id: 2,
-  title: "Cutting Pre Service Windsor",
-  category: "Cutting",
-  image: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
-  size: "small",
-  desc: "Precision cutting service for a Windsor property — ensures clean preparation and accurate results for all surface work.",
-},
+    id: 2,
+    title: "Cutting Pre Service Windsor",
+    category: "Cutting",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
+    size: "small",
+    desc: "Precision cutting service for a Windsor property — ensures clean preparation and accurate results for all surface work.",
+  },
   {
     id: 3,
     title: "Landscape Preparation Essex County",
@@ -104,7 +104,7 @@ const galleryItems = [
     desc: "A carefully managed slope grading solution in Essex County to improve site performance and drainage.",
   },
 ];
- 
+
 const categories = [
   "All",
   "Backyard",
@@ -112,47 +112,47 @@ const categories = [
   "Preparation",
   "Front Yard",
   "Grading",
+  "Cutting",
 ];
- 
+
 function getCardHeight(size: string) {
   if (size === "large") return "h-[420px]";
   if (size === "medium") return "h-[320px]";
   return "h-[260px]";
 }
- 
+
 export default function GalleryClient() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
- 
+
   const filteredItems = useMemo(() => {
     if (activeCategory === "All") return galleryItems;
     return galleryItems.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
- 
+
+  const safeActiveIndex =
+    activeIndex >= filteredItems.length ? 0 : activeIndex;
+
   const featuredItem = filteredItems[0] || galleryItems[0];
- 
+
   const openLightbox = (index: number) => {
     setActiveIndex(index);
     setLightboxOpen(true);
   };
- 
-  const nextImage = () => {
+
+  const nextImage = useCallback(() => {
     setActiveIndex((prev) =>
       prev === filteredItems.length - 1 ? 0 : prev + 1
     );
-  };
- 
-  const prevImage = () => {
+  }, [filteredItems.length]);
+
+  const prevImage = useCallback(() => {
     setActiveIndex((prev) =>
       prev === 0 ? filteredItems.length - 1 : prev - 1
     );
-  };
- 
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [activeCategory]);
- 
+  }, [filteredItems.length]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
@@ -160,20 +160,22 @@ export default function GalleryClient() {
       if (e.key === "ArrowRight") nextImage();
       if (e.key === "ArrowLeft") prevImage();
     };
- 
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxOpen, filteredItems.length]);
- 
+  }, [lightboxOpen, nextImage, prevImage]);
+
   useEffect(() => {
     document.body.style.overflow = lightboxOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [lightboxOpen]);
- 
+
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#243126]">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[90svh]">
+      <section className="relative min-h-[90svh] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -182,9 +184,9 @@ export default function GalleryClient() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/78 via-[#0f1a12]/55 to-[#08110b]/82" />
-        <div className="pointer-events-none absolute top-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
- 
-        <div className="relative z-10 mx-auto flex min-h-[90svh] max-w-7xl items-center px-[6%] lg:pt-50 pt-30 pb-14">
+        <div className="pointer-events-none absolute left-1/2 top-20 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
+
+        <div className="relative z-10 mx-auto flex min-h-[90svh] max-w-7xl items-center px-[6%] pb-14 pt-30 lg:pt-50">
           <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
@@ -194,17 +196,17 @@ export default function GalleryClient() {
               <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#dbe7d1] backdrop-blur-md">
                 Landscaping Portfolio — Windsor, Ontario
               </span>
- 
-              <h1 className="mt-5 text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.04] tracking-tight text-white unbounded-font">
+
+              <h1 className="unbounded-font mt-5 text-4xl font-bold leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-7xl">
                 Real Landscaping Projects in Windsor & Essex County
               </h1>
- 
-              <p className="mt-6 max-w-2xl text-base md:text-lg lg:text-xl leading-relaxed text-white/82">
+
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/82 md:text-lg lg:text-xl">
                 Browse our portfolio of completed landscaping projects across
                 Windsor, LaSalle, Tecumseh, and Essex County Ontario — from
                 lawn care and sod to interlocking, grading, and drainage.
               </p>
- 
+
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="#gallery-grid"
@@ -212,7 +214,7 @@ export default function GalleryClient() {
                 >
                   Browse Our Work
                 </a>
- 
+
                 <Link
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
@@ -222,7 +224,7 @@ export default function GalleryClient() {
                 </Link>
               </div>
             </motion.div>
- 
+
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -248,7 +250,7 @@ export default function GalleryClient() {
                 {
                   icon: FiArrowRight,
                   title: "Get Inspired",
-                  text: "See what's possible for your Windsor or Essex County property.",
+                  text: "See what&apos;s possible for your Windsor or Essex County property.",
                 },
               ].map((item, i) => {
                 const Icon = item.icon;
@@ -275,7 +277,7 @@ export default function GalleryClient() {
           </div>
         </div>
       </section>
- 
+
       {/* FEATURED PREVIEW */}
       <section className="px-[6%] py-24">
         <div className="mx-auto max-w-7xl">
@@ -284,16 +286,16 @@ export default function GalleryClient() {
               <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                 Featured Project
               </span>
-              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#2f4633] md:text-4xl lg:text-5xl">
                 A closer look at our Windsor landscaping standard
               </h2>
             </div>
- 
+
             <div className="rounded-full border border-[#dfe7d7] bg-white px-5 py-3 text-sm font-medium text-[#5f6f60] shadow-sm">
               {filteredItems.length} projects in this view
             </div>
           </div>
- 
+
           <motion.div layout className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <motion.div
               key={featuredItem.id}
@@ -317,15 +319,15 @@ export default function GalleryClient() {
                   {featuredItem.category}
                 </div>
               </div>
- 
+
               <div className="p-6 md:p-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-[#2f4633]">
+                <h3 className="text-2xl font-bold text-[#2f4633] md:text-3xl">
                   {featuredItem.title}
                 </h3>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5f6f60]">
                   {featuredItem.desc}
                 </p>
- 
+
                 <button
                   onClick={() => openLightbox(0)}
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
@@ -335,8 +337,8 @@ export default function GalleryClient() {
                 </button>
               </div>
             </motion.div>
- 
-            <div className="grid gap-5 content-start">
+
+            <div className="grid content-start gap-5">
               {filteredItems.slice(1, 4).map((item, idx) => (
                 <motion.button
                   key={item.id}
@@ -364,7 +366,7 @@ export default function GalleryClient() {
                     <h4 className="mt-2 text-lg font-semibold text-[#2f4633]">
                       {item.title}
                     </h4>
-                    <p className="mt-1 text-sm text-[#5f6f60] line-clamp-2">
+                    <p className="mt-1 line-clamp-2 text-sm text-[#5f6f60]">
                       {item.desc}
                     </p>
                   </div>
@@ -374,12 +376,12 @@ export default function GalleryClient() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* FILTERS + GRID */}
       <section id="gallery-grid" className="relative px-[6%] pb-24">
         <div className="pointer-events-none absolute left-10 top-10 h-64 w-64 rounded-full bg-[#88a97b]/10 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
- 
+
         <div className="relative mx-auto max-w-7xl">
           <div className="mb-10 flex flex-wrap gap-3">
             {categories.map((category) => {
@@ -387,7 +389,10 @@ export default function GalleryClient() {
               return (
                 <button
                   key={category}
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => {
+                    setActiveCategory(category);
+                    setActiveIndex(0);
+                  }}
                   className={`rounded-full border px-5 py-3 text-sm font-semibold transition duration-300 ${
                     active
                       ? "border-[#88a97b] bg-[#edf3e7] text-[#2f4633] shadow-sm"
@@ -399,7 +404,7 @@ export default function GalleryClient() {
               );
             })}
           </div>
- 
+
           <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item, index) => (
@@ -426,19 +431,19 @@ export default function GalleryClient() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101812]/85 via-[#101812]/20 to-transparent" />
                   <div className="absolute inset-0 bg-[#0f1a12]/10 transition duration-500 group-hover:bg-[#0f1a12]/18" />
- 
+
                   <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white backdrop-blur-sm">
                     {item.category}
                   </div>
- 
+
                   <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white">
-                    <h3 className="text-xl md:text-2xl font-bold leading-snug">
+                    <h3 className="text-xl font-bold leading-snug md:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/80 line-clamp-2">
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/80">
                       {item.desc}
                     </p>
- 
+
                     <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur-sm">
                       View Project
                       <FiArrowRight size={14} />
@@ -450,10 +455,10 @@ export default function GalleryClient() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* LIGHTBOX */}
       <AnimatePresence>
-        {lightboxOpen && filteredItems[activeIndex] && (
+        {lightboxOpen && filteredItems[safeActiveIndex] && (
           <motion.div
             className="fixed inset-0 z-[9999]"
             initial={{ opacity: 0 }}
@@ -464,7 +469,7 @@ export default function GalleryClient() {
               className="absolute inset-0 bg-[#0c130f]/90 backdrop-blur-md"
               onClick={() => setLightboxOpen(false)}
             />
- 
+
             <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8">
               <motion.div
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -480,43 +485,43 @@ export default function GalleryClient() {
                 >
                   <FiX size={22} />
                 </button>
- 
+
                 <div className="relative h-[60vh] overflow-hidden rounded-[34px] border border-white/10 bg-white/5 shadow-[0_24px_70px_rgba(0,0,0,0.35)]">
                   <Image
-                    src={filteredItems[activeIndex].image}
-                    alt={`${filteredItems[activeIndex].title} — Windsor Ontario landscaping project`}
+                    src={filteredItems[safeActiveIndex].image}
+                    alt={`${filteredItems[safeActiveIndex].title} — Windsor Ontario landscaping project`}
                     fill
                     sizes="100vw"
                     className="object-contain"
                     loading="lazy"
                   />
                 </div>
- 
+
                 <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
                   <div className="rounded-[24px] border border-white/10 bg-white/10 p-5 text-white backdrop-blur-md">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/65">
-                      {filteredItems[activeIndex].category}
+                      {filteredItems[safeActiveIndex].category}
                     </p>
-                    <h3 className="mt-2 text-2xl md:text-3xl font-bold">
-                      {filteredItems[activeIndex].title}
+                    <h3 className="mt-2 text-2xl font-bold md:text-3xl">
+                      {filteredItems[safeActiveIndex].title}
                     </h3>
-                    <p className="mt-3 max-w-3xl text-sm md:text-base leading-relaxed text-white/80">
-                      {filteredItems[activeIndex].desc}
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
+                      {filteredItems[safeActiveIndex].desc}
                     </p>
                   </div>
- 
-                  <div className="flex items-center gap-3 justify-end">
+
+                  <div className="flex items-center justify-end gap-3">
                     <div className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-white/85 backdrop-blur-md">
-                      {activeIndex + 1} / {filteredItems.length}
+                      {safeActiveIndex + 1} / {filteredItems.length}
                     </div>
- 
+
                     <button
                       onClick={prevImage}
                       className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-white/20"
                     >
                       <FiChevronLeft size={22} />
                     </button>
- 
+
                     <button
                       onClick={nextImage}
                       className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-white/20"
@@ -530,7 +535,7 @@ export default function GalleryClient() {
           </motion.div>
         )}
       </AnimatePresence>
- 
+
       {/* CTA */}
       <section className="px-[6%] pb-24">
         <motion.div
@@ -538,23 +543,23 @@ export default function GalleryClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.7 }}
-          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 md:p-10 lg:p-12 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
+          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 shadow-[0_16px_40px_rgba(32,45,35,0.08)] md:p-10 lg:p-12"
         >
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div>
               <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                 Inspired by what you see?
               </span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
-                Let's create something custom for your Windsor property
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#2f4633] md:text-4xl">
+                Let&apos;s create something custom for your Windsor property
               </h2>
-              <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
-                Contact Windsor's trusted landscaping team for a free quote.
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5f6f60] md:text-lg">
+                Contact Windsor&apos;s trusted landscaping team for a free quote.
                 Serving Windsor, LaSalle, Tecumseh, Amherstburg, and all of
                 Essex County Ontario.
               </p>
             </div>
- 
+
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"

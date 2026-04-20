@@ -23,9 +23,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { stopLoading } = usePageLoader();
 
+  // ✅ FIXED (بدون setState داخل effect)
   useEffect(() => {
-    setOpen(false);
-
     const timer = setTimeout(() => {
       stopLoading();
     }, 300);
@@ -57,26 +56,22 @@ export default function Navbar() {
             scrolled ? "h-20" : "h-28"
           }`}
         >
+          {/* LEFT */}
           <div
             className={`hidden md:flex items-center gap-6 text-sm font-semibold tracking-[0.18em] transition ${
               scrolled ? "text-[#2f4633]" : "text-white"
             }`}
           >
-            <CustomLink
-              href="/About"
-              className="transition hover:text-[#6f8f4e]"
-            >
+            <CustomLink href="/About" className="transition hover:text-[#6f8f4e]">
               ABOUT US
             </CustomLink>
 
-            <CustomLink
-              href="/Contact"
-              className="transition hover:text-[#6f8f4e]"
-            >
+            <CustomLink href="/Contact" className="transition hover:text-[#6f8f4e]">
               CONTACT
             </CustomLink>
           </div>
 
+          {/* LOGO */}
           <div className="flex justify-center col-start-2">
             <CustomLink href="/">
               <div
@@ -103,6 +98,7 @@ export default function Navbar() {
             </CustomLink>
           </div>
 
+          {/* RIGHT */}
           <div
             className={`hidden md:flex items-center justify-end gap-5 text-lg transition ${
               scrolled ? "text-[#2f4633]" : "text-white"
@@ -111,13 +107,13 @@ export default function Navbar() {
             <CustomLink href="https://www.facebook.com/share/18mAzEcLgJ/" className="transition hover:text-[#6f8f4e]">
               <FaFacebookF />
             </CustomLink>
+
             <CustomLink href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh" className="transition hover:text-[#6f8f4e]">
               <FaInstagram />
             </CustomLink>
-            
-        
           </div>
 
+          {/* MOBILE BUTTON */}
           <button
             className={`md:hidden col-start-3 justify-self-end text-3xl mr-1 transition ${
               scrolled ? "text-[#2f4633]" : "text-white"
@@ -130,6 +126,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* DESKTOP NAV */}
       <nav
         className={`hidden md:block transition ${
           scrolled ? "text-[#2f4633]" : "text-white"
@@ -153,6 +150,7 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* MOBILE MENU */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ${
           scrolled
@@ -162,7 +160,7 @@ export default function Navbar() {
       >
         <ul className="px-6 py-5 space-y-5 text-sm font-bold tracking-[0.16em]">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} onClick={() => setOpen(false)}>
               <CustomLink
                 href={link.href}
                 className={`block transition ${
@@ -176,7 +174,7 @@ export default function Navbar() {
             </li>
           ))}
 
-          <li className="pt-2">
+          <li className="pt-2" onClick={() => setOpen(false)}>
             <CustomLink
               href="/estimate"
               className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-5 py-2.5 text-white shadow-[0_10px_25px_rgba(34,60,40,0.25)] transition hover:scale-[1.03]"

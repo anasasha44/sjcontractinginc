@@ -9,43 +9,38 @@ export default function Footer() {
   const [showAlert, setShowAlert] = useState(false);
   const currentYear = new Date().getFullYear();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const email = formData.get("email");
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const email = formData.get("email");
 
-    // 🔑 حط بياناتك هون
-    const BOT_TOKEN = process.env.BOT_TOKEN;
-    const CHAT_ID = process.env.CHAT_ID;
+  try {
+    const res = await fetch("/api/telegram", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
 
-    const message = `
-🌿 AQUAVIOR NEW SUBSCRIBER
+    const data = await res.json();
 
-📧 Email: ${email}
-🕒 Time: ${new Date().toLocaleString()}
-`;
-
-    try {
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: message,
-        }),
-      });
-
-      setShowAlert(true);
-      form.reset();
-      setTimeout(() => setShowAlert(false), 3000);
-    } catch (error) {
-      console.error("Telegram Error:", error);
+    if (!res.ok) {
+      console.error("Telegram Error:", JSON.stringify(data, null, 2));
+      alert(data.error || "Something went wrong");
+      return;
     }
-  };
+
+    setShowAlert(true);
+    form.reset();
+    setTimeout(() => setShowAlert(false), 3000);
+  } catch (error) {
+    console.error("Telegram Fetch Error:", error);
+    alert("Network error");
+  }
+};
 
   return (
     <footer className="relative overflow-hidden bg-[#0c140f] text-white">
@@ -57,7 +52,6 @@ export default function Footer() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="grid gap-y-12 border-b border-white/10 pb-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.75fr_0.75fr_1.45fr] lg:gap-x-8 xl:gap-x-10"
         >
-          {/* Brand */}
           <div>
             <h2 className="unbounded-font text-3xl font-bold tracking-[0.12em] text-white sm:text-4xl">
               AQUAVIOR
@@ -83,7 +77,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Company */}
           <div className="lg:justify-self-center">
             <h3 className="unbounded-font text-lg font-semibold text-white">
               Company
@@ -108,7 +101,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
           <div className="lg:justify-self-start">
             <h3 className="unbounded-font text-lg font-semibold text-white">
               Support
@@ -133,7 +125,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="relative min-w-0 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-md sm:p-7 lg:p-8">
             <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#7fa36b]/10 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-10 -left-10 h-28 w-28 rounded-full bg-white/5 blur-3xl" />
@@ -146,8 +137,6 @@ export default function Footer() {
               <h3 className="mt-4 max-w-[16ch] text-2xl font-semibold leading-tight tracking-tight text-white sm:text-[1.5rem]">
                 Stay Updated With AQUAVIOR
               </h3>
-
-             
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-3">
                 <div className="group flex items-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition duration-300 focus-within:border-[#a9c29a]/50 focus-within:bg-white/[0.07]">

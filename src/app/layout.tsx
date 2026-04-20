@@ -4,7 +4,7 @@ import Navbar from "../app/Component/layout/Navbar";
 import Footer from "../app/Component/layout/Footer";
 import FloatingContactButton from "../app/Component/ui/FloatingContactButton";
 import { Unbounded, Sora } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import PrivacyConsentBar from "./Component/ui/PrivacyConsentBar";
 
 const unbounded = Unbounded({
@@ -21,14 +21,33 @@ const sora = Sora({
   weight: ["400", "500", "600", "700"],
 });
 
+// ✅ هون الحل الصحيح بدل metadata
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourwebsite.com"), 
+  metadataBase: new URL("https://yourwebsite.com"),
   title: {
     default: "Landscaping Windsor Ontario | Lawn Care & Landscape Design",
     template: "%s | Your Company Landscaping Windsor",
   },
   description:
     "Windsor's top-rated landscaping company. Professional lawn care, sod installation, garden design, interlock, snow removal & more. Serving Windsor, LaSalle, Tecumseh & Essex County. Free quotes!",
+
+  // ✅ icons
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+
+  // ✅ manifest
+  manifest: "/site.webmanifest",
+
   keywords: [
     "landscaping Windsor Ontario",
     "landscaping Windsor Canada",
@@ -46,21 +65,21 @@ export const metadata: Metadata = {
     "Tecumseh lawn care",
     "Essex County landscaping",
   ],
-  authors: [{ name: "Your Company Name" }],
-  creator: "Your Company Name",
-  publisher: "Your Company Name",
+  authors: [{ name: "AQUAVIOR  Landscaping • irrigation system" }],
+  creator: "AQUAVIOR  Landscaping • irrigation system",
+  publisher: "AQUAVIOR  Landscaping • irrigation system",
   formatDetection: { telephone: true, address: true },
   openGraph: {
     type: "website",
     locale: "en_CA",
-    url: "https://yourwebsite.com",
-    siteName: "Your Company Landscaping Windsor",
+    url: "https://aquavior.com",
+    siteName: "AQUAVIOR  Landscaping • irrigation system",
     title: "Landscaping Windsor Ontario | Lawn Care & Landscape Design",
     description:
       "Windsor's top-rated landscaping company. Lawn care, sod, garden design, interlock & snow removal. Serving Windsor, LaSalle, Tecumseh & Essex County.",
     images: [
       {
-        url: "/og-image.jpg", 
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Professional Landscaping Services Windsor Ontario",
@@ -69,7 +88,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landscaping Windsor Ontario | Your Company",
+    title: "Landscaping Windsor Ontario | AQUAVIOR",
     description:
       "Top-rated landscaping in Windsor ON. Lawn care, sod, interlock, garden design & snow removal. Free quotes!",
     images: ["/og-image.jpg"],
@@ -86,7 +105,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://yourwebsite.com",
+    canonical: "https://aquavior.com",
   },
 };
 
@@ -94,18 +113,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-CA" className={`${unbounded.variable} ${sora.variable}`}>
       <head>
-        {/* Local Business Schema — مهم جداً لـ Google Maps و Local SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "@id": "https://yourwebsite.com/#business",
+              "@id": "https://aquavior.com/",
               name: "Your Company Landscaping",
-              image: "https://yourwebsite.com/og-image.jpg",
-              url: "https://yourwebsite.com",
-              telephone: "+1-519-XXX-XXXX", 
+              image: "https://aquavior.com/og-image.jpg",
+              url: "https://aquavior.com",
+              telephone: "+1-382-880-0066",
               priceRange: "$$",
               description:
                 "Professional landscaping company serving Windsor, LaSalle, Tecumseh and Essex County Ontario. Specializing in lawn care, sod installation, garden design, interlocking, and snow removal.",
@@ -156,8 +174,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ],
               },
               sameAs: [
-                "https://www.facebook.com/yourpage",
-                "https://www.instagram.com/yourpage",
+                "https://www.facebook.com/share/18mAzEcLgJ/",
+                "https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh",
                 "https://www.google.com/maps/place/YOUR_PLACE_ID",
               ],
             }),
@@ -169,8 +187,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           {children}
           <Footer />
-            <FloatingContactButton />
-             <PrivacyConsentBar />
+          <FloatingContactButton />
+          <PrivacyConsentBar />
         </ClientLayout>
       </body>
     </html>

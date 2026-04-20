@@ -8,11 +8,6 @@ import ScheduleService from "./ScheduleService";
 
 export default function ModalScheduleService() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -35,12 +30,12 @@ export default function ModalScheduleService() {
     };
   }, [open]);
 
-  if (!mounted) return null;
+  if (typeof window === "undefined") return null;
 
   return (
     <>
       {/* BUTTON */}
-      <div className="flex justify-center mt-8">
+      <div className="mt-8 flex justify-center">
         <motion.button
           onClick={() => setOpen(true)}
           initial={{ opacity: 0, y: 18 }}
@@ -83,9 +78,8 @@ export default function ModalScheduleService() {
             border border-[#d8e6d2]/30
             bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e]
             px-7 py-3.5
-            text-sm sm:text-base
-            font-semibold tracking-wide text-white
-            transition-all duration-300
+            text-sm font-semibold tracking-wide text-white
+            transition-all duration-300 sm:text-base
           "
         >
           <motion.span
@@ -107,7 +101,7 @@ export default function ModalScheduleService() {
           <span className="relative z-10">Schedule Service</span>
 
           <motion.span
-            className="absolute inset-0 -z-10 rounded-full blur-xl bg-[#7ea86f]/30"
+            className="absolute inset-0 -z-10 rounded-full bg-[#7ea86f]/30 blur-xl"
             animate={{ opacity: [0.35, 0.6, 0.35] }}
             transition={{
               duration: 2.8,
@@ -147,8 +141,8 @@ export default function ModalScheduleService() {
                   transition={{ duration: 0.32, ease: "easeOut" }}
                   className="
                     relative w-full
-                    max-w-md sm:max-w-lg lg:max-w-2xl
                     max-h-[90vh]
+                    max-w-md sm:max-w-lg lg:max-w-2xl
                     overflow-hidden
                     rounded-[28px]
                     border border-white/20
@@ -156,11 +150,9 @@ export default function ModalScheduleService() {
                     shadow-[0_20px_70px_rgba(0,0,0,0.35)]
                   "
                 >
-                  {/* glow */}
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-24 rounded-t-[28px] bg-gradient-to-b from-[#88a97b]/20 to-transparent z-0" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-24 rounded-t-[28px] bg-gradient-to-b from-[#88a97b]/20 to-transparent" />
 
-                  {/* sticky close */}
-                  <div className="sticky top-0 z-30 flex justify-end p-4 bg-gradient-to-b from-[#f6f4ed]/95 to-transparent backdrop-blur-[2px]">
+                  <div className="sticky top-0 z-30 flex justify-end bg-gradient-to-b from-[#f6f4ed]/95 to-transparent p-4 backdrop-blur-[2px]">
                     <button
                       onClick={() => setOpen(false)}
                       className="
@@ -171,14 +163,13 @@ export default function ModalScheduleService() {
                         text-[#3d5a40]
                         shadow-sm
                         transition duration-300
-                        hover:bg-white hover:scale-105
+                        hover:scale-105 hover:bg-white
                       "
                     >
                       <IoClose size={22} />
                     </button>
                   </div>
 
-                  {/* SCROLL AREA */}
                   <div
                     className="
                       relative z-10
@@ -193,24 +184,22 @@ export default function ModalScheduleService() {
                       scrollbarGutter: "stable",
                     }}
                   >
-                    {/* HEADER TOUCH */}
                     <div className="mb-6 pr-2">
                       <span className="inline-block rounded-full bg-[#e3ecdc] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                         Landscape Booking
                       </span>
 
-                      <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-[#2f4633]">
-                        Let’s Plan Your Outdoor Space
+                      <h2 className="mt-3 text-2xl font-bold text-[#2f4633] sm:text-3xl">
+                        Let&apos;s Plan Your Outdoor Space
                       </h2>
 
-                      <p className="mt-2 text-sm sm:text-base leading-relaxed text-[#5f6f60] max-w-2xl">
-                        Book your service and let’s create a clean, elegant, and
-                        natural landscape that fits your home beautifully.
+                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5f6f60] sm:text-base">
+                        Book your service and let&apos;s create a clean, elegant,
+                        and natural landscape that fits your home beautifully.
                       </p>
                     </div>
 
-                    {/* FORM */}
-                    <div className="rounded-2xl bg-white/60 p-2 sm:p-3 backdrop-blur-sm">
+                    <div className="rounded-2xl bg-white/60 p-2 backdrop-blur-sm sm:p-3">
                       <ScheduleService />
                     </div>
                   </div>

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 export default function HeroVideoBackground() {
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadedKey, setLoadedKey] = useState("");
   const [viewport, setViewport] = useState({
     width: 1920,
     height: 1080,
@@ -35,10 +35,6 @@ export default function HeroVideoBackground() {
 
   const activeVideoId = isMobile ? mobileVideoId : desktopVideoId;
 
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [activeVideoId, viewport.width, viewport.height]);
-
   const videoSrc = `https://www.youtube.com/embed/${activeVideoId}?autoplay=1&mute=1&loop=1&playlist=${activeVideoId}&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
 
   const iframeSize = useMemo(() => {
@@ -56,30 +52,29 @@ export default function HeroVideoBackground() {
       width = height * videoRatio;
     }
 
-    
     const overscan = isMobile ? 1.45 : 1.18;
 
     return {
       width: `${width * overscan}px`,
       height: `${height * overscan}px`,
     };
-  }, [viewport, isMobile]);
+  }, [viewport.width, viewport.height, isMobile]);
+
+  const isLoaded = loadedKey === videoSrc;
 
   return (
-    <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-[#08110b]">
-      <div className="relative w-full h-full overflow-hidden">
+    <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-[#08110b]">
+      <div className="relative h-full w-full overflow-hidden">
         <iframe
           key={videoSrc}
           src={videoSrc}
           title="Hero Video Background"
           allow="autoplay; fullscreen"
-          onLoad={() => setIsLoaded(true)}
+          onLoad={() => setLoadedKey(videoSrc)}
           className={`
-            absolute left-1/2 top-1/2
-            -translate-x-1/2 -translate-y-1/2
-            pointer-events-none border-0
+            pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0
             transition-all duration-1000 ease-out
-            ${isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-110"}
+            ${isLoaded ? "scale-100 opacity-100" : "scale-110 opacity-0"}
           `}
           style={iframeSize}
         />

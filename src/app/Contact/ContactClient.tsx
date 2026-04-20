@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,6 +68,20 @@ const faqs = [
   },
 ];
 
+type SubmitState = {
+  type: "idle" | "success" | "error";
+  message: string;
+};
+
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  details: string;
+  website: string; // honeypot
+};
+
 function FAQItem({
   item,
   open,
@@ -80,10 +94,11 @@ function FAQItem({
   return (
     <div className="rounded-[24px] border border-[#dfe7d7] bg-white/75 shadow-[0_10px_30px_rgba(32,45,35,0.06)]">
       <button
+        type="button"
         onClick={onToggle}
         className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left md:px-6"
       >
-        <span className="text-base md:text-lg font-semibold text-[#2f4633]">
+        <span className="text-base font-semibold text-[#2f4633] md:text-lg">
           {item.q}
         </span>
         <motion.span
@@ -104,7 +119,7 @@ function FAQItem({
             transition={{ duration: 0.28 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 md:px-6 text-[#5f6f60] leading-relaxed">
+            <div className="px-5 pb-5 leading-relaxed text-[#5f6f60] md:px-6">
               {item.a}
             </div>
           </motion.div>
@@ -114,31 +129,49 @@ function FAQItem({
   );
 }
 
+const initialFormState: FormState = {
+  name: "",
+  email: "",
+  phone: "",
+  city: "",
+  details: "",
+  website: "",
+};
+
 export default function ContactClient() {
   const [activeService, setActiveService] = useState(services[0]);
   const [openFaq, setOpenFaq] = useState(0);
   const [isSending, setIsSending] = useState(false);
-  const [submitState, setSubmitState] = useState<{
-    type: "idle" | "success" | "error";
-    message: string;
-  }>({
+  const [submitState, setSubmitState] = useState<SubmitState>({
     type: "idle",
     message: "",
   });
+  const [form, setForm] = useState<FormState>(initialFormState);
 
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    details: "",
-  });
+  const lastSubmitRef = useRef<number>(0);
+
+  useEffect(() => {
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_PUBLIC_KEY;
+
+    if (!publicKey) return;
+
+    emailjs.init({
+      publicKey,
+      blockHeadless: true,
+      limitRate: {
+        id: "contact-form",
+        throttle: 15000,
+      },
+    });
+  }, []);
 
   const summary = useMemo(() => {
-    if (!form.name && !form.city && !activeService)
+    if (!form.name.trim() && !form.city.trim() && !activeService) {
       return "Your request summary will appear here.";
-    return `${form.name || "Client"} is interested in ${activeService} in ${
-      form.city || "Windsor, Ontario"
+    }
+
+    return `${form.name.trim() || "Client"} is interested in ${activeService} in ${
+      form.city.trim() || "Windsor, Ontario"
     }.`;
   }, [form.name, form.city, activeService]);
 
@@ -146,53 +179,158 @@ export default function ContactClient() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (submitState.type !== "idle") {
+      setSubmitState({ type: "idle", message: "" });
+    }
+  };
+
+  const sanitizeValue = (value: string) => value.replace(/\s+/g, " ").trim();
+
+  const validateForm = () => {
+    const cleaned = {
+      name: sanitizeValue(form.name),
+      email: sanitizeValue(form.email).toLowerCase(),
+      phone: sanitizeValue(form.phone),
+      city: sanitizeValue(form.city),
+      details: form.details.trim(),
+      website: form.website.trim(),
+    };
+
+    if (cleaned.website) {
+      return {
+        ok: false,
+        message: "Spam detection triggered.",
+        cleaned,
+      };
+    }
+
+    const nameOk = /^[a-zA-Z\u0600-\u06FF\s'-]{2,50}$/.test(cleaned.name);
+    if (!nameOk) {
+      return {
+        ok: false,
+        message: "Please enter a valid full name.",
+        cleaned,
+      };
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleaned.email);
+    if (!emailOk || cleaned.email.length > 100) {
+      return {
+        ok: false,
+        message: "Please enter a valid email address.",
+        cleaned,
+      };
+    }
+
+    const phoneOk = /^[0-9+\-\s()]{7,20}$/.test(cleaned.phone);
+    if (!phoneOk) {
+      return {
+        ok: false,
+        message: "Please enter a valid phone number.",
+        cleaned,
+      };
+    }
+
+    const cityOk = /^[a-zA-Z\u0600-\u06FF\s,'-]{2,60}$/.test(cleaned.city);
+    if (!cityOk) {
+      return {
+        ok: false,
+        message: "Please enter a valid city or service area.",
+        cleaned,
+      };
+    }
+
+    if (cleaned.details.length < 10 || cleaned.details.length > 1200) {
+      return {
+        ok: false,
+        message: "Project details must be between 10 and 1200 characters.",
+        cleaned,
+      };
+    }
+
+    return {
+      ok: true,
+      message: "",
+      cleaned,
+    };
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isSending) return;
+
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 15000) {
+      setSubmitState({
+        type: "error",
+        message: "Please wait a few seconds before sending another request.",
+      });
+      return;
+    }
+
     setSubmitState({ type: "idle", message: "" });
+
+    const validation = validateForm();
+    if (!validation.ok) {
+      setSubmitState({
+        type: "error",
+        message: validation.message,
+      });
+      return;
+    }
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitState({
+        type: "error",
+        message: "Email service is not configured correctly.",
+      });
+      return;
+    }
+
     setIsSending(true);
 
     try {
-      const serviceId = "service_c1zpm1f";
-      const templateId = "template_4mo520d";
-      const publicKey = "XD8tgQJZcDS1R9j_v";
-
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS environment variables are missing.");
-      }
+      const { cleaned } = validation;
 
       await emailjs.send(
         serviceId,
         templateId,
         {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          city: form.city,
+          name: cleaned.name,
+          email: cleaned.email,
+          phone: cleaned.phone,
+          city: cleaned.city,
           service: activeService,
-          details: form.details,
-          summary,
+          details: cleaned.details,
+          summary: `${cleaned.name} is interested in ${activeService} in ${
+            cleaned.city || "Windsor, Ontario"
+          }.`,
           time: new Date().toLocaleString(),
         },
-        publicKey
+        {
+          publicKey,
+        }
       );
+
+      lastSubmitRef.current = Date.now();
 
       setSubmitState({
         type: "success",
         message: "Your quote request has been sent successfully.",
       });
 
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        city: "",
-        details: "",
-      });
-
+      setForm(initialFormState);
       setActiveService(services[0]);
     } catch (error) {
       console.error("EmailJS Error:", error);
@@ -210,7 +348,7 @@ export default function ContactClient() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#243126]">
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[95svh]">
+      <section className="relative min-h-[95svh] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -222,7 +360,7 @@ export default function ContactClient() {
         <div className="pointer-events-none absolute left-1/2 top-24 h-96 w-96 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 h-72 w-72 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
 
-        <div className="relative z-10 mx-auto flex min-h-[95svh] max-w-7xl items-center px-[6%] pt-30 lg:pt-50 pb-14">
+        <div className="relative z-10 mx-auto flex min-h-[95svh] max-w-7xl items-center px-[6%] pb-14 pt-30 lg:pt-50">
           <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
@@ -233,11 +371,11 @@ export default function ContactClient() {
                 Free Landscaping Quote — Windsor, Ontario
               </span>
 
-              <h1 className="mt-5 text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.04] tracking-tight text-white unbounded-font">
+              <h1 className="unbounded-font mt-5 text-4xl font-bold leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-7xl">
                 Get a Free Landscaping Quote in Windsor, Ontario
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base md:text-lg lg:text-xl leading-relaxed text-white/82">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/82 md:text-lg lg:text-xl">
                 Whether you need lawn care, sod, interlocking, or a full outdoor
                 transformation — reach out and let Windsor&apos;s landscaping experts
                 help. Serving Windsor, LaSalle, Tecumseh & Essex County.
@@ -338,10 +476,10 @@ export default function ContactClient() {
             <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
               Free Quote Form
             </span>
-            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#2f4633] md:text-4xl lg:text-5xl">
               Tell us about your Windsor landscaping project
             </h2>
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-[#5f6f60]">
+            <p className="mt-4 text-base leading-relaxed text-[#5f6f60] md:text-lg">
               Choose the landscaping service you need, fill out your details, and
               we&apos;ll get back to you with a free estimate for your Windsor,
               LaSalle, Tecumseh, or Essex County property.
@@ -416,7 +554,7 @@ export default function ContactClient() {
                   <h3 className="mt-3 text-2xl font-bold text-[#2f4633]">
                     {activeService}
                   </h3>
-                  <p className="mt-3 text-sm md:text-base leading-relaxed text-[#5f6f60]">
+                  <p className="mt-3 text-sm leading-relaxed text-[#5f6f60] md:text-base">
                     Available across Windsor, LaSalle, Tecumseh, and all Essex
                     County communities. This helps us prepare the most relevant
                     estimate for your property.
@@ -458,18 +596,32 @@ export default function ContactClient() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.18 }}
               transition={{ duration: 0.7 }}
-              className="rounded-[34px] border border-[#dfe7d7] bg-white p-6 md:p-8 shadow-[0_18px_40px_rgba(32,45,35,0.08)]"
+              className="rounded-[34px] border border-[#dfe7d7] bg-white p-6 shadow-[0_18px_40px_rgba(32,45,35,0.08)] md:p-8"
             >
               <div className="mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                   Free Landscaping Quote — Windsor Ontario
                 </p>
-                <h3 className="mt-3 text-2xl md:text-3xl font-bold text-[#2f4633]">
+                <h3 className="mt-3 text-2xl font-bold text-[#2f4633] md:text-3xl">
                   Let&apos;s start with the essentials
                 </h3>
               </div>
 
-              <form className="grid gap-5" onSubmit={handleSubmit}>
+              <form className="grid gap-5" onSubmit={handleSubmit} noValidate>
+                {/* Honeypot field */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div className="grid gap-5 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-[#425244]">
@@ -481,6 +633,8 @@ export default function ContactClient() {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
+                      maxLength={50}
+                      autoComplete="name"
                       className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
                     />
                   </div>
@@ -496,6 +650,8 @@ export default function ContactClient() {
                       onChange={handleChange}
                       placeholder="you@example.com"
                       required
+                      maxLength={100}
+                      autoComplete="email"
                       className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
                     />
                   </div>
@@ -512,6 +668,8 @@ export default function ContactClient() {
                       onChange={handleChange}
                       placeholder="(519) XXX-XXXX"
                       required
+                      maxLength={20}
+                      autoComplete="tel"
                       className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
                     />
                   </div>
@@ -526,6 +684,8 @@ export default function ContactClient() {
                       onChange={handleChange}
                       placeholder="Windsor, LaSalle, Tecumseh..."
                       required
+                      maxLength={60}
+                      autoComplete="address-level2"
                       className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
                     />
                   </div>
@@ -551,8 +711,12 @@ export default function ContactClient() {
                     rows={6}
                     placeholder="Tell us about your Windsor landscaping project, property size, concerns, or timeline..."
                     required
+                    maxLength={1200}
                     className="w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 py-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
                   />
+                  <p className="mt-2 text-xs text-[#728173]">
+                    {form.details.trim().length}/1200 characters
+                  </p>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -579,10 +743,10 @@ export default function ContactClient() {
 
                 {submitState.type !== "idle" && (
                   <div
-                    className={`rounded-2xl px-4 py-3 text-sm font-medium ${
+                    className={`rounded-2xl border px-4 py-3 text-sm font-medium ${
                       submitState.type === "success"
-                        ? "bg-green-50 text-green-700 border border-green-200"
-                        : "bg-red-50 text-red-700 border border-red-200"
+                        ? "border-green-200 bg-green-50 text-green-700"
+                        : "border-red-200 bg-red-50 text-red-700"
                     }`}
                   >
                     {submitState.message}
@@ -656,7 +820,7 @@ export default function ContactClient() {
             <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
               FAQ
             </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold text-[#2f4633]">
+            <h2 className="mt-4 text-3xl font-bold text-[#2f4633] md:text-4xl">
               Common questions about Windsor landscaping quotes
             </h2>
           </div>
@@ -681,17 +845,17 @@ export default function ContactClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.7 }}
-          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 md:p-10 lg:p-12 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
+          className="mx-auto max-w-6xl overflow-hidden rounded-[36px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 shadow-[0_16px_40px_rgba(32,45,35,0.08)] md:p-10 lg:p-12"
         >
           <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
             <div>
               <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                 Ready to Get Started?
               </span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#2f4633] md:text-4xl">
                 Your Windsor landscaping project starts with one message
               </h2>
-              <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5f6f60] md:text-lg">
                 Contact Windsor&apos;s trusted landscaping team today for a free
                 quote. Serving Windsor, LaSalle, Tecumseh, Amherstburg, and all
                 of Essex County Ontario.

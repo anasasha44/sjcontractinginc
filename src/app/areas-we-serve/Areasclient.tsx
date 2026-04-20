@@ -204,14 +204,14 @@ export default function AreasClient() {
                                                 key={idx}
                                                 onClick={() => setSelectedArea(area)}
                                                 className={`group flex items-center gap-3 rounded-2xl border p-4 text-left transition duration-300 ${isActive
-                                                        ? "border-[#88a97b] bg-[#edf3e7] shadow-[0_10px_25px_rgba(34,60,40,0.08)]"
-                                                        : "border-[#e7ece1] bg-[#fbfaf7] hover:border-[#cfdcc5] hover:bg-white"
+                                                    ? "border-[#88a97b] bg-[#edf3e7] shadow-[0_10px_25px_rgba(34,60,40,0.08)]"
+                                                    : "border-[#e7ece1] bg-[#fbfaf7] hover:border-[#cfdcc5] hover:bg-white"
                                                     }`}
                                             >
                                                 <span
                                                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition ${isActive
-                                                            ? "bg-[#4f7c57] text-white"
-                                                            : "bg-[#e8efe2] text-[#4f7c57]"
+                                                        ? "bg-[#4f7c57] text-white"
+                                                        : "bg-[#e8efe2] text-[#4f7c57]"
                                                         }`}
                                                 >
                                                     <FaMapMarkerAlt size={14} />
@@ -300,15 +300,17 @@ export default function AreasClient() {
                     <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
                         <div>
                             <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-                                Let's Talk
+                                Let&apos;s Talk
                             </span>
+
+
 
                             <h3 className="mt-4 text-2xl md:text-3xl font-bold text-[#2f4633]">
                                 Not sure if we service your area in Essex County?
                             </h3>
 
-                            <p className="mt-3 text-base leading-relaxed text-[#5f6f60] max-w-2xl">
-                                Reach out and we'll confirm landscaping availability for your
+                            <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#5f6f60]">
+                                Reach out and we&apos;ll confirm landscaping availability for your
                                 Windsor or Essex County location and project needs.
                             </p>
                         </div>

@@ -85,22 +85,15 @@ export default function ScheduleService() {
     };
 
     try {
-      // رسالة للزبون
-      await emailjs.send(
-        "service_1f6dk75",
-        "template_1kkzngk",
-        templateParams,
-        "m7SyFGIdC-F1OrA9K"
-      );
+      
+     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const templateUser = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_USER;
+const templateAdmin = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ADMIN;
+const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-      // رسالة للأدمن
-      await emailjs.send(
-        "service_1f6dk75",
-        "template_tgpu9uh",
-        templateParams,
-        "m7SyFGIdC-F1OrA9K"
-      );
+await emailjs.send(serviceId, templateUser, templateParams, publicKey);
 
+await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
       setSubmitStatus({
         type: "success",
         message:

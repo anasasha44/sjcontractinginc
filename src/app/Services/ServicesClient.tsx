@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 import servicesData from "../Component/data/servicesData";
 import HeroBackgroundPages from "../Component/ui/HeroBackgroundPages";
@@ -16,7 +16,7 @@ type HeroBackgroundPagesTypedProps = {
 const TypedHeroBackgroundPages =
   HeroBackgroundPages as React.ComponentType<HeroBackgroundPagesTypedProps>;
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -25,7 +25,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
@@ -58,22 +58,22 @@ export default function ServicesClient() {
 
         <div className="absolute inset-0 z-10 bg-black/45" />
 
-        <div className="relative z-20 min-h-130 lg:min-h-155 flex items-center justify-center px-[6%] pt-32 lg:pt-40 pb-16">
-          <div className="w-full max-w-5xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-normal text-white unbounded-font leading-tight">
+        <div className="relative z-20 flex min-h-130 items-center justify-center px-[6%] pb-16 pt-32 lg:min-h-155 lg:pt-40">
+          <div className="mx-auto w-full max-w-5xl text-center">
+            <h1 className="unbounded-font text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-6xl">
               Landscaping & Outdoor Services in Windsor, Ontario
             </h1>
 
-            <p className="mt-5 text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
               Lawn care, sod, interlocking, garden design, grading & snow
               removal — serving Windsor, LaSalle, Tecumseh & Essex County.
             </p>
 
-            <ul className="mt-8 text-white flex items-center justify-center gap-8 section-list flex-wrap">
-              <li className="text-sm relative">
+            <ul className="section-list mt-8 flex flex-wrap items-center justify-center gap-8 text-white">
+              <li className="relative text-sm">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-sm relative">
+              <li className="relative text-sm">
                 <FaAngleRight
                   className="absolute -left-6 top-0.5"
                   aria-hidden="true"
@@ -87,7 +87,7 @@ export default function ServicesClient() {
 
       {/* SERVICES INTRO */}
       <section className="px-[6%] pt-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function ServicesClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="mt-4 text-3xl md:text-4xl font-bold text-[#2f4633]"
+            className="mt-4 text-3xl font-bold text-[#2f4633] md:text-4xl"
           >
             Professional Landscaping Solutions for Windsor & Essex County
           </motion.h2>
@@ -113,7 +113,7 @@ export default function ServicesClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-4 text-base md:text-lg leading-relaxed text-[#5f6f60]"
+            className="mt-4 text-base leading-relaxed text-[#5f6f60] md:text-lg"
           >
             From lawn care and sod installation to interlocking, garden design,
             grading, and snow removal — we provide full-service landscaping
@@ -124,23 +124,23 @@ export default function ServicesClient() {
 
       {/* SERVICES GRID */}
       <section className="px-[6%] pt-14">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
           >
             {servicesData.map((item) => (
               <motion.div
                 key={item.id}
-variants={cardVariants as any}
+                variants={cardVariants}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.28 }}
                 className="group"
               >
-                <div className="relative h-80 rounded-[28px] overflow-hidden border border-[#dfe7d7] bg-white shadow-[0_16px_40px_rgba(32,45,35,0.10)]">
+                <div className="relative h-80 overflow-hidden rounded-[28px] border border-[#dfe7d7] bg-white shadow-[0_16px_40px_rgba(32,45,35,0.10)]">
                   <Image
                     src={item.mainImage}
                     alt={`${item.title} — Windsor Ontario landscaping service`}
@@ -151,7 +151,7 @@ variants={cardVariants as any}
                   />
 
                   <div className="absolute inset-0 bg-linear-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
-                  <div className="absolute inset-0 bg-[#0f1a12]/10 group-hover:bg-[#0f1a12]/20 transition duration-500" />
+                  <div className="absolute inset-0 bg-[#0f1a12]/10 transition duration-500 group-hover:bg-[#0f1a12]/20" />
 
                   <div className="absolute left-5 top-5">
                     <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
@@ -159,23 +159,23 @@ variants={cardVariants as any}
                     </span>
                   </div>
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-white">
-                    <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
+                    <h3 className="mb-2 text-2xl font-bold">{item.title}</h3>
 
-                    <p className="text-sm mb-4 text-white/85 line-clamp-3">
+                    <p className="mb-4 line-clamp-3 text-sm text-white/85">
                       {item.desc}
                     </p>
 
                     <Link
                       href={`/Services/${item.id}`}
-                      className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/90 text-[#2f4633] font-semibold px-5 py-2.5 transition duration-300 hover:bg-[#e8f0e3] hover:text-[#3f6b4b]"
+                      className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2.5 font-semibold text-[#2f4633] transition duration-300 hover:bg-[#e8f0e3] hover:text-[#3f6b4b]"
                     >
                       Learn More
                       <FaAngleRight className="text-xs" />
                     </Link>
                   </div>
 
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
                     <div className="absolute -bottom-10 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#88a97b]/20 blur-2xl" />
                   </div>
                 </div>
@@ -187,13 +187,13 @@ variants={cardVariants as any}
 
       {/* SEO TEXT BLOCK — مهم لـ Google */}
       <section className="px-[6%] pt-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="grid sm:grid-cols-3 gap-6"
+            className="grid gap-6 sm:grid-cols-3"
           >
             {[
               {
@@ -232,22 +232,23 @@ variants={cardVariants as any}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl mx-auto rounded-4xl border border-[#dfe7d7] bg-linear-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 md:p-10 shadow-[0_16px_40px_rgba(32,45,35,0.08)]"
+          className="mx-auto max-w-5xl rounded-4xl border border-[#dfe7d7] bg-linear-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] p-8 shadow-[0_16px_40px_rgba(32,45,35,0.08)] md:p-10"
         >
-          <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
+          <div className="grid items-center gap-6 md:grid-cols-[1fr_auto]">
             <div>
               <span className="inline-block rounded-full bg-[#dfead6] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
                 Free Quote — Windsor & Essex County
               </span>
 
-              <h3 className="mt-4 text-2xl md:text-3xl font-bold text-[#2f4633]">
+              <h3 className="mt-4 text-2xl font-bold text-[#2f4633] md:text-3xl">
                 Ready to upgrade your Windsor outdoor space?
               </h3>
 
-              <p className="mt-3 text-base leading-relaxed text-[#5f6f60] max-w-2xl">
-                Contact Windsor's trusted landscaping team for a free estimate
-                on lawn care, sod, interlocking, garden design, or any outdoor
-                project across Windsor, LaSalle, Tecumseh & Essex County.
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#5f6f60]">
+                Contact Windsor&apos;s trusted landscaping team for a free
+                estimate on lawn care, sod, interlocking, garden design, or any
+                outdoor project across Windsor, LaSalle, Tecumseh & Essex
+                County.
               </p>
             </div>
 

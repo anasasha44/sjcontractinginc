@@ -198,12 +198,11 @@ export default function AboutClient() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#dbe7d1] backdrop-blur-md">
-                About Us — Windsor's Landscaping Experts
+                About Us — {"Windsor's Landscaping Experts"}
               </span>
  
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-5xl font-bold leading-[1.05] tracking-tight text-white unbounded-font">
-                Windsor's Landscaping Experts — Built on Precision, Passion &
-                Local Pride
+               {" Windsor's Landscaping Experts — Built on Precision, Passion & Local Pride"}
               </h1>
  
               <p className="mt-6 max-w-2xl text-base md:text-lg lg:text-xl leading-relaxed text-white/82">
@@ -333,7 +332,7 @@ export default function AboutClient() {
             </span>
  
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]">
-              Windsor's landscaping should do more than look good
+             {" Windsor's landscaping should do more than look good"}
             </h2>
  
             <div className="mt-6 space-y-5 text-[#5f6f60] text-base md:text-lg leading-relaxed">
@@ -585,7 +584,7 @@ export default function AboutClient() {
             </span>
  
             <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-[#2f4633]">
-              Windsor's premium standard for outdoor landscaping
+             {" Windsor's premium standard for outdoor landscaping"}
             </h2>
  
             <div className="mt-8 space-y-5">
@@ -663,7 +662,7 @@ export default function AboutClient() {
                 Transform your outdoor space in Windsor Ontario
               </h2>
               <p className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-[#5f6f60]">
-                Contact Windsor's trusted landscaping team for a free quote.
+                Contact Windsor&apos;s trusted landscaping team for a free quote.
                 Serving Windsor, LaSalle, Tecumseh, Amherstburg, and all of
                 Essex County Ontario.
               </p>
@@ -671,13 +670,13 @@ export default function AboutClient() {
  
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contact"
+                href="/Contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Get a Free Quote
               </Link>
               <Link
-                href="/services"
+                href="/Services"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
                 View Our Services

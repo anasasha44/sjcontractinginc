@@ -8,15 +8,13 @@ import { FiCheck, FiLock, FiShield, FiX } from "react-icons/fi";
 const STORAGE_KEY = "site_privacy_consent_v1";
 
 export default function PrivacyConsentModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [accepted, setAccepted] = useState(false);
-
-  useEffect(() => {
+  const [isOpen, setIsOpen] = useState(() => {
+    if (typeof window === "undefined") return false;
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (!saved) {
-      setIsOpen(true);
-    }
-  }, []);
+    return !saved;
+  });
+
+  const [accepted, setAccepted] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -75,6 +73,7 @@ export default function PrivacyConsentModal() {
                 <button
                   type="button"
                   aria-label="Close"
+                  onClick={() => setIsOpen(false)}
                   className="rounded-full border border-[#dfe7d7] bg-white p-2 text-[#5f6f60] transition hover:bg-[#edf3e7]"
                 >
                   <FiX size={18} />
@@ -82,7 +81,10 @@ export default function PrivacyConsentModal() {
               </div>
 
               <p className="mt-6 text-sm leading-7 text-[#5f6f60] md:text-base">
-                We use your submitted information such as your name, phone number, email address, and service request details only to respond to your inquiry, provide service-related communication, and improve your experience on this website.
+                We use your submitted information such as your name, phone
+                number, email address, and service request details only to
+                respond to your inquiry, provide service-related communication,
+                and improve your experience on this website.
               </p>
 
               <div className="mt-6 grid gap-3 md:grid-cols-3">
@@ -128,7 +130,7 @@ export default function PrivacyConsentModal() {
                   className="mt-1 h-4 w-4 rounded border-[#b7c6b0] text-[#4f7c57] focus:ring-[#4f7c57]"
                 />
                 <span className="text-sm leading-7 text-[#425244]">
-                  I have read and agree to the websites{" "}
+                  I have read and agree to the website&apos;s{" "}
                   <Link
                     href="/privacy"
                     className="font-semibold text-[#3f6b4b] underline underline-offset-4"
