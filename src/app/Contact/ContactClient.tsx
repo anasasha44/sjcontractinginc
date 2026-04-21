@@ -38,7 +38,7 @@ const contactCards = [
   {
     icon: FiMail,
     title: "Email Us",
-    value: "hello@yourwebsite.com",
+    value: "hello@aqua.com",
     sub: "Send us your landscaping project details",
   },
   {
