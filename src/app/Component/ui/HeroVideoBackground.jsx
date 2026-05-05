@@ -1,86 +1,160 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function HeroVideoBackground() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedKey, setLoadedKey] = useState("");
-  const [viewport, setViewport] = useState({
-    width: 1920,
-    height: 1080,
-  });
+  const videoARef = useRef(null);
+  const videoBRef = useRef(null);
+  const rafRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  const [isMobile, setIsMobile] = useState(null);
+  const [activeVideo, setActiveVideo] = useState("a");
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const updateViewport = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
 
-      setViewport({ width, height });
-      setIsMobile(width < 768);
+    const updateDevice = () => {
+      setIsMobile(mediaQuery.matches);
+      setIsLoaded(false);
+      setActiveVideo("a");
     };
 
-    updateViewport();
+    updateDevice();
 
-    window.addEventListener("resize", updateViewport);
-    window.addEventListener("orientationchange", updateViewport);
+    mediaQuery.addEventListener("change", updateDevice);
+
+    window.addEventListener("orientationchange", updateDevice);
 
     return () => {
-      window.removeEventListener("resize", updateViewport);
-      window.removeEventListener("orientationchange", updateViewport);
+      mediaQuery.removeEventListener("change", updateDevice);
+      window.removeEventListener("orientationchange", updateDevice);
     };
   }, []);
 
-  const desktopVideoId = "pOToGZ8swcs";
-  const mobileVideoId = "3wyhL9nA9hg";
+  const videoName = useMemo(() => {
+    if (isMobile === null) return null;
+    return isMobile ? "hero-mobile" : "hero-desktop";
+  }, [isMobile]);
 
-  const activeVideoId = isMobile ? mobileVideoId : desktopVideoId;
+  useEffect(() => {
+    if (!videoName) return;
 
-  const videoSrc = `https://www.youtube.com/embed/${activeVideoId}?autoplay=1&mute=1&loop=1&playlist=${activeVideoId}&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+    const videoA = videoARef.current;
+    const videoB = videoBRef.current;
 
-  const iframeSize = useMemo(() => {
-    const videoRatio = 16 / 9;
-    const screenRatio = viewport.width / viewport.height;
+    if (!videoA || !videoB) return;
 
-    let width;
-    let height;
+    let current = videoA;
+    let next = videoB;
+    let currentKey = "a";
+    let isSwitching = false;
 
-    if (screenRatio > videoRatio) {
-      width = viewport.width;
-      height = width / videoRatio;
-    } else {
-      height = viewport.height;
-      width = height * videoRatio;
-    }
+    const resetVideos = () => {
+      videoA.pause();
+      videoB.pause();
 
-    const overscan = isMobile ? 1.45 : 1.18;
+      videoA.currentTime = 0;
+      videoB.currentTime = 0;
 
-    return {
-      width: `${width * overscan}px`,
-      height: `${height * overscan}px`,
+      videoA.load();
+      videoB.load();
     };
-  }, [viewport.width, viewport.height, isMobile]);
 
-  const isLoaded = loadedKey === videoSrc;
+    const start = async () => {
+      resetVideos();
+
+      try {
+        await videoA.play();
+        setIsLoaded(true);
+      } catch {
+        setIsLoaded(true);
+      }
+    };
+
+    const tick = async () => {
+      if (
+        current.duration > 0 &&
+        current.currentTime >= current.duration - 0.8 &&
+        !isSwitching
+      ) {
+        isSwitching = true;
+
+        next.currentTime = 0;
+
+        try {
+          await next.play();
+        } catch {}
+
+        setActiveVideo(currentKey === "a" ? "b" : "a");
+
+        timeoutRef.current = window.setTimeout(() => {
+          current.pause();
+          current.currentTime = 0;
+
+          const previous = current;
+          current = next;
+          next = previous;
+
+          currentKey = currentKey === "a" ? "b" : "a";
+          isSwitching = false;
+        }, 800);
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    start();
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      videoA.pause();
+      videoB.pause();
+    };
+  }, [videoName]);
+
+  const videoClass =
+    "pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out";
 
   return (
     <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-[#08110b]">
-      <div className="relative h-full w-full overflow-hidden">
-        <iframe
-          key={videoSrc}
-          src={videoSrc}
-          title="Hero Video Background"
-          allow="autoplay; fullscreen"
-          onLoad={() => setLoadedKey(videoSrc)}
-          className={`
-            pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0
-            transition-all duration-1000 ease-out
-            ${isLoaded ? "scale-100 opacity-100" : "scale-110 opacity-0"}
-          `}
-          style={iframeSize}
-        />
+      {videoName && (
+        <>
+          <video
+            key={`a-${videoName}`}
+            ref={videoARef}
+            muted
+            playsInline
+            preload="auto"
+            className={`${videoClass} ${
+              isLoaded && activeVideo === "a" ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src={`/videos/${videoName}.webm`} type="video/webm" />
+            <source src={`/videos/${videoName}.mp4`} type="video/mp4" />
+          </video>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
-      </div>
+          <video
+            key={`b-${videoName}`}
+            ref={videoBRef}
+            muted
+            playsInline
+            preload="auto"
+            className={`${videoClass} ${
+              isLoaded && activeVideo === "b" ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src={`/videos/${videoName}.webm`} type="video/webm" />
+            <source src={`/videos/${videoName}.mp4`} type="video/mp4" />
+          </video>
+        </>
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
     </div>
   );
 }

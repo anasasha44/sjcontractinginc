@@ -1,29 +1,54 @@
 import type { Metadata } from "next";
 import AboutClient from "./AboutClient";
- 
+
 export const metadata: Metadata = {
-  title: "About Us | Landscaping Company Windsor Ontario",
+  title: "About AQUAVIOR | Landscaping Company Windsor Ontario",
   description:
-    "Learn about Windsor Ontario's trusted landscaping team. Expert lawn care, sod, interlock, garden design & drainage services. Locally owned, serving Windsor, LaSalle, Tecumseh & Essex County.",
+    "Learn about AQUAVIOR Landscaping & Irrigation, a trusted landscaping company in Windsor Ontario offering lawn care, sod installation, interlock, garden design, drainage and irrigation services across Windsor, LaSalle, Tecumseh and Essex County.",
+
   keywords: [
+    "AQUAVIOR Landscaping",
+    "Aquavior Landscaping & Irrigation",
     "landscaping company Windsor Ontario",
     "local landscaper Windsor ON",
     "Windsor Ontario lawn care company",
+    "irrigation company Windsor Ontario",
     "landscape contractor Essex County",
     "professional landscaping Windsor",
     "locally owned landscaping Windsor",
   ],
-  alternates: { canonical: "https://yourwebsite.com/about" },
+
+  alternates: {
+    canonical: "https://www.aquavior.com/About",
+  },
+
   openGraph: {
-    title: "About Our Landscaping Company | Windsor Ontario",
+    title: "About AQUAVIOR Landscaping & Irrigation | Windsor Ontario",
     description:
-      "Windsor's trusted landscaping experts. Locally owned and serving Windsor, LaSalle, Tecumseh & Essex County with professional outdoor services.",
-    url: "https://yourwebsite.com/about",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+      "AQUAVIOR is a trusted Windsor landscaping and irrigation company serving Windsor, LaSalle, Tecumseh, Amherstburg and Essex County Ontario.",
+    url: "https://www.aquavior.com/About",
+    siteName: "AQUAVIOR Landscaping & Irrigation",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AQUAVIOR Landscaping and Irrigation company in Windsor Ontario",
+      },
+    ],
+    locale: "en_CA",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "About AQUAVIOR | Landscaping Company Windsor Ontario",
+    description:
+      "Trusted landscaping and irrigation services in Windsor, LaSalle, Tecumseh and Essex County Ontario.",
+    images: ["/og-image.jpg"],
   },
 };
- 
+
 export default function AboutPage() {
   return <AboutClient />;
 }
- 

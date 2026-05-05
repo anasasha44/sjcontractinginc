@@ -10,25 +10,25 @@ const options = [
     id: "backyard",
     title: "Backyard Transformation",
     desc: "Turn your backyard into a functional and beautiful outdoor living space.",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg?tr=f-auto,q-auto",
   },
   {
     id: "drainage",
     title: "Drainage Solutions",
     desc: "Protect your property with advanced grading and drainage systems.",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/drainage.jpg?tr=f-auto,q-auto",
   },
   {
     id: "frontyard",
     title: "Front Yard Upgrade",
     desc: "Boost curb appeal with clean, modern landscape design.",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg?tr=f-auto,q-auto",
   },
   {
     id: "full",
     title: "Full Landscape Design",
     desc: "Complete outdoor transformation tailored to your property.",
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg",
+    image: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg?tr=f-auto,q-auto",
   },
 ];
 
@@ -54,11 +54,10 @@ export default function InteractiveLandscapeSection() {
                 key={item.id}
                 type="button"
                 onClick={() => setActive(item)}
-                className={`w-full rounded-2xl border px-5 py-4 text-left transition ${
-                  active.id === item.id
+                className={`w-full rounded-2xl border px-5 py-4 text-left transition ${active.id === item.id
                     ? "border-[#3f6b4b] bg-[#3f6b4b] text-white"
                     : "border-[#dfe7d7] bg-white text-[#2f4633] hover:bg-[#edf3e7]"
-                }`}
+                  }`}
               >
                 {item.title}
               </button>
@@ -70,13 +69,13 @@ export default function InteractiveLandscapeSection() {
         <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
-  key={active.id}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: 15 }}
-  transition={{ duration: 0.4 }}
-  className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] min-h-[500px]"
->
+              key={active.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ duration: 0.4 }}
+              className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] min-h-[500px]"
+            >
               <div className="relative h-[320px] w-full md:h-[420px]">
                 <Image
                   src={active.image}

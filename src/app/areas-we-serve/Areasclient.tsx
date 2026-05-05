@@ -85,7 +85,7 @@ export default function AreasClient() {
 
                     style={{
                         backgroundImage:
-                            "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg')",
+                            "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg?tr=f-auto,q-auto')",
                     }}>
 
                 </div>

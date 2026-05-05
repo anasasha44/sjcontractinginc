@@ -1,11 +1,16 @@
 {
   "name": "Aquavior Landscaping & Irrigation",
   "short_name": "Aquavior",
-  "description": "Professional landscaping, irrigation systems, and lawn care services.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
+  "description": "Professional landscaping, irrigation systems, lawn care, sod installation and snow removal services in Windsor Ontario.",
   
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

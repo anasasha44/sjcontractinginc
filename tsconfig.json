@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,7 +23,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
@@ -28,7 +34,12 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "src/app/Component/ui/HeroBackgroundPages.jsx", "src/app/areas-we-serve/page.tsx", "src/app/Services/[id]/page.jsx"  ],
-  "exclude": ["node_modules"]
+    "**/*.mts",
+    "src/app/Component/ui/HeroBackgroundPages.jsx",
+    "src/app/areas-we-serve/page.tsx",
+    "src/app/Services/[slug]/page.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

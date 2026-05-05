@@ -13,115 +13,115 @@ import Image from "next/image";
 
 const allImages = [
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/backyard.jpg?tr=f-auto,q-auto",
     title: "Backyard Transformation",
     category: "Backyard",
     desc: "A refined outdoor transformation with structure, elegance, and a polished natural finish.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-g1.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-g1.jpg?tr=f-auto,q-auto",
     title: "Custom Design Build",
     category: "Landscape Prep",
     desc: "Prepared with precision for a balanced, elevated, and lasting landscape result.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/design-build-main.jpg?tr=f-auto,q-auto",
     title: "Design Build Showcase",
     category: "Landscape Prep",
     desc: "A complete outdoor concept brought together with detail, balance, and craftsmanship.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/cutpre.jpg?tr=f-auto,q-auto",
     title: "Cutting Pre Service",
     category: "Cutting",
     desc: "Professional pre-service cutting to prepare surfaces accurately and ensure clean, precise results.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/front-yard.jpg?tr=f-auto,q-auto",
     title: "Front Yard Refresh",
     category: "Front Yard",
     desc: "A curb-appeal focused finish with a clean, premium, and welcoming look.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/frontyard.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/frontyard.jpg?tr=f-auto,q-auto",
     title: "Front Yard Upgrade",
     category: "Front Yard",
     desc: "A neat and balanced entry landscape designed for a strong first impression.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/full-landscape.jpg?tr=f-auto,q-auto",
     title: "Full Landscape Project",
     category: "Landscape Prep",
     desc: "Explore a wider showcase of outdoor transformations, grading, and landscape upgrades.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/Full.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/Full.jpg?tr=f-auto,q-auto",
     title: "Complete Outdoor Space",
     category: "Landscape Prep",
     desc: "A complete exterior upgrade combining functionality, layout, and visual harmony.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-g1.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-g1.jpg?tr=f-auto,q-auto",
     title: "Irrigation Systems Detail",
     category: "Drainage",
     desc: "Smart water distribution solutions installed for consistency, efficiency, and performance.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-main.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/irrigation-systems-main.jpg?tr=f-auto,q-auto",
     title: "Irrigation Systems Project",
     category: "Drainage",
     desc: "A professional irrigation setup designed for healthy, efficient long-term maintenance.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-g1.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-g1.jpg?tr=f-auto,q-auto",
     title: "Lawn Maintenance Result",
     category: "Backyard",
     desc: "A clean, healthy, and professionally maintained lawn with a refined final look.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-main.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lawn-maintenance-main.jpg?tr=f-auto,q-auto",
     title: "Lawn Care Showcase",
     category: "Backyard",
     desc: "Consistent lawn care that keeps the landscape vibrant, healthy, and visually balanced.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g1.jpeg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g1.jpeg?tr=f-auto,q-auto",
     title: "Lot Grading Detail",
     category: "Drainage",
     desc: "Grading work completed to support proper drainage and a stable outdoor foundation.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g2.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-g2.jpg?tr=f-auto,q-auto",
     title: "Lot Grading Progress",
     category: "Drainage",
     desc: "A precision-focused grading solution built for performance and long-term site control.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-main.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/lot-grading-main.jpg?tr=f-auto,q-auto",
     title: "Lot Grading & Drainage",
     category: "Drainage",
     desc: "A property protection solution centered on proper water flow and grading control.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-g1.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-g1.jpg?tr=f-auto,q-auto",
     title: "Sod & Turf Installation",
     category: "Backyard",
     desc: "Fresh turf installation completed with a smooth, natural, and polished final result.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-main.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/sod-turf-installation-main.jpg?tr=f-auto,q-auto",
     title: "Turf Installation Showcase",
     category: "Backyard",
     desc: "A clean and modern turf installation built for beauty, simplicity, and durability.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-g1.jpg",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-g1.jpg?tr=f-auto,q-auto",
     title: "Turf Painting Detail",
     category: "Backyard",
     desc: "A color restoration finish designed to instantly refresh the lawn’s visual appeal.",
   },
   {
-    src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-main.JPG",
+    src: "https://ik.imagekit.io/gmjmoldeh/landscap/turf-painting-main.JPG?tr=f-auto,q-auto",
     title: "Turf Painting Project",
     category: "Backyard",
     desc: "A vibrant lawn refresh that restores visual richness and a professionally kept look.",
@@ -333,7 +333,7 @@ export default function OurWorkSection() {
                     src={activeImage.src}
                     alt={activeImage.title}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
                     loading="lazy"
                   />

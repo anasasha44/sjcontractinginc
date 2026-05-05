@@ -184,7 +184,7 @@ export default function AboutClient() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')",
+              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg?tr=f-auto,q-auto')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/75 via-[#0f1a12]/55 to-[#08110b]/80" />
@@ -296,7 +296,7 @@ export default function AboutClient() {
           >
             <div className="overflow-hidden rounded-[34px] shadow-[0_22px_60px_rgba(32,45,35,0.14)]">
               <Image
-                src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg"
+                src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg?tr=f-auto,q-auto"
                 alt="Professional landscaping project in Windsor Ontario"
                 width={1600}
                 height={800}
@@ -563,7 +563,7 @@ export default function AboutClient() {
             className="relative overflow-hidden w-full rounded-[34px] shadow-[0_20px_50px_rgba(32,45,35,0.12)] min-h-[400px]"
           >
             <Image
-              src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg"
+              src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg?tr=f-auto,q-auto"
               alt="Windsor Ontario landscaping project by our team"
               fill
               priority

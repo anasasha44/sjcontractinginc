@@ -9,17 +9,17 @@ import "swiper/css/effect-fade";
 import Image from "next/image";
 
 const desktopImages = [
-  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/hero-4.jpg?tr=f-auto,q-auto",
 ];
 
 const mobileImages = [
-  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg",
-  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-1.jpg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-2.jpg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-3.jpg?tr=f-auto,q-auto",
+  "https://ik.imagekit.io/gmjmoldeh/landscap/heroMobile-4.jpg?tr=f-auto,q-auto",
 ];
 
 export default function HeroBackground() {

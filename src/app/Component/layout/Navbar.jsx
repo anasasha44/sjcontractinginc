@@ -23,7 +23,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { stopLoading } = usePageLoader();
 
-  // ✅ FIXED (بدون setState داخل effect)
   useEffect(() => {
     const timer = setTimeout(() => {
       stopLoading();
@@ -104,11 +103,17 @@ export default function Navbar() {
               scrolled ? "text-[#2f4633]" : "text-white"
             }`}
           >
-            <CustomLink href="https://www.facebook.com/share/18mAzEcLgJ/" className="transition hover:text-[#6f8f4e]">
+            <CustomLink
+              href="https://www.facebook.com/share/18mAzEcLgJ/"
+              className="transition hover:text-[#6f8f4e]"
+            >
               <FaFacebookF />
             </CustomLink>
 
-            <CustomLink href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh" className="transition hover:text-[#6f8f4e]">
+            <CustomLink
+              href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh"
+              className="transition hover:text-[#6f8f4e]"
+            >
               <FaInstagram />
             </CustomLink>
           </div>
@@ -156,7 +161,7 @@ export default function Navbar() {
           scrolled
             ? "bg-[#f7f5ef]/98 text-[#243126] backdrop-blur-md"
             : "bg-[#101712]/85 backdrop-blur-md text-white"
-        } ${open ? "max-h-125" : "max-h-0"}`}
+        } ${open ? "max-h-[520px]" : "max-h-0"}`}
       >
         <ul className="px-6 py-5 space-y-5 text-sm font-bold tracking-[0.16em]">
           {navLinks.map((link) => (
@@ -173,6 +178,25 @@ export default function Navbar() {
               </CustomLink>
             </li>
           ))}
+
+          {/* MOBILE SOCIAL MEDIA */}
+          <li>
+            <div className="flex items-center gap-4 pt-2 text-xl">
+              <CustomLink
+                href="https://www.facebook.com/share/18mAzEcLgJ/"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-current/20 transition hover:bg-[#6f8f4e] hover:text-white"
+              >
+                <FaFacebookF />
+              </CustomLink>
+
+              <CustomLink
+                href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-current/20 transition hover:bg-[#6f8f4e] hover:text-white"
+              >
+                <FaInstagram />
+              </CustomLink>
+            </div>
+          </li>
 
           <li className="pt-2" onClick={() => setOpen(false)}>
             <CustomLink

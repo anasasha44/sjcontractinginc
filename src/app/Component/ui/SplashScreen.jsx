@@ -19,7 +19,7 @@ export default function SplashScreen({ isVisible = true }) {
           {/* background image layer */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: "url('/Images/hero-2.jpg')" }}
+            style={{ backgroundImage: "url('/Images/hero-2.webp')" }}
           />
 
           {/* overlays */}
@@ -48,7 +48,7 @@ export default function SplashScreen({ isVisible = true }) {
                 className="mb-6"
               >
                 <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#dbe7d1] backdrop-blur-md">
-                  Landscaping • Renovation
+                  Landscaping 
                 </span>
               </motion.div>
 

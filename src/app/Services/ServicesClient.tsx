@@ -167,7 +167,7 @@ export default function ServicesClient() {
                     </p>
 
                     <Link
-                      href={`/Services/${item.id}`}
+                      href={`/Services/${item.slug}`}
                       className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2.5 font-semibold text-[#2f4633] transition duration-300 hover:bg-[#e8f0e3] hover:text-[#3f6b4b]"
                     >
                       Learn More

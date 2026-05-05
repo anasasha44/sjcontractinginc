@@ -353,7 +353,7 @@ export default function ContactClient() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg')",
+              "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-1.jpeg?tr=f-auto,q-auto')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#08110b]/75 via-[#0f1a12]/60 to-[#08110b]/82" />

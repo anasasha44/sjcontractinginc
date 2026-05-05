@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaWhatsapp, FaEnvelope, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const CONTACTS = [
   {
@@ -9,7 +9,7 @@ const CONTACTS = [
     icon: FaWhatsapp,
     label: "WhatsApp",
     sub: "(382)880-0066",
-href: "https://wa.me/13828800066?text=Hi%2C%20I%E2%80%99m%20interested%20in%20getting%20a%20quote%20for%20landscaping%20services.%20Please%20let%20me%20know%20the%20next%20steps.%20Thanks%21",
+    href: "https://wa.me/13828800066?text=Hi%2C%20I%E2%80%99m%20interested%20in%20getting%20a%20quote%20for%20landscaping%20services.%20Please%20let%20me%20know%20the%20next%20steps.%20Thanks%21",
     color: "#25D366",
     bg: "linear-gradient(135deg,#1fbe5b,#25D366)",
   },
@@ -21,6 +21,21 @@ href: "https://wa.me/13828800066?text=Hi%2C%20I%E2%80%99m%20interested%20in%20ge
     href: "mailto:booking@aqua.com",
     color: "#60a5fa",
     bg: "linear-gradient(135deg,#3b82f6,#60a5fa)",
+  },
+];
+
+const SOCIALS = [
+  {
+    id: "facebook",
+    icon: FaFacebookF,
+    label: "Facebook",
+    href: "https://www.facebook.com/share/18mAzEcLgJ/",
+  },
+  {
+    id: "instagram",
+    icon: FaInstagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh",
   },
 ];
 
@@ -129,23 +144,10 @@ export default function ContactButton() {
           </div>
 
           <div>
-            <div
-              style={{
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 700,
-                lineHeight: 1.2,
-              }}
-            >
+            <div style={{ color: "#fff", fontSize: 14, fontWeight: 700, lineHeight: 1.2 }}>
               Contact Us
             </div>
-            <div
-              style={{
-                color: "rgba(255,255,255,0.45)",
-                fontSize: 11,
-                marginTop: 2,
-              }}
-            >
+            <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginTop: 2 }}>
               We reply within minutes
             </div>
           </div>
@@ -197,9 +199,7 @@ export default function ContactButton() {
                 borderRadius: 13,
                 cursor: "pointer",
                 textDecoration: "none",
-                border: isHovered
-                  ? "1px solid rgba(255,255,255,0.1)"
-                  : "1px solid transparent",
+                border: isHovered ? "1px solid rgba(255,255,255,0.1)" : "1px solid transparent",
                 background: isHovered ? "rgba(255,255,255,0.06)" : "transparent",
                 transform: isHovered ? "translateX(-3px)" : "translateX(0)",
                 transition: "background .25s, border-color .25s, transform .2s",
@@ -219,9 +219,7 @@ export default function ContactButton() {
                   flexShrink: 0,
                   background: c.bg,
                   transform: isHovered ? "scale(1.08)" : "scale(1)",
-                  boxShadow: isHovered
-                    ? `0 6px 20px ${c.color}55`
-                    : `0 4px 12px ${c.color}33`,
+                  boxShadow: isHovered ? `0 6px 20px ${c.color}55` : `0 4px 12px ${c.color}33`,
                   transition: "transform .2s, box-shadow .2s",
                 }}
               >
@@ -229,23 +227,10 @@ export default function ContactButton() {
               </div>
 
               <div>
-                <div
-                  style={{
-                    color: "#fff",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    textTransform: "none",
-                  }}
-                >
+                <div style={{ color: "#fff", fontSize: 13, fontWeight: 600 }}>
                   {c.label}
                 </div>
-                <div
-                  style={{
-                    color: "rgba(255,255,255,0.4)",
-                    fontSize: 11,
-                    marginTop: 1,
-                  }}
-                >
+                <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, marginTop: 1 }}>
                   {c.sub}
                 </div>
               </div>
@@ -253,9 +238,7 @@ export default function ContactButton() {
               <span
                 style={{
                   marginLeft: "auto",
-                  color: isHovered
-                    ? "rgba(255,255,255,0.6)"
-                    : "rgba(255,255,255,0.25)",
+                  color: isHovered ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.25)",
                   fontSize: 12,
                   transform: isHovered ? "translateX(-3px)" : "translateX(0)",
                   transition: "transform .2s, color .2s",
@@ -266,16 +249,66 @@ export default function ContactButton() {
             </a>
           );
         })}
+
+        <div
+          style={{
+            marginTop: 14,
+            paddingTop: 14,
+            borderTop: "1px solid rgba(255,255,255,0.07)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span style={{ color: "rgba(255,255,255,0.38)", fontSize: 11 }}>
+            Follow us
+          </span>
+
+          <div style={{ display: "flex", gap: 9 }}>
+            {SOCIALS.map((s) => {
+              const Icon = s.icon;
+
+              return (
+                <a
+                  key={s.id}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  onClick={() => setOpen(false)}
+                  style={{
+                    width: 34,
+                    height: 34,
+                    borderRadius: 11,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "rgba(255,255,255,0.82)",
+                    background: "rgba(255,255,255,0.055)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    textDecoration: "none",
+                    transition: "transform .2s, background .2s, color .2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.background = "rgba(111,143,78,0.22)";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.background = "rgba(255,255,255,0.055)";
+                    e.currentTarget.style.color = "rgba(255,255,255,0.82)";
+                  }}
+                >
+                  <Icon />
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <div
-        style={{
-          position: "fixed",
-          bottom: 40,
-          right: 22,
-          zIndex: 9999,
-        }}
-      >
+      <div style={{ position: "fixed", bottom: 40, right: 22, zIndex: 9999 }}>
         {!open && (
           <>
             <div
@@ -354,13 +387,7 @@ export default function ContactButton() {
               transition: "transform .4s cubic-bezier(.34,1.56,.64,1)",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 4.5,
-              }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: 4.5 }}>
               <span
                 style={{
                   width: 20,
@@ -368,11 +395,8 @@ export default function ContactButton() {
                   borderRadius: 2,
                   background: "#fff",
                   display: "block",
-                  transform: open
-                    ? "translateY(6.5px) rotate(45deg)"
-                    : "translateY(0) rotate(0)",
-                  transition:
-                    "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
+                  transform: open ? "translateY(6.5px) rotate(45deg)" : "translateY(0) rotate(0)",
+                  transition: "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
                 }}
               />
               <span
@@ -384,8 +408,7 @@ export default function ContactButton() {
                   display: "block",
                   opacity: open ? 0 : 1,
                   transform: open ? "scaleX(0)" : "scaleX(1)",
-                  transition:
-                    "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
+                  transition: "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
                 }}
               />
               <span
@@ -395,11 +418,8 @@ export default function ContactButton() {
                   borderRadius: 2,
                   background: "#fff",
                   display: "block",
-                  transform: open
-                    ? "translateY(-6.5px) rotate(-45deg)"
-                    : "translateY(0) rotate(0)",
-                  transition:
-                    "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
+                  transform: open ? "translateY(-6.5px) rotate(-45deg)" : "translateY(0) rotate(0)",
+                  transition: "transform .35s cubic-bezier(.4,0,.2,1), opacity .25s, width .35s",
                 }}
               />
             </div>

@@ -11,7 +11,7 @@ export default function StorePage() {
         {/* background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg?tr=f-auto,q-auto')" }}
         />
 
         {/* overlays */}

@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
- 
+
 export const metadata: Metadata = {
-  title: "Landscaping Services Windsor Ontario | Lawn Care, Sod, Interlock & More",
+  title: "Landscaping Services Windsor Ontario | AQUAVIOR Services",
+
   description:
-    "Expert landscaping services in Windsor ON — lawn care, sod installation, interlocking, garden design, grading, drainage & snow removal. Serving Windsor, LaSalle, Tecumseh & Essex County. Free quotes!",
+    "AQUAVIOR Landscaping & Irrigation provides professional landscaping services in Windsor Ontario including lawn care, sod installation, irrigation systems, interlock, garden design, grading, drainage and snow removal across Windsor, LaSalle, Tecumseh and Essex County.",
+
   keywords: [
     "landscaping services Windsor Ontario",
+    "AQUAVIOR landscaping services",
     "lawn care Windsor ON",
     "sod installation Windsor",
+    "irrigation system Windsor Ontario",
+    "sprinkler system Windsor",
     "interlocking Windsor Ontario",
     "garden design Windsor",
     "grading and drainage Windsor",
@@ -20,16 +25,38 @@ export const metadata: Metadata = {
     "lawn care Tecumseh ON",
     "Essex County landscaping services",
   ],
-  alternates: { canonical: "https://yourwebsite.com/services" },
+
+  alternates: {
+    canonical: "https://www.aquavior.com/Services",
+  },
+
   openGraph: {
-    title: "Landscaping Services Windsor Ontario | Full-Service Outdoor Solutions",
+    title: "Landscaping Services Windsor Ontario | AQUAVIOR",
     description:
-      "Professional landscaping in Windsor ON. Lawn care, sod, interlock, garden design, grading & snow removal. Serving Windsor, LaSalle & Essex County.",
-    url: "https://yourwebsite.com/services",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+      "Professional lawn care, sod installation, irrigation systems, interlock, garden design, grading, drainage and snow removal services in Windsor Ontario and Essex County.",
+    url: "https://www.aquavior.com/Services",
+    siteName: "AQUAVIOR Landscaping & Irrigation",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AQUAVIOR landscaping and irrigation services in Windsor Ontario",
+      },
+    ],
+    locale: "en_CA",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "AQUAVIOR Landscaping Services | Windsor Ontario",
+    description:
+      "Landscaping, irrigation, lawn care, sod, interlock and snow removal services in Windsor Ontario.",
+    images: ["/og-image.jpg"],
   },
 };
- 
+
 export default function ServicesPage() {
   return <ServicesClient />;
 }
