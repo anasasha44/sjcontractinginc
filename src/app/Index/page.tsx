@@ -1,14 +1,48 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+
 import HeroVideoBackground from "../Component/ui/HeroVideoBackground";
-import InteractiveLandscapeSection from "../Component/ui/InteractiveLandscapeSection";
 import ModalScheduleService from "../Component/ui/ModalScheduleService";
-import ServicesSection from "../Component/sections/ServicesSection";
-import OurWorkSection from "../Component/sections/OurWorkSection";
-import ContactBanner from "../Component/sections/ContactBanner";
+import AnimatedSection from "../Component/ui/AnimatedSection";
+
+const InteractiveLandscapeSection = dynamic(
+  () => import("../Component/ui/InteractiveLandscapeSection"),
+  {
+    loading: () => <SectionLoader />,
+  }
+);
+
+const ServicesSection = dynamic(
+  () => import("../Component/sections/ServicesSection"),
+  {
+    loading: () => <SectionLoader />,
+  }
+);
+
+const OurWorkSection = dynamic(
+  () => import("../Component/sections/OurWorkSection"),
+  {
+    loading: () => <SectionLoader />,
+  }
+);
+
+const ContactBanner = dynamic(
+  () => import("../Component/sections/ContactBanner"),
+  {
+    loading: () => <SectionLoader />,
+  }
+);
+
+function SectionLoader() {
+  return (
+    <div className="flex min-h-[55vh] w-full items-center justify-center bg-neutral-950">
+      <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/20 border-t-white" />
+    </div>
+  );
+}
 
 export const metadata: Metadata = {
-  title:
-    "Landscaping Windsor Ontario | AQUAVIOR Lawn Care, Sod & Irrigation",
+  title: "Landscaping Windsor Ontario | AQUAVIOR Lawn Care, Sod & Irrigation",
 
   description:
     "AQUAVIOR Landscaping & Irrigation provides professional landscaping services in Windsor Ontario. Lawn care, sod installation, irrigation systems, interlock, garden design and snow removal across Windsor, LaSalle, Tecumseh and Essex County.",
@@ -30,8 +64,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title:
-      "AQUAVIOR Landscaping Windsor Ontario | Lawn Care, Sod & Irrigation",
+    title: "AQUAVIOR Landscaping Windsor Ontario | Lawn Care, Sod & Irrigation",
 
     description:
       "Professional landscaping, irrigation systems, lawn care, sod installation, interlock and snow removal services in Windsor Ontario and Essex County.",
@@ -64,12 +97,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main>
-      {/* ✅ H1 (مهم جدًا SEO) */}
-      <h1 className="sr-only">
-        Landscaping Windsor Ontario | Lawn Care, Sod Installation, Irrigation &
-        Landscape Design
-      </h1>
-
       <header className="relative min-h-screen w-full overflow-hidden">
         <HeroVideoBackground />
 
@@ -83,8 +110,7 @@ export default function Page() {
                   Windsor Landscaping & Irrigation Experts
                 </span>
 
-                {/* ❗ خلي هذا H1 بدل H2 */}
-                <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl unbounded-font">
+                <h1 className="unbounded-font mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                   Windsor&apos;s Premier Landscaping & Irrigation
                 </h1>
 
@@ -102,10 +128,21 @@ export default function Page() {
         </div>
       </header>
 
-      <InteractiveLandscapeSection />
-      <ServicesSection />
-      <OurWorkSection />
-      <ContactBanner />
+      <AnimatedSection>
+        <InteractiveLandscapeSection />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <ServicesSection />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <OurWorkSection />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <ContactBanner />
+      </AnimatedSection>
     </main>
   );
 }
