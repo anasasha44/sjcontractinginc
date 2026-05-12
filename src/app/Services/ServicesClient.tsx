@@ -78,7 +78,7 @@ export default function ServicesClient() {
                   className="absolute -left-6 top-0.5"
                   aria-hidden="true"
                 />
-                <Link href="/Services">Services</Link>
+                <Link href="/services">Services</Link>
               </li>
             </ul>
           </div>
@@ -167,7 +167,7 @@ export default function ServicesClient() {
                     </p>
 
                     <Link
-                      href={`/Services/${item.slug}`}
+                      href={`/services/${item.slug}`}
                       className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2.5 font-semibold text-[#2f4633] transition duration-300 hover:bg-[#e8f0e3] hover:text-[#3f6b4b]"
                     >
                       Learn More
@@ -254,7 +254,7 @@ export default function ServicesClient() {
 
             <div>
               <Link
-                href="/Contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Get a Free Quote

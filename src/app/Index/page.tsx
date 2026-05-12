@@ -27,7 +27,7 @@ const OurWorkSection = dynamic(
 );
 
 const ContactBanner = dynamic(
-  () => import("../Component/sections/ContactBanner"),
+  () => import("../Component/sections/contactBanner"),
   {
     loading: () => <SectionLoader />,
   }

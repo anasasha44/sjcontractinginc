@@ -2,43 +2,53 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://www.aquavior.com";
 
+// Main static routes
+const routes = [
+  {
+    path: "",
+    priority: 1,
+    changeFrequency: "daily" as const,
+  },
+
+  {
+    path: "/about",
+    priority: 0.9,
+    changeFrequency: "monthly" as const,
+  },
+
+  {
+    path: "/services",
+    priority: 0.9,
+    changeFrequency: "weekly" as const,
+  },
+
+  {
+    path: "/contact",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+
+  {
+    path: "/gallery",
+    priority: 0.8,
+    changeFrequency: "weekly" as const,
+  },
+
+  {
+    path: "/areas-we-serve",
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${SITE_URL}/About`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/Services`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/Contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/Gallery`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/areas-we-serve`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  ];
+  return routes.map((route) => ({
+    url: `${SITE_URL}${route.path}`,
+
+    lastModified: new Date(),
+
+    changeFrequency: route.changeFrequency,
+
+    priority: route.priority,
+  }));
 }

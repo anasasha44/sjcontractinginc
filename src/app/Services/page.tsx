@@ -27,14 +27,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/Services",
+    canonical: "https://www.aquavior.com/services",
   },
 
   openGraph: {
     title: "Landscaping Services Windsor Ontario | AQUAVIOR",
     description:
       "Professional lawn care, sod installation, irrigation systems, interlock, garden design, grading, drainage and snow removal services in Windsor Ontario and Essex County.",
-    url: "https://www.aquavior.com/Services",
+    url: "https://www.aquavior.com/services",
     siteName: "AQUAVIOR Landscaping & Irrigation",
     images: [
       {

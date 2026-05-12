@@ -214,14 +214,14 @@ export default function AboutClient() {
  
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/Contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.24)] transition duration-300 hover:scale-[1.03]"
                 >
                   Get a Free Quote
                 </Link>
  
                 <Link
-                  href="/Services"
+                  href="/services"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
                 >
                   Explore Services
@@ -670,13 +670,13 @@ export default function AboutClient() {
  
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/Contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Get a Free Quote
               </Link>
               <Link
-                href="/Services"
+                href="/services"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
                 View Our Services

@@ -102,7 +102,7 @@ export default function IntroSection() {
             className="mt-8"
           >
             <Link
-              href="/Contact"
+              href="/contact"
               className="
                 group relative inline-flex items-center justify-center overflow-hidden
                 rounded-full border border-[#d8e6d2]/20

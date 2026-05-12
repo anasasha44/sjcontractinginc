@@ -37,7 +37,7 @@
     "**/*.mts",
     "src/app/Component/ui/HeroBackgroundPages.jsx",
     "src/app/areas-we-serve/page.tsx",
-    "src/app/Services/[slug]/page.tsx"
+    "src/app/services/[slug]/page.tsx"
   ],
   "exclude": [
     "node_modules"

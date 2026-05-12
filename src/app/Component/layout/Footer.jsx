@@ -84,17 +84,17 @@ const handleSubmit = async (e) => {
 
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <CustomLink href="/About" className="footer-link">
+                <CustomLink href="/about" className="footer-link">
                   About Us
                 </CustomLink>
               </li>
               <li>
-                <CustomLink href="/Services" className="footer-link">
+                <CustomLink href="/services" className="footer-link">
                   Our Services
                 </CustomLink>
               </li>
               <li>
-                <CustomLink href="/Gallery" className="footer-link">
+                <CustomLink href="/gallery" className="footer-link">
                   Projects
                 </CustomLink>
               </li>
@@ -108,7 +108,7 @@ const handleSubmit = async (e) => {
 
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <CustomLink href="/Contact" className="footer-link">
+                <CustomLink href="/contact" className="footer-link">
                   Contact Us
                 </CustomLink>
               </li>

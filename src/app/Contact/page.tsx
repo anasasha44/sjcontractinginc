@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/Contact",
+    canonical: "https://www.aquavior.com/contact",
   },
 
   openGraph: {
     title: "Contact AQUAVIOR | Free Landscaping Quote Windsor Ontario",
     description:
       "Get a free quote from AQUAVIOR for landscaping, irrigation, lawn care, sod, interlock and snow removal in Windsor Ontario and Essex County.",
-    url: "https://www.aquavior.com/Contact",
+    url: "https://www.aquavior.com/contact",
     siteName: "AQUAVIOR Landscaping & Irrigation",
     images: [
       {

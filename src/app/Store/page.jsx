@@ -121,7 +121,7 @@ export default function StorePage() {
               </Link>
 
               <Link
-                href="/Contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
               >
                 Contact Us

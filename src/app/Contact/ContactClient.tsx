@@ -390,7 +390,7 @@ export default function ContactClient() {
                 </a>
 
                 <Link
-                  href="/Services"
+                  href="/services"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
                 >
                   Explore Services
@@ -870,7 +870,7 @@ export default function ContactClient() {
                 Get a Free Quote
               </a>
               <Link
-                href="/About"
+                href="/about"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
                 Learn More About Us
