@@ -70,7 +70,7 @@ export default function ServiceClient({ service }) {
 
               <li className="text-sm relative flex items-center gap-2">
                 <FaAngleRight className="text-xs text-[#dbe7d1]" aria-hidden="true" />
-                <Link href="/services" className="transition hover:text-[#dbe7d1]">
+                <Link href="/Services" className="transition hover:text-[#dbe7d1]">
                   Services
                 </Link>
               </li>
@@ -146,7 +146,7 @@ export default function ServiceClient({ service }) {
 
             <div className="mt-8">
               <Link
-                href="/contact"
+                href="/Contact"
                 className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Request This Service
@@ -196,7 +196,7 @@ export default function ServiceClient({ service }) {
 
               <div className="mt-5">
                 <Link
-                  href="/contact"
+                  href="/Contact"
                   className="inline-flex items-center gap-2 rounded-full border border-[#d8e6d2]/30 bg-[#3f6b4b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#355b40]"
                 >
                   Contact Us
@@ -332,7 +332,7 @@ export default function ServiceClient({ service }) {
 
             <div>
               <Link
-                href="/contact"
+                href="/Contact"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(34,60,40,0.22)] transition duration-300 hover:scale-[1.03]"
               >
                 Request This Service

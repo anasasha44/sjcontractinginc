@@ -97,7 +97,7 @@ export default function InteractiveLandscapeSection() {
                 </p>
 
                 <Link
-                  href="/contact"
+                  href="/Contact"
                   className="mt-5 inline-block rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3 font-semibold text-white shadow-md transition hover:scale-[1.02]"
                 >
                   Get This Service

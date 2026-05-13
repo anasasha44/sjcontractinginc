@@ -11,7 +11,7 @@ const routes = [
   },
 
   {
-    path: "/about",
+    path: "/About",
     priority: 0.9,
     changeFrequency: "monthly" as const,
   },
@@ -35,7 +35,7 @@ const routes = [
   },
 
   {
-    path: "/Areas-we-serve",
+    path: "/areas-we-serve",
     priority: 0.8,
     changeFrequency: "monthly" as const,
   },

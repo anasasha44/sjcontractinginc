@@ -19,14 +19,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/about",
+    canonical: "https://www.aquavior.com/About",
   },
 
   openGraph: {
     title: "About AQUAVIOR Landscaping & Irrigation | Windsor Ontario",
     description:
       "AQUAVIOR is a trusted Windsor landscaping and irrigation company serving Windsor, LaSalle, Tecumseh, Amherstburg and Essex County Ontario.",
-    url: "https://www.aquavior.com/about",
+    url: "https://www.aquavior.com/About",
     siteName: "AQUAVIOR Landscaping & Irrigation",
     images: [
       {

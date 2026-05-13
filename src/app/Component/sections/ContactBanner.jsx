@@ -79,7 +79,7 @@ export default function ContactBanner() {
             className="mt-8"
           >
             <Link
-              href="/about"
+              href="/About"
               aria-label="Learn More About Aquanovus"
               className="
                 group relative inline-flex items-center justify-center overflow-hidden

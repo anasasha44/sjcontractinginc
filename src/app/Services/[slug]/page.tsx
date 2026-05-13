@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-      canonical: `${SITE_URL}/services/${service.slug}`,
+      canonical: `${SITE_URL}/Services/${service.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/services/${service.slug}`,
+      url: `${SITE_URL}/Services/${service.slug}`,
       siteName: "AQUAVIOR Landscaping & Irrigation",
       images: [
         {

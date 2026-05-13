@@ -114,7 +114,7 @@ export default function ServicesSection() {
 
                   <div className="mt-5">
                     <Link
-                      href={`/services/${item.id}`}
+                      href={`/Services/${item.id}`}
                       className="
                         inline-flex items-center justify-center
                         rounded-full

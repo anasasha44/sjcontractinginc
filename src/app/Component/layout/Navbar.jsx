@@ -9,11 +9,11 @@ import { usePageLoader } from "../ui/PageLoader";
 
 const navLinks = [
   { href: "/", label: "HOME" },
-  { href: "/services", label: "SERVICES" },
-  { href: "/gallery", label: "GALLERY" },
+  { href: "/Services", label: "SERVICES" },
+  { href: "/Gallery", label: "GALLERY" },
   { href: "/areas-we-serve", label: "AREAS WE SERVE" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/contact", label: "CONTACT" },
+  { href: "/About", label: "ABOUT" },
+  { href: "/Contact", label: "CONTACT" },
   { href: "/Store", label: "STORE" },
 ];
 
@@ -61,11 +61,11 @@ export default function Navbar() {
               scrolled ? "text-[#2f4633]" : "text-white"
             }`}
           >
-            <CustomLink href="/about" className="transition hover:text-[#6f8f4e]">
+            <CustomLink href="/About" className="transition hover:text-[#6f8f4e]">
               ABOUT US
             </CustomLink>
 
-            <CustomLink href="/contact" className="transition hover:text-[#6f8f4e]">
+            <CustomLink href="/Contact" className="transition hover:text-[#6f8f4e]">
               CONTACT
             </CustomLink>
           </div>
@@ -200,7 +200,7 @@ export default function Navbar() {
 
           <li className="pt-2" onClick={() => setOpen(false)}>
             <CustomLink
-              href="/about"
+              href="/About"
               className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-5 py-2.5 text-white shadow-[0_10px_25px_rgba(34,60,40,0.25)] transition hover:scale-[1.03]"
             >
               FREE ESTIMATE
