@@ -22,14 +22,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/Gallery",
+    canonical: "https://www.aquavior.com/gallery",
   },
 
   openGraph: {
     title: "Landscaping Portfolio Windsor Ontario | AQUAVIOR Gallery",
     description:
       "View real landscaping, irrigation, sod, interlock, garden design and drainage projects completed by AQUAVIOR across Windsor and Essex County Ontario.",
-    url: "https://www.aquavior.com/Gallery",
+    url: "https://www.aquavior.com/gallery",
     siteName: "AQUAVIOR Landscaping & Irrigation",
     images: [
       {

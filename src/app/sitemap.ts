@@ -29,7 +29,7 @@ const routes = [
   },
 
   {
-    path: "/Gallery",
+    path: "/gallery",
     priority: 0.8,
     changeFrequency: "weekly" as const,
   },

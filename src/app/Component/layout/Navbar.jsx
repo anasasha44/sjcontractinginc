@@ -10,7 +10,7 @@ import { usePageLoader } from "../ui/PageLoader";
 const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/Services", label: "SERVICES" },
-  { href: "/Gallery", label: "GALLERY" },
+  { href: "/gallery", label: "GALLERY" },
   { href: "/areas-we-serve", label: "AREAS WE SERVE" },
   { href: "/About", label: "ABOUT" },
   { href: "/Contact", label: "CONTACT" },
