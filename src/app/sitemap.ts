@@ -17,25 +17,25 @@ const routes = [
   },
 
   {
-    path: "/services",
+    path: "/Services",
     priority: 0.9,
     changeFrequency: "weekly" as const,
   },
 
   {
-    path: "/contact",
+    path: "/Contact",
     priority: 0.8,
     changeFrequency: "monthly" as const,
   },
 
   {
-    path: "/gallery",
+    path: "/Gallery",
     priority: 0.8,
     changeFrequency: "weekly" as const,
   },
 
   {
-    path: "/areas-we-serve",
+    path: "/Areas-we-serve",
     priority: 0.8,
     changeFrequency: "monthly" as const,
   },
