@@ -120,7 +120,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: SITE_URL,
+   canonical: `${SITE_URL}/`,
   },
 };
 
@@ -142,7 +142,12 @@ export default function RootLayout({
       "AQUAVIOR Landscaping & Irrigation provides professional landscaping, irrigation systems, lawn care, sod installation, garden design, interlocking and snow removal services in Windsor, LaSalle, Tecumseh and Essex County Ontario.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Windsor, Ontario",
+     address: {
+  "@type": "PostalAddress",
+  addressLocality: "Windsor",
+  addressRegion: "ON",
+  addressCountry: "CA",
+},
       addressLocality: "Windsor",
       addressRegion: "ON",
       addressCountry: "CA",
