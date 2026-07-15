@@ -17,7 +17,7 @@ const routes = [
   },
 
   {
-    path: "/Services",
+    path: "/service",
     priority: 0.9,
     changeFrequency: "weekly" as const,
   },

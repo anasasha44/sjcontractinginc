@@ -48,7 +48,7 @@ export default function SplashScreen({ isVisible = true }) {
                 className="mb-6"
               >
                 <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#dbe7d1] backdrop-blur-md">
-                  Landscaping 
+                  Contracting - Landscaping - Mobal Mechanical 
                 </span>
               </motion.div>
 
@@ -59,7 +59,7 @@ export default function SplashScreen({ isVisible = true }) {
                 transition={{ duration: 1, delay: 0.25, ease: "easeOut" }}
                 className="unbounded-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white"
               >
-                AQUANOVUS
+                SJ Contracting Inc
               </motion.h1>
 
               {/* animated divider */}
@@ -91,8 +91,7 @@ export default function SplashScreen({ isVisible = true }) {
                 transition={{ duration: 0.8, delay: 0.9 }}
                 className="mx-auto mt-6 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-white/78"
               >
-                Crafting refined outdoor spaces with precision, function, and a
-                natural premium finish.
+               Crafting refined outdoor spaces with precision, functionality, and a premium natural finish—delivering excellence across contracting, landscaping, and mobile mechanical services.
               </motion.p>
 
               {/* loading bars */}

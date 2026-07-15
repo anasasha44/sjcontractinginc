@@ -390,7 +390,7 @@ export default function ContactClient() {
                 </a>
 
                 <Link
-                  href="/Services"
+                  href="/service"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15"
                 >
                   Explore Services

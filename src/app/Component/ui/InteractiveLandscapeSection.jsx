@@ -37,76 +37,87 @@ export default function InteractiveLandscapeSection() {
 
   return (
     <section className="bg-[#f7f5ef] py-24 px-[6%]">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
-        {/* LEFT OPTIONS */}
-        <div className="space-y-4">
-          <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-            Choose Your Project
-          </span>
+  <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
 
-          <h2 className="text-3xl font-bold text-[#2f4633] md:text-4xl">
-            Design Your Outdoor Vision
-          </h2>
+    {/* LEFT OPTIONS */}
+    <div className="space-y-4 text-center">
 
-          <div className="mt-6 space-y-3">
-            {options.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setActive(item)}
-                className={`w-full rounded-2xl border px-5 py-4 text-left transition ${active.id === item.id
-                    ? "border-[#3f6b4b] bg-[#3f6b4b] text-white"
-                    : "border-[#dfe7d7] bg-white text-[#2f4633] hover:bg-[#edf3e7]"
-                  }`}
-              >
-                {item.title}
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* NEW CLEAN HEADER */}
+      <span className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
+        Landscaping Services
+      </span>
 
-        {/* RIGHT CONTENT */}
-        <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 15 }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] min-h-[500px]"
-            >
-              <div className="relative h-[320px] w-full md:h-[420px]">
-                <Image
-                  src={active.image}
-                  alt={active.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+      <h2 className="text-3xl font-bold text-[#2f4633] md:text-4xl">
+        Complete Outdoor Solutions for Your Property
+      </h2>
 
-              <div className="p-6 md:p-8">
-                <h3 className="text-2xl font-bold text-[#2f4633]">
-                  {active.title}
-                </h3>
+      <p className="text-[#5f6f60] text-sm md:text-base leading-relaxed">
+        Explore our landscaping services designed to improve functionality,
+        drainage, and outdoor aesthetics across residential and commercial properties.
+      </p>
 
-                <p className="mt-3 leading-relaxed text-[#5f6f60]">
-                  {active.desc}
-                </p>
-
-                <Link
-                  href="/Contact"
-                  className="mt-5 inline-block rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3 font-semibold text-white shadow-md transition hover:scale-[1.02]"
-                >
-                  Get This Service
-                </Link>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* OPTIONS */}
+      <div className="mt-6 space-y-3">
+        {options.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setActive(item)}
+            className={`w-full rounded-2xl border px-5 py-4 text-left transition ${
+              active.id === item.id
+                ? "border-[#3f6b4b] bg-[#3f6b4b] text-white"
+                : "border-[#dfe7d7] bg-white text-[#2f4633] hover:bg-[#edf3e7]"
+            }`}
+          >
+            {item.title}
+          </button>
+        ))}
       </div>
-    </section>
+    </div>
+
+    {/* RIGHT CONTENT */}
+    <div className="relative">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 15 }}
+          transition={{ duration: 0.4 }}
+          className="overflow-hidden rounded-[30px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] min-h-[500px]"
+        >
+          <div className="relative h-[320px] w-full md:h-[420px]">
+            <Image
+              src={active.image}
+              alt={active.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+
+          <div className="p-6 md:p-8">
+            <h3 className="text-2xl font-bold text-[#2f4633]">
+              {active.title}
+            </h3>
+
+            <p className="mt-3 leading-relaxed text-[#5f6f60]">
+              {active.desc}
+            </p>
+
+            <Link
+              href="/Contact"
+              className="mt-5 inline-block rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-3 font-semibold text-white shadow-md transition hover:scale-[1.02]"
+            >
+              Get This Service
+            </Link>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+
+  </div>
+</section>
   );
 }

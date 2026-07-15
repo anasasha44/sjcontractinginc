@@ -1,146 +1,168 @@
 "use client";
 
-// components/ServicesSection.jsx
-import Link from "next/link";
 import { motion } from "framer-motion";
-import servicesData from "../data/servicesData";
-import Image from "next/image";
+import { FaTools, FaLeaf, FaTruck } from "react-icons/fa";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
+const services = [
+  {
+    id: "contracting",
+    title: "Contracting",
+    desc: "Full-scale construction and contracting solutions built with precision, reliability, and long-term durability.",
+    icon: FaTools,
+    color: "#3f6b4b",
+  },
+  {
+    id: "landscaping",
+    title: "Landscaping",
+    desc: "Modern outdoor landscaping solutions that transform spaces into functional and visually stunning environments.",
+    icon: FaLeaf,
+    color: "#5c7f52",
+  },
+  {
+    id: "mechanical",
+    title: "Mobile Mechanical",
+    desc: "On-site mechanical services delivered fast, efficiently, and wherever you need them.",
+    icon: FaTruck,
+    color: "#6f8f4e",
+  },
+];
+
+const container = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 35 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: "easeOut" },
-  },
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
 export default function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f5ef] py-24 px-[6%]">
-      {/* soft background glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#88a97b]/10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-[#6f8f4e]/10 blur-3xl" />
+    <section className="relative bg-[#f7f5ef] py-28 px-[6%] overflow-hidden">
+
+      {/* background */}
+      <div className="absolute top-0 left-0 h-72 w-72 bg-[#88a97b]/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 h-72 w-72 bg-[#6f8f4e]/10 blur-3xl rounded-full" />
 
       <motion.div
-        className="max-w-7xl mx-auto relative z-10"
-        variants={sectionVariants}
+        variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
+        className="max-w-6xl mx-auto relative z-10"
       >
-        {/* heading */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+
+        {/* HEADER */}
+        <div className="text-center mb-20">
           <motion.span
-            variants={cardVariants}
-            className="inline-block rounded-full bg-[#e3ecdc] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]"
+            variants={item}
+            className="inline-block text-xs uppercase tracking-[0.25em] bg-[#e3ecdc] text-[#58704e] px-4 py-1.5 rounded-full"
           >
-            Our Services
+            What We Do
           </motion.span>
 
           <motion.h2
-            variants={cardVariants}
-            className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#2f4633]"
+            variants={item}
+            className="mt-5 text-3xl md:text-5xl font-bold text-[#2f4633]"
           >
-            Expert Outdoor Solutions
+            Three Core Services
           </motion.h2>
 
           <motion.p
-            variants={cardVariants}
-            className="mt-4 text-base md:text-lg leading-relaxed text-[#5f6f60]"
+            variants={item}
+            className="mt-4 text-[#5f6f60] max-w-2xl mx-auto"
           >
-            From grading and drainage to complete landscape improvements, we
-            deliver functional, elegant, and long-lasting outdoor solutions
-            tailored to your property.
+            We focus on delivering three specialized services with a clear, direct approach.
           </motion.p>
         </div>
 
-        {/* cards */}
-        <motion.div
-          variants={sectionVariants}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10"
-        >
-          {servicesData.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-              className="group"
-            >
-              <div className="relative w-full h-90 overflow-hidden rounded-[28px] border border-[#dfe7d7] bg-white shadow-[0_15px_40px_rgba(32,45,35,0.10)]">
-                {/* image */}
-                 <Image
-    src={item.mainImage}
-    alt={item.title}
-    fill
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    className="object-cover transition duration-700 group-hover:scale-110"
-  />
+        {/* ================= DESKTOP (TIMELINE) ================= */}
+        <div className="relative hidden md:block">
 
-                {/* overlays */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#142018]/85 via-[#1c2b20]/35 to-transparent" />
-                <div className="absolute inset-0 bg-[#0f1a12]/10 group-hover:bg-[#0f1a12]/20 transition duration-500" />
+          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-[#dfe7d7] -translate-x-1/2" />
 
-                {/* subtle top badge line */}
-                <div className="absolute left-5 top-5">
-                  <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
-                    Premium Service
-                  </span>
-                </div>
+          {services.map((s, index) => {
+            const Icon = s.icon;
+            const isLeft = index % 2 === 0;
 
-                {/* content */}
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <h3 className="text-2xl font-bold leading-snug">
-                    {item.title}
+            return (
+              <motion.div
+                key={s.id}
+                variants={item}
+                className={`relative flex items-center mb-20 ${
+                  isLeft ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div className="w-1/2 p-10 bg-white border border-[#dfe7d7] shadow-lg rounded-2xl relative">
+
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white mb-4"
+                    style={{ backgroundColor: s.color }}
+                  >
+                    <Icon />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-[#2f4633]">
+                    {s.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-white/80 line-clamp-3">
-                    {item.desc}
+                  <p className="mt-3 text-[#5f6f60]">
+                    {s.desc}
                   </p>
 
-                  <div className="mt-5">
-                    <Link
-                      href={`/Services/${item.id}`}
-                      className="
-                        inline-flex items-center justify-center
-                        rounded-full
-                        border border-white/15
-                        bg-white/90
-                        px-5 py-2.5
-                        text-sm font-semibold text-[#2f4633]
-                        shadow-sm
-                        transition duration-300
-                        hover:bg-[#e8f0e3]
-                        hover:text-[#3f6b4b]
-                      "
-                    >
-                      Learn More
-                    </Link>
+                  <div className="absolute top-4 right-4 text-xs font-bold text-[#88a97b]">
+                    0{index + 1}
                   </div>
                 </div>
 
-                {/* hover glow */}
-                <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                  <div className="absolute -bottom-10 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full bg-[#88a97b]/20 blur-2xl" />
+                {/* center dot */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-[#88a97b] rounded-full border-4 border-[#f7f5ef]" />
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* ================= MOBILE (CARDS) ================= */}
+        <div className="md:hidden grid gap-6">
+          {services.map((s, index) => {
+            const Icon = s.icon;
+
+            return (
+              <motion.div
+                key={s.id}
+                variants={item}
+                className="bg-white border border-[#dfe7d7] rounded-2xl p-6 shadow-md"
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white"
+                    style={{ backgroundColor: s.color }}
+                  >
+                    <Icon />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-[#2f4633]">
+                      {s.title}
+                    </h3>
+                    <p className="text-xs text-[#88a97b] font-bold">
+                      0{index + 1}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
+                <p className="mt-4 text-[#5f6f60] text-sm leading-relaxed">
+                  {s.desc}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
       </motion.div>
     </section>
   );

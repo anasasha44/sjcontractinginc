@@ -9,7 +9,7 @@ import { usePageLoader } from "../ui/PageLoader";
 
 const navLinks = [
   { href: "/", label: "HOME" },
-  { href: "/Services", label: "SERVICES" },
+  { href: "/service", label: "SERVICES" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/areas-we-serve", label: "AREAS WE SERVE" },
   { href: "/About", label: "ABOUT" },
@@ -71,31 +71,25 @@ export default function Navbar() {
           </div>
 
           {/* LOGO */}
-          <div className="flex justify-center col-start-2">
-            <CustomLink href="/">
-              <div
-                className={`flex flex-col items-center justify-center leading-none transition-all duration-500 ${
-                  scrolled ? "scale-95" : "scale-100"
-                }`}
-              >
-                <span
-                  className={`unbounded-font font-bold tracking-[0.1em] transition-all duration-500 ${
-                    scrolled ? "text-2xl text-[#2f4633]" : "text-2xl text-white"
-                  }`}
-                >
-                  AQUAVIOR
-                </span>
+         <div className="flex justify-center col-start-2 px-2">
+  <CustomLink href="/">
+    <div
+      className={`flex flex-col items-center justify-center leading-none transition-all duration-500 text-center ${
+        scrolled ? "scale-95" : "scale-100"
+      }`}
+    >
+      <span
+        className={`unbounded-font font-bold tracking-[0.08em] transition-all duration-500
+        text-base sm:text-lg md:text-xl lg:text-2xl
+        ${scrolled ? "text-[#2f4633]" : "text-white"}`}
+      >
+        SJ Contracting Inc
+      </span>
 
-                <span
-                  className={`mt-2 text-[10px] tracking-[0.38em] uppercase transition-all text-center duration-500 ${
-                    scrolled ? "text-[#6f8f4e]" : "text-[#dbe7d1]"
-                  }`}
-                >
-                  Landscaping • irrigation system
-                </span>
-              </div>
-            </CustomLink>
-          </div>
+    
+    </div>
+  </CustomLink>
+</div>
 
           {/* RIGHT */}
           <div

@@ -1,4 +1,5 @@
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 import ClientLayout from "./ClientLayout";
 import Navbar from "../app/Component/layout/Navbar";
 import Footer from "../app/Component/layout/Footer";
@@ -6,6 +7,7 @@ import FloatingContactButton from "../app/Component/ui/FloatingContactButton";
 import PrivacyConsentBar from "./Component/ui/PrivacyConsentBar";
 import { Unbounded, Sora } from "next/font/google";
 import type { Metadata, Viewport } from "next";
+
 
 const SITE_URL = "https://www.aquavior.com";
 const BRAND_NAME = "AQUAVIOR Landscaping & Irrigation";

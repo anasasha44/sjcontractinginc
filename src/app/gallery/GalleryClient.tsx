@@ -569,7 +569,7 @@ export default function GalleryClient() {
                 Get a Free Quote
               </Link>
               <Link
-                href="/Services"
+                href="/service"
                 className="inline-flex items-center gap-2 rounded-full border border-[#d7dfd1] bg-white px-7 py-3.5 text-sm font-semibold text-[#2f4633] transition hover:bg-[#edf3e7]"
               >
                 View Services

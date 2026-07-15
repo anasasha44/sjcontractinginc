@@ -4,7 +4,19 @@ import dynamic from "next/dynamic";
 import HeroVideoBackground from "../Component/ui/HeroVideoBackground";
 import ModalScheduleService from "../Component/ui/ModalScheduleService";
 import AnimatedSection from "../Component/ui/AnimatedSection";
+const ContractingSection = dynamic(
+  () => import("../Component/ui/ContractingSection"),
+  {
+    loading: () => <SectionLoader />,
 
+  }
+);
+const MobileMechanicalSection = dynamic(
+  () => import("../Component/ui/MobileMechanicalSection"),
+  {
+    loading: () => <SectionLoader />,
+  }
+);
 const InteractiveLandscapeSection = dynamic(
   () => import("../Component/ui/InteractiveLandscapeSection"),
   {
@@ -19,12 +31,12 @@ const ServicesSection = dynamic(
   }
 );
 
-const OurWorkSection = dynamic(
-  () => import("../Component/sections/OurWorkSection"),
-  {
-    loading: () => <SectionLoader />,
-  }
-);
+// const OurWorkSection = dynamic(
+//   () => import("../Component/sections/OurWorkSection"),
+//   {
+//     loading: () => <SectionLoader />,
+//   }
+// );
 
 const ContactBanner = dynamic(
   () => import("../Component/sections/ContactBanner"),
@@ -42,42 +54,45 @@ function SectionLoader() {
 }
 
 export const metadata: Metadata = {
-  title: "Landscaping Windsor Ontario | AQUAVIOR Lawn Care, Sod & Irrigation",
+  title:
+    "SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services in Canada",
 
   description:
-    "AQUAVIOR Landscaping & Irrigation provides professional landscaping services in Windsor Ontario. Lawn care, sod installation, irrigation systems, interlock, garden design and snow removal across Windsor, LaSalle, Tecumseh and Essex County.",
+    "SJ Contracting Inc provides professional contracting, landscaping, and mobile mechanical services across Canada. High-quality residential and commercial work including outdoor construction, maintenance, landscaping, and on-site mechanical support.",
 
   keywords: [
-    "landscaping Windsor Ontario",
-    "lawn care Windsor ON",
-    "sod installation Windsor",
-    "irrigation system Windsor Ontario",
-    "sprinkler system Windsor",
-    "interlocking Windsor Ontario",
-    "garden design Windsor",
-    "snow removal Windsor",
-    "landscaper near me Windsor ON",
+    "contracting services Canada",
+    "landscaping services Canada",
+    "mobile mechanical services Canada",
+    "construction contractor Ontario",
+    "landscaper Windsor Ontario",
+    "property maintenance Canada",
+    "outdoor construction services",
+    "residential contracting Canada",
+    "commercial contractor Ontario",
+    "mechanical repair mobile service Canada",
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/",
+    canonical: "https://sjcontractinginc.com/",
   },
 
   openGraph: {
-    title: "AQUAVIOR Landscaping Windsor Ontario | Lawn Care, Sod & Irrigation",
+    title:
+      "SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services",
 
     description:
-      "Professional landscaping, irrigation systems, lawn care, sod installation, interlock and snow removal services in Windsor Ontario and Essex County.",
+      "Professional contracting, landscaping, and mobile mechanical services across Canada. Reliable residential and commercial solutions.",
 
-    url: "https://www.aquavior.com/",
-    siteName: "AQUAVIOR Landscaping & Irrigation",
+    url: "https://sjcontractinginc.com/",
+    siteName: "SJ Contracting Inc",
 
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AQUAVIOR Landscaping services in Windsor Ontario",
+        alt: "SJ Contracting Inc Services Canada",
       },
     ],
 
@@ -87,9 +102,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "AQUAVIOR Landscaping Windsor Ontario",
+    title: "SJ Contracting Inc Canada",
     description:
-      "Top landscaping and irrigation services in Windsor Ontario. Free quotes available.",
+      "Contracting, landscaping & mobile mechanical services across Canada.",
     images: ["/og-image.jpg"],
   },
 };
@@ -100,45 +115,82 @@ export default function Page() {
       <header className="relative min-h-screen w-full overflow-hidden">
         <HeroVideoBackground />
 
-        <div className="absolute inset-0 z-10 bg-black/20" />
+        <div className="absolute inset-0 z-10 bg-black/30" />
 
-        <div className="relative z-20 flex min-h-screen items-center justify-center px-4 pt-28 pb-10 sm:px-6 md:pt-32 lg:px-8">
+        <div className="relative z-20 flex min-h-screen items-center justify-center px-4 pt-24 pb-10 sm:px-6 md:pt-28 lg:px-8">
           <div className="mx-auto w-full max-w-7xl">
-            <div className="grid grid-cols-1 items-center gap-12 lg:gap-16">
-              <div className="text-center lg:pt-20">
-                <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 backdrop-blur-md sm:text-sm">
-                  Windsor Landscaping & Irrigation Experts
-                </span>
 
-                <h1 className="unbounded-font mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-                  Windsor&apos;s Premier Landscaping & Irrigation
-                </h1>
+            <div className="text-center lg:pt-20">
 
-                <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
-                  Lawn care, sod installation, irrigation systems, garden design
-                  and snow removal across Windsor, LaSalle & Essex County
-                </p>
+               {/* Badge */}
+      <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur-md">
+        Contracting • Landscaping • Mobile Mechanical
+      </span>
 
-                <div className="mt-8 flex items-center justify-center">
-                  <ModalScheduleService />
-                </div>
+      {/* Heading */}
+      <h1 className="unbounded-font mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        Complete Property Solutions
+        <span className="mt-2 block text-[#D6A354]">
+          Built Around Your Needs
+        </span>
+      </h1>
+
+      {/* Description */}
+      <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/85 sm:text-lg">
+        From professional contracting and custom landscaping to on-site mobile
+        mechanical services, SJ Contracting Inc delivers reliable solutions for
+        residential and commercial projects across Canada.
+      </p>
+
+      {/* Services */}
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
+
+        <div className="rounded-full border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md">
+          <span className="font-semibold text-white">
+            🏗 Contracting
+          </span>
+        </div>
+
+        <div className="rounded-full border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md">
+          <span className="font-semibold text-white">
+            🌿 Landscaping
+          </span>
+        </div>
+
+        <div className="rounded-full border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md">
+          <span className="font-semibold text-white">
+            🔧 Mobile Mechanical
+          </span>
+        </div>
+
+      </div>
+
+              {/* CTA */}
+              <div className="mt-7 flex justify-center">
+                <ModalScheduleService />
               </div>
+
             </div>
           </div>
         </div>
       </header>
-
+ <AnimatedSection>
+        <ServicesSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <ContractingSection />
+      </AnimatedSection>
       <AnimatedSection>
         <InteractiveLandscapeSection />
       </AnimatedSection>
-
       <AnimatedSection>
-        <ServicesSection />
+        <MobileMechanicalSection />
       </AnimatedSection>
+     
 
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <OurWorkSection />
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       <AnimatedSection>
         <ContactBanner />

@@ -54,11 +54,13 @@ const handleSubmit = async (e) => {
         >
           <div>
             <h2 className="unbounded-font text-3xl font-bold tracking-[0.12em] text-white sm:text-4xl">
-              AQUAVIOR
+              SJ CONTRACTING INC
+
             </h2>
 
             <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#a9c29a]">
-              Landscaping • irrigation system
+              Contracting • Landscaping • Mobile Mechanical
+
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -89,7 +91,7 @@ const handleSubmit = async (e) => {
                 </CustomLink>
               </li>
               <li>
-                <CustomLink href="/Services" className="footer-link">
+                <CustomLink href="/service" className="footer-link">
                   Our Services
                 </CustomLink>
               </li>
@@ -135,8 +137,7 @@ const handleSubmit = async (e) => {
               </span>
 
               <h3 className="mt-4 max-w-[16ch] text-2xl font-semibold leading-tight tracking-tight text-white sm:text-[1.5rem]">
-                Stay Updated With AQUAVIOR
-              </h3>
+Stay Connected With SJ Contracting Inc              </h3>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-3">
                 <div className="group flex items-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 transition duration-300 focus-within:border-[#a9c29a]/50 focus-within:bg-white/[0.07]">
@@ -167,7 +168,8 @@ const handleSubmit = async (e) => {
         </motion.div>
 
         <div className="pt-6 text-center text-sm text-white/50">
-          <p>© {currentYear} Aquanovus. All rights reserved.</p>
+          <p>© {currentYear} SJ CONTRACTING INC
+. All rights reserved.</p>
         </div>
       </div>
     </footer>
