@@ -293,8 +293,8 @@ const localBusinessSchema = {
   },
 
   sameAs: [
-    "https://www.facebook.com/",
-    "https://www.instagram.com/",
+    "https://www.facebook.com/share/1Ckc21V4Ci/",
+    "https://www.instagram.com/sj_contractinginc?igsh=cWZ5M3VzcDN5MjJh",
   ],
 };
 

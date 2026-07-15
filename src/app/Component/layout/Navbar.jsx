@@ -98,14 +98,14 @@ export default function Navbar() {
             }`}
           >
             <CustomLink
-              href="https://www.facebook.com/share/18mAzEcLgJ/"
+              href="https://www.facebook.com/share/1Ckc21V4Ci/"
               className="transition hover:text-[#6f8f4e]"
             >
               <FaFacebookF />
             </CustomLink>
 
             <CustomLink
-              href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh"
+              href="https://www.instagram.com/sj_contractinginc?igsh=cWZ5M3VzcDN5MjJh"
               className="transition hover:text-[#6f8f4e]"
             >
               <FaInstagram />
@@ -177,14 +177,14 @@ export default function Navbar() {
           <li>
             <div className="flex items-center gap-4 pt-2 text-xl">
               <CustomLink
-                href="https://www.facebook.com/share/18mAzEcLgJ/"
+                href="https://www.facebook.com/share/1Ckc21V4Ci/"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-current/20 transition hover:bg-[#6f8f4e] hover:text-white"
               >
                 <FaFacebookF />
               </CustomLink>
 
               <CustomLink
-                href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh"
+                href="https://www.instagram.com/sj_contractinginc?igsh=cWZ5M3VzcDN5MjJh"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-current/20 transition hover:bg-[#6f8f4e] hover:text-white"
               >
                 <FaInstagram />

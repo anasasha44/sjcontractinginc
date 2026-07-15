@@ -28,13 +28,13 @@ const SOCIALS = [
     id: "facebook",
     icon: FaFacebookF,
     label: "Facebook",
-    href: "https://www.facebook.com/share/18mAzEcLgJ/",
+    href: "https://www.facebook.com/share/1Ckc21V4Ci/",
   },
   {
     id: "instagram",
     icon: FaInstagram,
     label: "Instagram",
-    href: "https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh",
+    href: "https://www.instagram.com/sj_contractinginc?igsh=cWZ5M3VzcDN5MjJh",
   },
 ];
 

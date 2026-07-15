@@ -65,13 +65,13 @@ const handleSubmit = async (e) => {
 
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh"
+                href="https://www.instagram.com/sj_contractinginc?igsh=cWZ5M3VzcDN5MjJh"
                 className="btn-social"
               >
                 <FaInstagram />
               </a>
               <a
-                href="https://www.facebook.com/share/18mAzEcLgJ/"
+                href="https://www.facebook.com/share/1Ckc21V4Ci/"
                 className="btn-social"
               >
                 <FaFacebook />
