@@ -10,17 +10,10 @@ import {
   FiMail,
   FiUser,
   FiMessageSquare,
-  FiSun,
+  FiTool,
 } from "react-icons/fi";
 
-const services = [
-  "Lot Grading",
-  "Drainage Solutions",
-  "Landscape Preparation",
-  "Front Yard Upgrade",
-  "Backyard Transformation",
-  "Other",
-];
+const services = ["Contracting", "Landscaping", "Mobile Mechanical"];
 
 export default function ScheduleService() {
   const [selectedServices, setSelectedServices] = useState([]);
@@ -57,7 +50,7 @@ export default function ScheduleService() {
     const serviceText =
       selectedServices.length > 0
         ? selectedServices.join(", ")
-        : "general outdoor services";
+        : "general contracting services";
 
     return `${fullName} is interested in ${serviceText}${
       form.location ? ` in ${form.location}` : ""
@@ -85,15 +78,14 @@ export default function ScheduleService() {
     };
 
     try {
-      
-     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-const templateUser = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_USER;
-const templateAdmin = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ADMIN;
-const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateUser = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_USER;
+      const templateAdmin = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ADMIN;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-await emailjs.send(serviceId, templateUser, templateParams, publicKey);
+      await emailjs.send(serviceId, templateUser, templateParams, publicKey);
 
-await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
+      await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
       setSubmitStatus({
         type: "success",
         message:
@@ -124,21 +116,22 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
 
   return (
     <div className="w-full">
-      <div className="rounded-[28px] border border-[#e6ece0] bg-white/85 p-5 shadow-[0_16px_40px_rgba(32,45,35,0.06)] backdrop-blur-sm sm:p-6 md:p-7">
+      <div className="rounded-[28px] border border-[#ece3d1] bg-white/85 p-5 shadow-[0_16px_40px_rgba(20,24,26,0.06)] backdrop-blur-sm sm:p-6 md:p-7">
         {/* top summary */}
         <div className="mb-6 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <span className="inline-block rounded-full bg-[#e3ecdc] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-              Premium Booking Form
+            <span className="inline-block rounded-full bg-[#eee4cd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#a9803a]">
+              SJ Contracting Inc. — Booking Form
             </span>
 
-            <h3 className="mt-3 text-2xl font-bold tracking-tight text-[#2f4633] sm:text-3xl">
+            <h3 className="mt-3 text-2xl font-bold tracking-tight text-[#22261f] sm:text-3xl">
               Schedule Your Service
             </h3>
 
-            <p className="mt-2 text-sm leading-relaxed text-[#5f6f60] sm:text-base">
-              Share your project details and let’s plan an outdoor solution that
-              feels refined, functional, and built to last.
+            <p className="mt-2 text-sm leading-relaxed text-[#5f6259] sm:text-base">
+              Share your project details and let&apos;s plan it right —
+              contracting, landscaping, or mobile mechanical — for your
+              property in Windsor, Essex, Chatham & Kingsville.
             </p>
           </div>
 
@@ -146,12 +139,12 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="rounded-[22px] border border-[#dfe7d7] bg-gradient-to-r from-[#edf3e7] via-[#f7f5ef] to-[#eef4e8] px-4 py-4 lg:max-w-[290px]"
+            className="rounded-[22px] border border-[#e6ded0] bg-gradient-to-r from-[#eee4cd] via-[#f4efe4] to-[#ece2c8] px-4 py-4 lg:max-w-[290px]"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#58704e]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a9803a]">
               Inquiry Preview
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-[#425244]">
+            <p className="mt-2 text-sm leading-relaxed text-[#3a3f34]">
               {inquiryPreview}
             </p>
           </motion.div>
@@ -161,8 +154,8 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
           {/* name */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-                <FiUser className="text-[#4f7c57]" />
+              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+                <FiUser className="text-[#a9803a]" />
                 First Name *
               </label>
               <input
@@ -171,15 +164,15 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                 value={form.firstName}
                 onChange={handleChange}
                 placeholder="First name"
-                className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+                className="h-13 w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
                 required
                 disabled={isSubmitting}
               />
             </div>
 
             <div>
-              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-                <FiUser className="text-[#4f7c57]" />
+              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+                <FiUser className="text-[#a9803a]" />
                 Last Name *
               </label>
               <input
@@ -188,7 +181,7 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                 value={form.lastName}
                 onChange={handleChange}
                 placeholder="Last name"
-                className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+                className="h-13 w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
                 required
                 disabled={isSubmitting}
               />
@@ -198,8 +191,8 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
           {/* email + phone */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-                <FiMail className="text-[#4f7c57]" />
+              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+                <FiMail className="text-[#a9803a]" />
                 Email *
               </label>
               <input
@@ -208,15 +201,15 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                 value={form.email}
                 onChange={handleChange}
                 placeholder="you@example.com"
-                className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+                className="h-13 w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
                 required
                 disabled={isSubmitting}
               />
             </div>
 
             <div>
-              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-                <FiPhone className="text-[#4f7c57]" />
+              <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+                <FiPhone className="text-[#a9803a]" />
                 Phone *
               </label>
               <input
@@ -225,7 +218,7 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                 value={form.phone}
                 onChange={handleChange}
                 placeholder="(555) 123-4567"
-                className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+                className="h-13 w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
                 required
                 disabled={isSubmitting}
               />
@@ -234,8 +227,8 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
 
           {/* location */}
           <div>
-            <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-              <FiMapPin className="text-[#4f7c57]" />
+            <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+              <FiMapPin className="text-[#a9803a]" />
               Location *
             </label>
             <input
@@ -243,8 +236,8 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
               type="text"
               value={form.location}
               onChange={handleChange}
-              placeholder="City and State"
-              className="h-13 w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+              placeholder="Windsor, Essex, Chatham, Kingsville..."
+              className="h-13 w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
               required
               disabled={isSubmitting}
             />
@@ -253,12 +246,12 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
           {/* service chips */}
           <div>
             <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-              <label className="flex items-center gap-2 text-sm font-medium text-[#425244]">
-                <FiSun className="text-[#4f7c57]" />
+              <label className="flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+                <FiTool className="text-[#a9803a]" />
                 Services Needed
               </label>
 
-              <span className="text-xs font-medium text-[#728173]">
+              <span className="text-xs font-medium text-[#7a7a6d]">
                 {selectedServices.length > 0
                   ? `${selectedServices.length} selected`
                   : "Select one or more"}
@@ -277,15 +270,15 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                     disabled={isSubmitting}
                     className={`group inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-medium transition duration-300 ${
                       active
-                        ? "border-[#88a97b] bg-[#edf3e7] text-[#2f4633] shadow-sm"
-                        : "border-[#dfe7d7] bg-white text-[#5f6f60] hover:bg-[#f1f5ed]"
+                        ? "border-[#c69a4e] bg-[#eee4cd] text-[#22261f] shadow-sm"
+                        : "border-[#e6ded0] bg-white text-[#5f6259] hover:bg-[#f6f1e5]"
                     } ${isSubmitting ? "cursor-not-allowed opacity-70" : ""}`}
                   >
                     <span
                       className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] transition ${
                         active
-                          ? "bg-[#4f7c57] text-white"
-                          : "bg-[#e8efe2] text-[#4f7c57]"
+                          ? "bg-[#a9803a] text-white"
+                          : "bg-[#f1e9d5] text-[#a9803a]"
                       }`}
                     >
                       <FiCheckCircle />
@@ -303,12 +296,12 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.25 }}
-                  className="mt-4 rounded-[22px] bg-[#f7f5ef] p-4"
+                  className="mt-4 rounded-[22px] bg-[#f4efe4] p-4"
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#a9803a]">
                     Selected Services
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#425244]">
+                  <p className="mt-2 text-sm leading-relaxed text-[#3a3f34]">
                     {selectedServices.join(" • ")}
                   </p>
                 </motion.div>
@@ -318,8 +311,8 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
 
           {/* textarea */}
           <div>
-            <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#425244]">
-              <FiMessageSquare className="text-[#4f7c57]" />
+            <label className="mb-2 flex items-center gap-2 text-sm font-medium text-[#3a3f34]">
+              <FiMessageSquare className="text-[#a9803a]" />
               How can we help? *
             </label>
             <textarea
@@ -327,7 +320,7 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
               value={form.details}
               onChange={handleChange}
               placeholder="Tell us about your project, concerns, or goals..."
-              className="min-h-[150px] w-full rounded-2xl border border-[#dfe7d7] bg-[#fbfaf7] px-4 py-4 text-[#243126] outline-none transition focus:border-[#88a97b] focus:ring-2 focus:ring-[#88a97b]/20"
+              className="min-h-[150px] w-full rounded-2xl border border-[#e6ded0] bg-[#fbf9f4] px-4 py-4 text-[#23281f] outline-none transition focus:border-[#c69a4e] focus:ring-2 focus:ring-[#c69a4e]/20"
               required
               disabled={isSubmitting}
             />
@@ -335,15 +328,15 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
 
           {/* note boxes */}
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[22px] bg-[#f7f5ef] p-4">
-              <p className="text-sm leading-relaxed text-[#5f6f60]">
+            <div className="rounded-[22px] bg-[#f4efe4] p-4">
+              <p className="text-sm leading-relaxed text-[#5f6259]">
                 The more project details you include, the better we can guide
                 your next step.
               </p>
             </div>
 
-            <div className="rounded-[22px] bg-[#f7f5ef] p-4">
-              <p className="text-sm leading-relaxed text-[#5f6f60]">
+            <div className="rounded-[22px] bg-[#f4efe4] p-4">
+              <p className="text-sm leading-relaxed text-[#5f6259]">
                 All fields marked with an asterisk{" "}
                 <span className="font-semibold">*</span> are required.
               </p>
@@ -374,7 +367,7 @@ await emailjs.send(serviceId, templateAdmin, templateParams, publicKey);
             whileHover={!isSubmitting ? { scale: 1.015 } : {}}
             whileTap={!isSubmitting ? { scale: 0.985 } : {}}
             disabled={isSubmitting}
-            className={`group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(34,60,40,0.22)] transition sm:text-base ${
+            className={`group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#a9803a] via-[#c69a4e] to-[#d6b06a] px-6 py-4 text-sm font-semibold text-[#1a1a16] shadow-[0_12px_30px_rgba(198,154,78,0.26)] transition sm:text-base ${
               isSubmitting ? "cursor-not-allowed opacity-80" : ""
             }`}
           >

@@ -2,52 +2,63 @@ import type { Metadata } from "next";
 import GalleryClient from "./GalleryClient";
 
 export const metadata: Metadata = {
-  title: "Landscaping Portfolio Windsor Ontario | AQUAVIOR Gallery",
+  title:
+    "Project Gallery | SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical",
 
   description:
-    "Browse AQUAVIOR Landscaping & Irrigation's project gallery in Windsor Ontario. See real lawn care, sod installation, interlock, garden design, drainage, irrigation and landscaping projects across Windsor, LaSalle, Tecumseh and Essex County.",
+    "Explore the SJ Contracting Inc project gallery featuring contracting, landscaping, and mobile mechanical work completed throughout Windsor, Ontario. Discover our quality craftsmanship for residential and commercial projects.",
 
   keywords: [
-    "landscaping portfolio Windsor Ontario",
-    "AQUAVIOR landscaping gallery",
-    "landscaping gallery Windsor ON",
-    "sod installation before after Windsor",
-    "interlocking driveway Windsor Ontario",
-    "irrigation project Windsor Ontario",
-    "lawn care results Windsor",
-    "landscape design portfolio Essex County",
-    "our work Windsor landscaping",
-    "backyard landscaping Windsor Ontario",
-    "front yard landscaping Windsor",
+    "SJ Contracting Inc gallery",
+    "contracting projects Windsor Ontario",
+    "landscaping portfolio Windsor",
+    "mobile mechanical services Windsor",
+    "construction portfolio Windsor",
+    "landscape projects Windsor Ontario",
+    "residential contractor Windsor",
+    "commercial contractor Windsor",
+    "our work Windsor Ontario",
+    "project gallery Windsor",
+    "Essex County contractor",
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/gallery",
+    canonical: "https://sjcontractinginc.com/gallery",
   },
 
   openGraph: {
-    title: "Landscaping Portfolio Windsor Ontario | AQUAVIOR Gallery",
+    title:
+      "Project Gallery | SJ Contracting Inc",
+
     description:
-      "View real landscaping, irrigation, sod, interlock, garden design and drainage projects completed by AQUAVIOR across Windsor and Essex County Ontario.",
-    url: "https://www.aquavior.com/gallery",
-    siteName: "AQUAVIOR Landscaping & Irrigation",
+      "Browse completed contracting, landscaping, and mobile mechanical projects by SJ Contracting Inc across Windsor and Essex County, Ontario.",
+
+    url: "https://sjcontractinginc.com/gallery",
+
+    siteName: "SJ Contracting Inc",
+
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AQUAVIOR landscaping portfolio in Windsor Ontario",
+        alt: "SJ Contracting Inc Project Gallery",
       },
     ],
+
     locale: "en_CA",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "AQUAVIOR Landscaping Portfolio | Windsor Ontario",
+
+    title:
+      "Project Gallery | SJ Contracting Inc",
+
     description:
-      "Explore real landscaping and irrigation projects completed in Windsor and Essex County Ontario.",
+      "View completed contracting, landscaping, and mobile mechanical projects by SJ Contracting Inc in Windsor, Ontario.",
+
     images: ["/og-image.jpg"],
   },
 };

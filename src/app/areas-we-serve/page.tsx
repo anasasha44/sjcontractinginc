@@ -3,44 +3,48 @@ import AreasClient from "./Areasclient";
 
 export const metadata: Metadata = {
   title:
-    "Landscaping Service Areas Windsor Ontario | AQUAVIOR Landscaping",
+    "Areas We Serve | SJ Contracting Inc | Windsor, Ontario & Essex County",
 
   description:
-    "AQUAVIOR Landscaping & Irrigation provides professional landscaping, lawn care, irrigation systems and snow removal across Windsor Ontario, LaSalle, Tecumseh, Amherstburg, Kingsville, Lakeshore, Leamington and Essex County.",
+    "SJ Contracting Inc proudly provides contracting, landscaping, and mobile mechanical services throughout Windsor, Ontario, including LaSalle, Tecumseh, Amherstburg, Kingsville, Lakeshore, Leamington, and Essex County.",
 
   keywords: [
+    "SJ Contracting Inc",
+    "Windsor contractor",
+    "contracting Windsor Ontario",
     "landscaping Windsor Ontario",
-    "Windsor landscaping service areas",
-    "LaSalle landscaping",
-    "Tecumseh lawn care",
-    "Amherstburg landscaping",
-    "Kingsville lawn care",
-    "Lakeshore Ontario landscaping",
-    "Leamington landscaping",
-    "Essex County landscaping",
-    "landscaper near me Windsor ON",
+    "mobile mechanical Windsor",
+    "LaSalle contractor",
+    "Tecumseh contractor",
+    "Amherstburg contractor",
+    "Kingsville contractor",
+    "Lakeshore contractor",
+    "Leamington contractor",
+    "Essex County contractor",
+    "contractor near me Windsor",
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/areas-we-serve",
+    canonical: "https://sjcontractinginc.com/areas-we-serve",
   },
 
   openGraph: {
     title:
-      "Areas We Serve | AQUAVIOR Landscaping Windsor Ontario & Essex County",
+      "Areas We Serve | SJ Contracting Inc | Windsor & Essex County",
 
     description:
-      "Serving Windsor, LaSalle, Tecumseh, Amherstburg, Kingsville, Lakeshore, Leamington and Essex County with professional landscaping and irrigation services.",
+      "Serving Windsor, LaSalle, Tecumseh, Amherstburg, Kingsville, Lakeshore, Leamington, and Essex County with professional contracting, landscaping, and mobile mechanical services.",
 
-    url: "https://www.aquavior.com/areas-we-serve",
-    siteName: "AQUAVIOR Landscaping & Irrigation",
+    url: "https://sjcontractinginc.com/areas-we-serve",
+
+    siteName: "SJ Contracting Inc",
 
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Landscaping services across Windsor Ontario and Essex County",
+        alt: "SJ Contracting Inc serving Windsor and Essex County",
       },
     ],
 
@@ -50,9 +54,13 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Landscaping Areas We Serve | AQUAVIOR Windsor Ontario",
+
+    title:
+      "Areas We Serve | SJ Contracting Inc",
+
     description:
-      "Professional landscaping services across Windsor and Essex County Ontario.",
+      "Professional contracting, landscaping, and mobile mechanical services across Windsor and Essex County, Ontario.",
+
     images: ["/og-image.jpg"],
   },
 };

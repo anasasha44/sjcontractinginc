@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const message = `🌿 AQUAVIOR NEW SUBSCRIBER
+    const message = `📩 SJ Contracting Inc - New Newsletter Subscriber
 
 📧 Email: ${email}
 🕒 Time: ${new Date().toLocaleString()}`;

@@ -2,53 +2,65 @@ import type { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Contact AQUAVIOR | Free Landscaping Quote Windsor Ontario",
+  title:
+    "Contact SJ Contracting Inc | Get a Free Quote in Windsor, Ontario",
 
   description:
-    "Contact AQUAVIOR Landscaping & Irrigation for a free landscaping quote in Windsor Ontario. We provide lawn care, sod installation, interlock, garden design, irrigation systems and snow removal across Windsor, LaSalle, Tecumseh and Essex County.",
+    "Contact SJ Contracting Inc for a free quote on contracting, landscaping, and mobile mechanical services in Windsor, Ontario. We provide reliable residential and commercial solutions throughout Windsor and surrounding areas.",
 
   keywords: [
-    "landscaping quote Windsor Ontario",
-    "free estimate landscaping Windsor",
-    "contact landscaper Windsor ON",
-    "lawn care quote Windsor",
-    "irrigation quote Windsor Ontario",
-    "landscape contractor Windsor Ontario",
-    "free landscaping estimate Essex County",
-    "Windsor Ontario landscaping contact",
+    "SJ Contracting Inc contact",
+    "contractor Windsor Ontario",
+    "free contractor quote Windsor",
+    "landscaping quote Windsor",
+    "mobile mechanical Windsor",
+    "general contractor Windsor",
+    "commercial contractor Windsor",
+    "residential contractor Windsor",
+    "contact SJ Contracting Inc",
+    "Windsor Ontario contractor",
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/Contact",
+    canonical: "https://sjcontractinginc.com/Contact",
   },
 
   openGraph: {
-    title: "Contact AQUAVIOR | Free Landscaping Quote Windsor Ontario",
+    title:
+      "Contact SJ Contracting Inc | Free Quote for Contracting, Landscaping & Mobile Mechanical",
+
     description:
-      "Get a free quote from AQUAVIOR for landscaping, irrigation, lawn care, sod, interlock and snow removal in Windsor Ontario and Essex County.",
-    url: "https://www.aquavior.com/Contact",
-    siteName: "AQUAVIOR Landscaping & Irrigation",
+      "Request a free quote from SJ Contracting Inc for professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario.",
+
+    url: "https://sjcontractinginc.com/Contact",
+
+    siteName: "SJ Contracting Inc",
+
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Contact AQUAVIOR Landscaping and Irrigation in Windsor Ontario",
+        alt: "Contact SJ Contracting Inc",
       },
     ],
+
     locale: "en_CA",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Contact AQUAVIOR | Free Landscaping Quote Windsor",
+
+    title:
+      "Contact SJ Contracting Inc | Free Quote",
+
     description:
-      "Request a free landscaping and irrigation quote in Windsor Ontario.",
+      "Get in touch with SJ Contracting Inc for professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario.",
+
     images: ["/og-image.jpg"],
   },
 };
-
 export default function ContactPage() {
   return <ContactClient />;
 }

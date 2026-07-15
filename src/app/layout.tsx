@@ -9,9 +9,9 @@ import { Unbounded, Sora } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 
 
-const SITE_URL = "https://www.aquavior.com";
-const BRAND_NAME = "AQUAVIOR Landscaping & Irrigation";
-const PHONE = "+1-382-880-0066";
+const SITE_URL = "https://www.sjcontractinginc.com";
+const BRAND_NAME = "SJ Contracting Inc";
+const PHONE = "+1-266-344-0303";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -34,45 +34,65 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
-  title: {
-    default: "Landscaping Windsor Ontario | AQUAVIOR Landscaping & Irrigation",
-    template: "%s | AQUAVIOR Landscaping & Irrigation",
-  },
+title: {
+  default:
+    "SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services in Windsor, Ontario",
+  template: "%s | SJ Contracting Inc",
+},
 
-  description:
-    "Professional landscaping and irrigation services in Windsor Ontario. AQUAVIOR provides lawn care, sod installation, garden design, interlock, irrigation systems and snow removal across Windsor, LaSalle, Tecumseh and Essex County.",
+description:
+  "SJ Contracting Inc provides professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario. We deliver reliable residential and commercial solutions with quality workmanship across Windsor and surrounding areas.",
+ icons: {
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/icon1.png", sizes: "192x192", type: "image/png" },
+    { url: "/icon0.svg", type: "image/svg+xml" },
+  ],
 
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
+  apple: "/apple-icon.png",
 
-  manifest: "/site.webmanifest",
+  shortcut: "/favicon.ico",
+},
+
+manifest: "/manifest.json",
+ 
 
   keywords: [
-    "landscaping Windsor Ontario",
-    "landscaping Windsor",
-    "landscaping Windsor Canada",
-    "lawn care Windsor ON",
-    "landscape design Windsor",
-    "irrigation system Windsor",
-    "sprinkler system Windsor Ontario",
-    "sod installation Windsor",
-    "interlocking Windsor",
-    "snow removal Windsor",
-    "garden design Windsor Ontario",
-    "landscaper near me Windsor",
-    "residential landscaping Windsor",
-    "commercial landscaping Windsor",
-    "lawn maintenance Windsor",
-    "LaSalle landscaping",
-    "Tecumseh lawn care",
-    "Essex County landscaping",
-  ],
+  // Brand
+  "SJ Contracting Inc",
+
+  // Main Services
+  "contracting Windsor Ontario",
+  "general contractor Windsor",
+  "construction services Windsor",
+  "residential contractor Windsor",
+  "commercial contractor Windsor",
+
+  // Landscaping
+  "landscaping Windsor Ontario",
+  "landscaping Windsor",
+  "landscape contractor Windsor",
+  "lawn care Windsor",
+  "sod installation Windsor",
+  "lot grading Windsor",
+  "drainage solutions Windsor",
+  "irrigation systems Windsor",
+  "property maintenance Windsor",
+
+  // Mobile Mechanical
+  "mobile mechanical services Windsor",
+  "mobile mechanic Windsor Ontario",
+  "on-site mechanical repair Windsor",
+  "emergency mobile mechanic Windsor",
+
+  // Local SEO
+  "Windsor Ontario contractor",
+  "LaSalle contractor",
+  "Tecumseh contractor",
+  "Amherstburg contractor",
+  "Essex County contractor",
+  "contractor near me Windsor",
+],
 
   authors: [{ name: BRAND_NAME }],
   creator: BRAND_NAME,
@@ -83,31 +103,38 @@ export const metadata: Metadata = {
     address: true,
   },
 
-  openGraph: {
-    type: "website",
-    locale: "en_CA",
-    url: SITE_URL,
-    siteName: BRAND_NAME,
-    title: "Landscaping Windsor Ontario | AQUAVIOR Landscaping & Irrigation",
-    description:
-      "AQUAVIOR provides professional landscaping, lawn care, irrigation systems, sod installation, interlock and snow removal in Windsor, LaSalle, Tecumseh and Essex County.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AQUAVIOR landscaping and irrigation services in Windsor Ontario",
-      },
-    ],
-  },
+openGraph: {
+  type: "website",
+  locale: "en_CA",
+  url: SITE_URL,
+  siteName: BRAND_NAME,
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Landscaping Windsor Ontario | AQUAVIOR",
-    description:
-      "Professional landscaping, irrigation, lawn care, sod, interlock and snow removal services in Windsor Ontario.",
-    images: ["/og-image.jpg"],
-  },
+  title:
+    "SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services",
+
+  description:
+    "SJ Contracting Inc provides professional contracting, landscaping, and mobile mechanical services across Windsor, Ontario. Reliable residential and commercial solutions delivered with quality workmanship.",
+
+  images: [
+    {
+      url: "/og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "SJ Contracting Inc - Contracting, Landscaping & Mobile Mechanical Services",
+    },
+  ],
+},
+
+twitter: {
+  card: "summary_large_image",
+  title:
+    "SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services",
+
+  description:
+    "Professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario. Trusted residential and commercial solutions across Windsor and surrounding areas.",
+
+  images: ["/og-image.jpg"],
+},
 
   robots: {
     index: true,
@@ -131,115 +158,145 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${SITE_URL}/#localbusiness`,
-    name: BRAND_NAME,
-    image: `${SITE_URL}/og-image.jpg`,
-    url: SITE_URL,
-    telephone: PHONE,
-    priceRange: "$$",
-    description:
-      "AQUAVIOR Landscaping & Irrigation provides professional landscaping, irrigation systems, lawn care, sod installation, garden design, interlocking and snow removal services in Windsor, LaSalle, Tecumseh and Essex County Ontario.",
-    address: {
-      "@type": "PostalAddress",
-     address: {
-  "@type": "PostalAddress",
-  addressLocality: "Windsor",
-  addressRegion: "ON",
-  addressCountry: "CA",
-},
-      addressLocality: "Windsor",
-      addressRegion: "ON",
-      addressCountry: "CA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 42.3149,
-      longitude: -83.0364,
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
-        closes: "18:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "08:00",
-        closes: "16:00",
-      },
-    ],
-    areaServed: [
-      { "@type": "City", name: "Windsor" },
-      { "@type": "City", name: "LaSalle" },
-      { "@type": "City", name: "Tecumseh" },
-      { "@type": "City", name: "Amherstburg" },
-      { "@type": "Place", name: "Essex County" },
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Landscaping and Irrigation Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Lawn Care & Maintenance",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Sod Installation",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Landscape Design",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Irrigation System Installation",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Interlocking & Hardscape",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Snow Removal Windsor",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Garden Design & Planting",
-          },
-        },
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#localbusiness`,
+
+  name: BRAND_NAME,
+  image: `${SITE_URL}/og-image.jpg`,
+  url: SITE_URL,
+  telephone: PHONE,
+  priceRange: "$$",
+
+  description:
+    "SJ Contracting Inc provides professional contracting, landscaping, and mobile mechanical services for residential and commercial properties throughout Windsor, Ontario and surrounding areas.",
+
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Windsor",
+    addressRegion: "ON",
+    addressCountry: "CA",
+  },
+
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 42.3149,
+    longitude: -83.0364,
+  },
+
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
       ],
+      opens: "07:00",
+      closes: "18:00",
     },
-    sameAs: [
-      "https://www.facebook.com/share/18mAzEcLgJ/",
-      "https://www.instagram.com/aqu.anovus?igsh=cWZ5M3VzcDN5MjJh",
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "08:00",
+      closes: "16:00",
+    },
+  ],
+
+  areaServed: [
+    { "@type": "City", name: "Windsor" },
+    { "@type": "City", name: "LaSalle" },
+    { "@type": "City", name: "Tecumseh" },
+    { "@type": "City", name: "Amherstburg" },
+    { "@type": "Place", name: "Essex County" },
+  ],
+
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Contracting, Landscaping & Mobile Mechanical Services",
+
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "General Contracting",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Residential Contracting",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Commercial Contracting",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Landscaping Services",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Lot Grading & Drainage",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Sod Installation",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Lawn Maintenance",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Irrigation Systems",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Mobile Mechanical Services",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "On-Site Mechanical Repair",
+        },
+      },
     ],
-  };
+  },
+
+  sameAs: [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+  ],
+};
 
   return (
     <html lang="en-CA" className={`${unbounded.variable} ${sora.variable}`}>

@@ -2,49 +2,61 @@ import type { Metadata } from "next";
 import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
-  title: "About AQUAVIOR | Landscaping Company Windsor Ontario",
+  title:
+    "About SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical Services",
+
   description:
-    "Learn about AQUAVIOR Landscaping & Irrigation, a trusted landscaping company in Windsor Ontario offering lawn care, sod installation, interlock, garden design, drainage and irrigation services across Windsor, LaSalle, Tecumseh and Essex County.",
+    "Learn about SJ Contracting Inc, a trusted company providing professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario. We deliver reliable residential and commercial solutions across Windsor and surrounding areas.",
 
   keywords: [
-    "AQUAVIOR Landscaping",
-    "Aquavior Landscaping & Irrigation",
-    "landscaping company Windsor Ontario",
-    "local landscaper Windsor ON",
-    "Windsor Ontario lawn care company",
-    "irrigation company Windsor Ontario",
-    "landscape contractor Essex County",
-    "professional landscaping Windsor",
-    "locally owned landscaping Windsor",
+    "SJ Contracting Inc",
+    "about SJ Contracting Inc",
+    "contracting company Windsor Ontario",
+    "general contractor Windsor",
+    "landscaping company Windsor",
+    "mobile mechanical services Windsor",
+    "residential contractor Windsor",
+    "commercial contractor Windsor",
+    "Windsor Ontario contractor",
+    "Essex County contractor",
   ],
 
   alternates: {
-    canonical: "https://www.aquavior.com/About",
+    canonical: "https://sjcontractinginc.com/About",
   },
 
   openGraph: {
-    title: "About AQUAVIOR Landscaping & Irrigation | Windsor Ontario",
+    title:
+      "About SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical",
+
     description:
-      "AQUAVIOR is a trusted Windsor landscaping and irrigation company serving Windsor, LaSalle, Tecumseh, Amherstburg and Essex County Ontario.",
-    url: "https://www.aquavior.com/About",
-    siteName: "AQUAVIOR Landscaping & Irrigation",
+      "SJ Contracting Inc provides trusted contracting, landscaping, and mobile mechanical services throughout Windsor, Ontario and surrounding communities.",
+
+    url: "https://sjcontractinginc.com/About",
+    siteName: "SJ Contracting Inc",
+
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AQUAVIOR Landscaping and Irrigation company in Windsor Ontario",
+        alt: "SJ Contracting Inc - Contracting, Landscaping & Mobile Mechanical Services",
       },
     ],
+
     locale: "en_CA",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About AQUAVIOR | Landscaping Company Windsor Ontario",
+
+    title:
+      "About SJ Contracting Inc | Contracting, Landscaping & Mobile Mechanical",
+
     description:
-      "Trusted landscaping and irrigation services in Windsor, LaSalle, Tecumseh and Essex County Ontario.",
+      "Learn more about SJ Contracting Inc and our professional contracting, landscaping, and mobile mechanical services in Windsor, Ontario.",
+
     images: ["/og-image.jpg"],
   },
 };

@@ -184,21 +184,21 @@ export default function ModalScheduleService() {
                       scrollbarGutter: "stable",
                     }}
                   >
-                    <div className="mb-6 pr-2">
-                      <span className="inline-block rounded-full bg-[#e3ecdc] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#58704e]">
-                        Landscape Booking
-                      </span>
+                  <div className="mb-6 pr-2">
+  <span className="inline-block rounded-full bg-[#eee4cd] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#a9803a]">
+    SJ Contracting Inc. — Booking
+  </span>
 
-                      <h2 className="mt-3 text-2xl font-bold text-[#2f4633] sm:text-3xl">
-                        Let&apos;s Plan Your Outdoor Space
-                      </h2>
+  <h2 className="mt-3 text-2xl font-bold text-[#22261f] sm:text-3xl">
+    Let&apos;s Plan Your Project
+  </h2>
 
-                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5f6f60] sm:text-base">
-                        Book your service and let&apos;s create a clean, elegant,
-                        and natural landscape that fits your home beautifully.
-                      </p>
-                    </div>
-
+  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#5f6259] sm:text-base">
+    Book your service and let&apos;s get it done right — contracting,
+    landscaping, or mobile mechanical — for your property in Windsor,
+    Essex, Chatham & Kingsville.
+  </p>
+</div>
                     <div className="rounded-2xl bg-white/60 p-2 backdrop-blur-sm sm:p-3">
                       <ScheduleService />
                     </div>
