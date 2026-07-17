@@ -10,7 +10,7 @@ import { usePageLoader } from "../ui/PageLoader";
 const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/service", label: "SERVICES" },
-  { href: "/gallery", label: "GALLERY" },
+  // { href: "/gallery", label: "GALLERY" },
   { href: "/areas-we-serve", label: "AREAS WE SERVE" },
   { href: "/About", label: "ABOUT" },
   { href: "/Contact", label: "CONTACT" },
@@ -194,7 +194,7 @@ export default function Navbar() {
 
           <li className="pt-2" onClick={() => setOpen(false)}>
             <CustomLink
-              href="/About"
+              href="/Contact"
               className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#3f6b4b] via-[#4f7c57] to-[#6f8f4e] px-5 py-2.5 text-white shadow-[0_10px_25px_rgba(34,60,40,0.25)] transition hover:scale-[1.03]"
             >
               FREE ESTIMATE

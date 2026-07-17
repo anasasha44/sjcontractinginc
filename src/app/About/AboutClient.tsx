@@ -342,7 +342,7 @@ export default function AboutClient() {
             <div className="overflow-hidden rounded-[34px] shadow-[0_22px_60px_rgba(20,24,26,0.18)]">
               {/* TODO: swap for an SJ Contracting renovation or crew photo */}
               <Image
-                src="https://ik.imagekit.io/gmjmoldeh/landscap/hero-3.jpg?tr=f-auto,q-auto"
+                src="https://ik.imagekit.io/gmjmoldeh/sj/IMG_4466.PNG?tr=f-auto,q-auto"
                 alt="SJ Contracting Inc. project in Windsor Ontario"
                 width={1600}
                 height={800}

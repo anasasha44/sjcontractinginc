@@ -29,7 +29,7 @@ const galleryItems = [
     category: "Cutting",
     image: "https://ik.imagekit.io/gmjmoldeh/landscap/Cutpre.jpg?tr=f-auto,q-auto",
     size: "small",
-    desc: "Precision cutting service for a Windsor property — ensures clean preparation and accurate results for all surface work.",
+    desc: "Precision cutting service for a Windsor property — ensures clean preparation and accurate results for all surq work.",
   },
   {
     id: 3,

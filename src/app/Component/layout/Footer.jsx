@@ -95,11 +95,11 @@ const handleSubmit = async (e) => {
                   Our Services
                 </CustomLink>
               </li>
-              <li>
+              {/* <li>
                 <CustomLink href="/gallery" className="footer-link">
                   Projects
                 </CustomLink>
-              </li>
+              </li> */}
             </ul>
           </div>
 

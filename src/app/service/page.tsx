@@ -18,7 +18,7 @@ const services = [
     id: 1,
     title: "Contracting",
     icon: <FaTools />,
-    image: "https://ik.imagekit.io/gmjmoldeh/sj/craftsman-at-work-with-tools-on-a-construction-site-in-bright-daylight-photo.jpg?updatedAt=1784022280887?q=80&w=1600&auto=format&fit=crop",
+    image: "https://ik.imagekit.io/gmjmoldeh/sj/IMG_4467.PNG?updatedAt=1784022280887?q=80&w=1600&auto=format&fit=crop",
     description:
       "Professional residential and commercial contracting services delivered with quality craftsmanship and attention to detail.",
     items: [
@@ -36,7 +36,7 @@ const services = [
     id: 2,
     title: "Landscaping",
     icon: <FaLeaf />,
-    image: "https://ik.imagekit.io/gmjmoldeh/landscap/hero-2.jpg?updatedAt=1784022280887?q=80&w=1600&auto=format&fit=crop",
+    image: "https://ik.imagekit.io/gmjmoldeh/sj/IMG_4466.PNG?updatedAt=1784022280887?q=80&w=1600&auto=format&fit=crop",
     description:
       "Beautiful outdoor spaces built to increase curb appeal and property value.",
     items: [
